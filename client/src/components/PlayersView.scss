@@ -47,8 +47,29 @@ $winnerPlayer: #dae1ff;
         &.thinking .think-blob {
             display: inline-block;
         }
+        &.thinking .name::after {
+            display: inline;
+            content: ' \1f914';
+        }
+        &.is-czar {
+            .name{
+                font-weight: 600;
+            }
+            .name::after {
+                display: inline;
+                content: ' \2696\fe0f';
+            }
+            &.thinking .name::after {
+                display: inline;
+                content: ' \1f914';
+            }
+        }
         &.winner {
             background: $winnerPlayer;
+            .name::after {
+                display: inline;
+                content: ' \1f451';
+            }
         }
     }
 }

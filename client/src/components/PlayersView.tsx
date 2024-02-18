@@ -13,6 +13,7 @@ const PlayerView = ({player}: PlayerViewProps) => {
   let status = "\xA0" // NBSP
   let thinking = false
   let winner = false
+  let czar = false
 
   if (player.isThinking) {
     status = "Playing"
@@ -28,6 +29,7 @@ const PlayerView = ({player}: PlayerViewProps) => {
     winner = true
   } else if (game.running && player === game.cardCzar) {
     status = "Card Czar"
+    czar = true
   } else if (player === game.host) {
     status = "Host"
   }
@@ -35,7 +37,7 @@ const PlayerView = ({player}: PlayerViewProps) => {
   const leader = game.players.every(other => other.score <= player.score)
 
   return (
-      <div className={`player ${thinking ? "thinking" : ""} ${winner ? "winner" : ""}`}>
+      <div className={`player ${thinking ? "thinking" : ""} ${winner ? "winner" : ""} ${czar ? "is-czar": ""}`}>
         <div className="name">{player.name}</div>
         <div className={`score ${leader ? "leader" : ""}`}>
           {player.score} {player.score === 1 ? "point" : "points"}
