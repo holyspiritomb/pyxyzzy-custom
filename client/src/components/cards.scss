@@ -1,18 +1,18 @@
 @use "sass:math";
-$blackCard: #231f20;
+$blackCard: #000;
 $whiteCard: #ffffff;
-$hoveredWhiteCard: #f0f1ff;
-$activeWhiteCard: #dae1ff;
+$hoveredWhiteCard: #e0def4;
+$activeWhiteCard: #8981d5;
 
 $blackCardText: #ffffff;
-$whiteCardText: #231f20;
-$placeholderCardText: #8c92a8;
+$whiteCardText: #000;
+$placeholderCardText: #000;
 
 $cardBorder: #000000;
 
-$whiteCardGroup: #999999;
-$hoveredWhiteCardGroup: #787e99;
-$activeWhiteCardGroup: #536099;
+$whiteCardGroup: darken($activeWhiteCard, 10);
+$hoveredWhiteCardGroup: lighten($activeWhiteCard, 10);
+$activeWhiteCardGroup: darken($activeWhiteCard, 15);
 
 @function scale-card($measure, $fontSize: 1.0) {
     // @return $measure / 1px * 0.01em / $fontSize;

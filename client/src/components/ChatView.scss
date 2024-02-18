@@ -17,7 +17,7 @@ $togglerHeight: 1.6rem;
         height: $togglerHeight;
         outline: none;
         background: $themeGlobalBg;
-        border: solid black;
+        border: 1px solid black;
         border-width: 1px 0;
         text-transform: uppercase;
 
@@ -32,7 +32,7 @@ $togglerHeight: 1.6rem;
         flex-direction: column;
         transform: translateY(0);
         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        max-height: 80vh;
+        max-height: 30vh;
         background: $themeGlobalBg;
         box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
     }
@@ -42,7 +42,7 @@ $togglerHeight: 1.6rem;
             box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
         }
         .toggler {
-            border-color: #aaa;
+            border-color: #000;
 
             .arrow {
                 transform: translateY(-0.2rem) rotate(-60deg);
@@ -62,10 +62,10 @@ $togglerHeight: 1.6rem;
             color: #555;
         }
         &.type-error {
-            color: #c00;
+            color: #ff389c;
         }
         &.type-warning {
-            color: #990;
+            color:#FF4500 ;
         }
     }
     .field {

@@ -1,6 +1,6 @@
 @import "defs";
 
-$winnerPlayer: #dae1ff;
+$winnerPlayer: #fff;
 
 .in-game .players {
     display: flex;
@@ -13,10 +13,13 @@ $winnerPlayer: #dae1ff;
         text-align: center;
         margin: 0.25rem;
         padding: 0.4rem;
-        border: 1px solid #aaa;
+        border: 1px solid #000000;
         min-width: 12ch;
-        background: $themeHandBg;
+        background: lighten($themeNavbarBg,20);
+
         border-radius: 10px;
+        max-width: calc(24vw - 0.25rem);
+        overflow-x: hidden;
 
         .score, .status {
             font-size: 0.9em;

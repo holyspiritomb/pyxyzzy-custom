@@ -19,7 +19,7 @@ html {
     font-size: 14px;
     background: $themeGlobalBg;
     z-index: $gameZ;
-    user-select: none;
+    // user-select: none;
 
     @media screen and (max-width: 800px) {
         font-size: 13px;
@@ -81,9 +81,10 @@ h4 {
     font-size: 1rem;
 }
 button {
-    background-color: #eeeeee;
+    background-color: lighten($themeGlobalBg, 15);
     color: #000000;
-    border: 2px outset #dddddd;
+    border: 2px outset lighten($themeGlobalBg,10);
+    border-radius: 5px;
 }
 button:active {
     border-style: inset;
@@ -92,4 +93,20 @@ button:disabled {
     color: #999999;
     border-style: outset;
     cursor: not-allowed;
+}
+input {
+    border: 1px solid darken($themeGlobalBg,10);
+    background-color: lighten($themeGlobalBg, 25);
+    accent-color: darken($themeGlobalBg, 50);
+}
+
+a, a:link {
+    color: #ff389c;
+    text-decoration: underline;
+    &:hover, &:focus {
+        color: lighten(#ff389c, 10);
+    }
+    &:visited {
+        color: darken(#ff389c, 10);
+    }
 }

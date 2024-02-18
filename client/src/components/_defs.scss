@@ -5,13 +5,13 @@ $navbarZ: 3000;
 $dialogZ: 4000;
 $connectingZ: 5000;
 
-$themeGlobalBg: #ffffff;
-$themeNavbarBg: #dddddd;
-$themeHandBg: #eeeeee;
+$themeNavbarBg: #8981d5;
+$themeHandBg: lighten(#8981d5, 10);
+$themeGlobalBg: lighten($themeNavbarBg, 10);
 
 @mixin nav-bar($class) {
     #{$class} {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         padding: 0.5rem 0.5rem 0;
     }
     #{$class}, #{$class} > div {
@@ -25,7 +25,7 @@ $themeHandBg: #eeeeee;
     @include nav-bar(".nav");
     .nav {
         flex-wrap: wrap-reverse;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #000;
         background: $themeNavbarBg;
         position: sticky;
         top: 0;
