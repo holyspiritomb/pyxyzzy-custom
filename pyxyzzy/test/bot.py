@@ -312,7 +312,7 @@ class BotBase:
 
     def generate_username(self) -> str:
         """Generates a username for the bot."""
-        return f"{self.__class__.__name__}{randint(100000, 999999)}"
+        return f"Bot{randint(100, 999)}"
 
     def handle_authenticated(self) -> None:
         """Called by ``authenticate()`` when authentication completes.
