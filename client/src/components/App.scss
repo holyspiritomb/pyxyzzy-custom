@@ -1,8 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
+@use "~inter-ui/default" with (
+  $inter-font-display: swap,
+  $inter-font-path: '~inter-ui/web'
+);
+
+@use "~inter-ui/variable" with (
+  $inter-font-display: swap,
+  $inter-font-path: '~inter-ui/variable'
+);
+
+@include default.all;
+@include variable.all;
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
 @import "defs";
 
 html {
-    font-family: Roboto;
+    font-family: "Inter", system-ui, sans-serif;
     font-size: 14px;
     background: $themeGlobalBg;
     z-index: $gameZ;
@@ -14,6 +27,9 @@ html {
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }
+}
+@supports (font-variation-settings: normal) {
+  html { font-family: "InterVariable"; } /* If using the variable font */
 }
 html, body, #root {
     height: 100%;
