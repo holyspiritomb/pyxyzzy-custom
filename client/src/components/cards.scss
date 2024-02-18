@@ -1,3 +1,4 @@
+@use "sass:math";
 $blackCard: #231f20;
 $whiteCard: #ffffff;
 $hoveredWhiteCard: #f0f1ff;
@@ -14,7 +15,8 @@ $hoveredWhiteCardGroup: #787e99;
 $activeWhiteCardGroup: #536099;
 
 @function scale-card($measure, $fontSize: 1.0) {
-    @return $measure / 1px * 0.01em / $fontSize;
+    // @return $measure / 1px * 0.01em / $fontSize;
+    @return math.div($measure, 1px) * math.div(0.01em, $fontSize);
 }
 .cards .group {
     font-size: 100px; // everything scales relative to this
@@ -50,7 +52,7 @@ $activeWhiteCardGroup: #536099;
 }
 .card {
     flex: none;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "InterVariable","Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100px; // everything scales relative to this
     border: 1px solid $cardBorder;
     border-radius: 4%;
@@ -121,7 +123,9 @@ $activeWhiteCardGroup: #536099;
     }
     .text {
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 600;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
 
         em {
             font-style: italic;
@@ -151,7 +155,7 @@ $activeWhiteCardGroup: #536099;
     .draw-pick {
         text-align: right;
         font-size: 0.13em;
-        font-weight: bold;
+        font-weight: 600;
         white-space: nowrap;
         margin-left: scale-card(5px, 0.13);
 
