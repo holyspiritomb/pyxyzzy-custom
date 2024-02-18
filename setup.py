@@ -3,7 +3,7 @@ import sys
 from setuptools import setup  # type: ignore[import]
 
 __author__ = "PurkkaKoodari"
-__url__ = "https://gitlab.com/PurkkaKoodari/pyxyzzy"
+__url__ = "https://gitlab.com/holyspiritomb/pyxyzzy"
 __version__ = "0.0.1"
 
 
@@ -12,9 +12,9 @@ __long_description__ = """
 """
 
 install_requires = [
-    "websockets >= 8.1",
-    "toml >= 0.10.0",
-    "peewee >= 3.13.1",
+    "websockets >= 12.0",
+    "toml >= 0.10.2",
+    "peewee >= 3.17.0",
 ]
 setup(
     name="pyxyzzy",
@@ -28,13 +28,12 @@ setup(
             "pyxyzzy-server = pyxyzzy.__main__:main"
         ]
     },
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=install_requires,
     include_package_data=True,
     platforms="any",
     long_description=__long_description__,
     classifiers=[
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
