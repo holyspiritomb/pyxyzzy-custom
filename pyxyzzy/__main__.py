@@ -38,8 +38,15 @@ except NotImplementedError:
         fix_ctrlc()
 
 server = loop.create_task(run_server(stop_server))
-try:
+
+
+def main():
+    try:
+        loop.run_until_complete(server)
+    except KeyboardInterrupt:
+        stop_server.set_result(None)
     loop.run_until_complete(server)
-except KeyboardInterrupt:
-    stop_server.set_result(None)
-    loop.run_until_complete(server)
+
+
+if __name__ == "__main__":
+    main()
