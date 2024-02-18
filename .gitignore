@@ -1,6 +1,7 @@
 # Development configs
 config.dev.toml
 cards.dev.db
+config.*.toml
 
 # JS template not included
 
