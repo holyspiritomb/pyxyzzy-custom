@@ -13,7 +13,7 @@ import {
 Modal.setAppElement("#root")
 
 toast.configure({
-    autoClose: 8000,
+    autoClose: 10000,
     position: "top-center",
     toastStyle: {"borderRadius": "10px", "marginTop": "10px", "marginBottom": "5px","border": "1px solid #000", "fontFamily": "system-ui,sans-serif", "minWidth":"50vw", "maxWidth": "90vw"},
 })
