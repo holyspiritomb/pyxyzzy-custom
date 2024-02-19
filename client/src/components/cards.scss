@@ -2,7 +2,7 @@
 $blackCard: #000;
 $whiteCard: #ffffff;
 $hoveredWhiteCard: #e0def4;
-$activeWhiteCard: #8981d5;
+$activeWhiteCard: lighten(#8981d5,10);
 
 $blackCardText: #ffffff;
 $whiteCardText: #000;
@@ -52,7 +52,7 @@ $activeWhiteCardGroup: darken($activeWhiteCard, 15);
 }
 .card {
     flex: none;
-    font-family: "InterVariable","Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100px; // everything scales relative to this
     border: 1px solid $cardBorder;
     border-radius: 4%;
@@ -97,12 +97,14 @@ $activeWhiteCardGroup: darken($activeWhiteCard, 15);
             flex-wrap: wrap;
             line-height: 1.2;
             margin-right: -0.6ch;
+            font-family:inherit;
 
             .word {
                 display: flex;
                 flex-wrap: nowrap;
                 flex: none;
                 margin-right: 0.6ch;
+                font-family:inherit;
 
                 &.blank {
                     flex: 1 0 auto;
@@ -126,6 +128,7 @@ $activeWhiteCardGroup: darken($activeWhiteCard, 15);
         font-weight: 600;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        font-family:inherit;
 
         em {
             font-style: italic;
@@ -151,6 +154,7 @@ $activeWhiteCardGroup: darken($activeWhiteCard, 15);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-family:inherit;
     }
     .draw-pick {
         text-align: right;
@@ -175,6 +179,9 @@ $activeWhiteCardGroup: darken($activeWhiteCard, 15);
             vertical-align: center;
         }
     }
+}
+@supports (font-variation-settings: normal) {
+  .card :is(.text,.pack-name) { font-family: "InterVariable"; } /* If using the variable font */
 }
 .in-game.game-state-playing.should-play .cards {
     .white.card {

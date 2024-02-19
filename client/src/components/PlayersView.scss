@@ -1,6 +1,6 @@
 @import "defs";
 
-$winnerPlayer: #fff;
+$winnerPlayer: hotpink;
 
 .in-game .players {
     display: flex;
@@ -8,6 +8,8 @@ $winnerPlayer: #fff;
     justify-content: space-evenly;
     align-items: stretch;
     margin: -0.25rem 0.25rem 0 0.25rem;
+    background-color: $themeNavbarBg;
+    width:100%;
 
     .player {
         text-align: center;
@@ -18,7 +20,7 @@ $winnerPlayer: #fff;
         background: lighten($themeNavbarBg,20);
 
         border-radius: 10px;
-        max-width: calc(24vw - 0.25rem);
+        // max-width: calc(24vw - 0.25rem);
         overflow-x: hidden;
 
         .score, .status {

@@ -11,13 +11,21 @@
 @include default.all;
 @include variable.all;
 
-// @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
 @import "defs";
 
+:root{
+    --bs-body-bg:$themeGlobalBg;
+    --bs-body-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --bs-body-font-size: 14px;
+    @media screen and (max-width: 800px) {
+        --bs-body-font-size: 13px;
+    }
+    @media screen and (max-width: 600px) {
+        --bs-body-font-size: 12px;
+    }
+}
+
 html {
-    font-family: "Inter", system-ui, sans-serif;
-    font-size: 14px;
-    background: $themeGlobalBg;
     z-index: $gameZ;
     // user-select: none;
 
@@ -27,9 +35,6 @@ html {
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }
-}
-@supports (font-variation-settings: normal) {
-  html { font-family: "InterVariable"; } /* If using the variable font */
 }
 html, body, #root {
     height: 100%;
