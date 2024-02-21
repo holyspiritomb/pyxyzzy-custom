@@ -5,9 +5,15 @@ $navbarZ: 3000;
 $dialogZ: 4000;
 $connectingZ: 5000;
 
+$darkPurple: #292368;
 $themeNavbarBg: #8981d5;
-$themeHandBg: lighten(#8981d5, 10);
-$themeGlobalBg: lighten($themeNavbarBg, 10);
+$mediumPurple: #8981d5;
+$mediumBg: #ada7e2;
+$themeHandBg: $mediumBg;
+$themeGlobalBg: $mediumBg;
+$lightBg: #d1ceef;
+$lighterBg:#e3e1f5;
+$lightestBg: #f4f4fb;
 
 @mixin nav-bar($class) {
     #{$class} {

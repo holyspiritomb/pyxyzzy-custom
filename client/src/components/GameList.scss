@@ -66,8 +66,8 @@
             "title code"
             "players join"
             "password join";
-        border: 1px solid lighten($themeGlobalBg,15);
-        background-color: lighten($themeGlobalBg,15);
+        border: 1px solid $lightBg;
+        background-color: $lightBg;
         border-radius:3px;
         padding:4px;
 
@@ -97,6 +97,6 @@
         padding: 0.5rem;
     }
     .no-games.error {
-        color: red;
+        color: deeppink;
     }
 }

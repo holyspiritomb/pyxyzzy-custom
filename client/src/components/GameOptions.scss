@@ -10,7 +10,7 @@
         .toggler {
             padding: 0;
             outline: none;
-            background: $themeGlobalBg;
+            background: $mediumBg;
             border: 1px solid #000;
             height: $togglerHeight;
             text-transform: uppercase;
@@ -52,7 +52,7 @@
         flex-direction: column;
         transform: translateY(-100%);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: lighten($themeGlobalBg, 20);
+        background: $lightestBg;
         position: relative;
         z-index: $optionsZ;
         box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;

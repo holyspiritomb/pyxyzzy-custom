@@ -80,6 +80,7 @@ const GameControls = () => {
 const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewProps) => {
   const state = useContext(GameContext)!
   const user = useContext(UserContext)!
+  // const app = useContext(AppStateContext)!
 
   let action = null
   if (state.shouldPlayWhiteCards) {
@@ -107,6 +108,7 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
   } else if (state.state === "round_ended") {
     if (state.roundWinner) {
       const name = state.roundWinner.id === user.id ? "You" : state.roundWinner.name
+      // const winningCard = state.app
       action = <>{name} won the round. Next round starts in {state.options.round_end_time} seconds.</>
     } else {
       action = <>The round has been cancelled. Next round starts in {state.options.round_end_time} seconds.</>

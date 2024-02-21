@@ -17,7 +17,7 @@ $winnerPlayer: hotpink;
         padding: 0.4rem;
         border: 1px solid #000000;
         min-width: 12ch;
-        background: lighten($themeNavbarBg,20);
+        background: $lightBg;
 
         border-radius: 10px;
         // max-width: calc(24vw - 0.25rem);
