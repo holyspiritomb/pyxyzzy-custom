@@ -83,7 +83,7 @@ const getCachedTextSize = (card: AbstractCard) => {
   return typeof size === "number" ? size : null
 }
 
-const computeCardTextSize = async <C extends AbstractCard>(CardComponent: ComponentType<CardProps<C>>, card: C) => {
+const computeCardTextSize = async <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C) => {
   if (card.fontSizeCacheKey in cardTextSizeCache) {
     const size = cardTextSizeCache[card.fontSizeCacheKey]
     return typeof size === "number" ? size : await size
@@ -132,7 +132,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
 }
 
 // shared hook for BlackCard and WhiteCard for text size computation
-const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<CardProps<C>>, card: C, givenTextSize?: number) => {
+const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C, givenTextSize?: number) => {
   const [computedTextSize, setComputedTextSize] = useState<number | null>(null)
 
   useEffect(() => {
@@ -190,7 +190,7 @@ export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }:
 
   return (
     // everything scales relative to the fontSize on the card
-    <div
+    (<div
         className={`white card ${disabled ? "disabled" : ""}`}
         style={{fontSize: `${100 * scale}px`}}
         onClick={onClick}>
@@ -200,8 +200,8 @@ export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }:
       <div className="bottom">
         <div className="pack-name">{card.packName}</div>
       </div>
-    </div>
-  )
+    </div>)
+  );
 }
 
 interface WhiteCardPlaceholderProps {
