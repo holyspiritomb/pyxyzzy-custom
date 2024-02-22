@@ -1,8 +1,9 @@
 @use "sass:math";
+@import "defs";
 $blackCard: #000;
 $whiteCard: #ffffff;
-$hoveredWhiteCard: #e0def4;
-$activeWhiteCard: lighten(#8981d5,10);
+$hoveredWhiteCard: $lighterBg;
+$activeWhiteCard: $lightBg;
 
 $blackCardText: #ffffff;
 $whiteCardText: #000;
