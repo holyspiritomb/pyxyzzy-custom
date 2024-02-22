@@ -5,10 +5,10 @@ import Modal from "react-modal"
 import App from "./components/App"
 import { toast } from "react-toastify"
 import log from "loglevel"
-import {
+/* import {
     auto as followSystemColorScheme,
     setFetchMethod as darkreaderFetchMethod,
-} from 'darkreader';
+} from 'darkreader'; */
 
 Modal.setAppElement("#root")
 
@@ -24,7 +24,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 
 ReactDOM.render(<App />, document.getElementById("root"))
 
-darkreaderFetchMethod(window.fetch);
+/* darkreaderFetchMethod(window.fetch);
 
 followSystemColorScheme(
     {
@@ -60,4 +60,4 @@ followSystemColorScheme(
         ignoreImageAnalysis: [""],
         disableStyleSheetsProxy: false,
     }
-);
+); */
