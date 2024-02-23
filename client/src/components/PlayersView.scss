@@ -9,7 +9,7 @@ $winnerPlayer: hotpink;
     align-items: stretch;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    background-color: $themeNavbarBg;
+    background-color: #{$themeNavbarBg};
 
     .player {
         text-align: center;
@@ -17,7 +17,7 @@ $winnerPlayer: hotpink;
         padding: 0.4rem;
         border: 1px solid #000000;
         min-width: 12ch;
-        background: $lightBg;
+        background: #{$lightBg};
 
         border-radius: 10px;
         // max-width: calc(24vw - 0.25rem);
@@ -57,9 +57,6 @@ $winnerPlayer: hotpink;
             content: ' \1f914';
         }
         &.is-czar {
-            .name{
-                font-weight: 600;
-            }
             .name::after {
                 display: inline;
                 content: ' \2696\fe0f';
@@ -70,7 +67,7 @@ $winnerPlayer: hotpink;
             }
         }
         &.winner {
-            background: $winnerPlayer;
+            background: #{$winnerPlayer};
             .name::after {
                 display: inline;
                 content: ' \1f451';
