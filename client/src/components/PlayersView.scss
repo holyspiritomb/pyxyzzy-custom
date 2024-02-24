@@ -1,7 +1,5 @@
 @import "defs";
 
-$winnerPlayer: hotpink;
-
 .in-game .players {
     display: flex;
     flex-wrap: wrap;
@@ -9,15 +7,15 @@ $winnerPlayer: hotpink;
     align-items: stretch;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    background-color: #{$themeNavbarBg};
+    background-color: var(--table-bg);
 
     .player {
         text-align: center;
         margin: 0.25rem;
         padding: 0.4rem;
-        border: 1px solid #000000;
+        border: 1px solid var(--bs-border-color);
         min-width: 12ch;
-        background: #{$lightBg};
+        background: var(--player-bg);
 
         border-radius: 10px;
         // max-width: calc(24vw - 0.25rem);
@@ -67,7 +65,7 @@ $winnerPlayer: hotpink;
             }
         }
         &.winner {
-            background: #{$winnerPlayer};
+            background: var(--winner-player-bg);
             .name::after {
                 display: inline;
                 content: ' \1f451';

@@ -2,8 +2,8 @@
 @import "defs";
 $blackCard: #000;
 $whiteCard: #ffffff;
-$hoveredWhiteCard: $lighterBg;
-$activeWhiteCard: $lightBg;
+$hoveredWhiteCard: var(--hovered-white-card-bg);
+$activeWhiteCard: var(--active-white-card-bg);
 
 $blackCardText: #ffffff;
 $whiteCardText: #000;
@@ -11,9 +11,9 @@ $placeholderCardText: #000;
 
 $cardBorder: #000000;
 
-$whiteCardGroup: darken($activeWhiteCard, 10);
-$hoveredWhiteCardGroup: lighten($activeWhiteCard, 10);
-$activeWhiteCardGroup: darken($activeWhiteCard, 15);
+$whiteCardGroup: var(--white-card-group-bg);
+$hoveredWhiteCardGroup: var(--hovered-white-card-group-bg);
+$activeWhiteCardGroup: var(--active-white-card-group-bg);
 
 @function scale-card($measure, $fontSize: 1.0) {
     // @return $measure / 1px * 0.01em / $fontSize;

@@ -25,6 +25,7 @@
         }
         .game-code {
             max-width: 8ch;
+            background-color: var(--options-input-bg);
         }
         .user-name, .game-code {
             margin-right: 0.5rem;
@@ -42,6 +43,7 @@
         .filter {
             max-width: 20ch;
             margin-right: 0.5rem;
+            background-color: var(--options-input-bg);
         }
     }
     .games {
@@ -66,8 +68,9 @@
             "title code"
             "players join"
             "password join";
-        border: 1px solid $lightBg;
-        background-color: $lightBg;
+        border: 1px solid var(--bs-secondary-bg);
+        background-color: var(--bs-secondary-bg);
+        color: var(--bs-secondary-color);
         border-radius:3px;
         padding:4px;
 

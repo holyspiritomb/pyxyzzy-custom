@@ -10,8 +10,14 @@
         .toggler {
             padding: 0;
             outline: none;
-            background: $mediumBg;
-            border: 1px solid #000;
+            background: var(--options-toggler-bg);
+            color: var(--bs-emphasis-color);
+            border-width: 1px;
+            border-style: solid;
+            border-bottom-color: var(--bs-border-color);
+            border-left-color: var(--options-toggler-bg);
+            border-right-color: var(--options-toggler-bg);
+            border-radius:0px;
             height: $togglerHeight;
             text-transform: uppercase;
 
@@ -52,7 +58,7 @@
         flex-direction: column;
         transform: translateY(-100%);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: $lightestBg;
+        background: var(--options-bg);
         position: relative;
         z-index: $optionsZ;
         box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
@@ -102,14 +108,17 @@
                 &[type=text] {
                     flex: 1 1 auto;
                     min-width: 0;
+                    background-color: var(--options-input-bg);
                 }
                 &[type=number] {
                     width: 5ch;
                     box-sizing: content-box;
+                    background-color: var(--options-input-bg);
                 }
                 &[type=checkbox] {
                     position: relative;
                     top: 0.2em;
+                    accent-color: var(--checkbox-accent-color);
                 }
             }
         }
@@ -118,7 +127,7 @@
         .packs .field input[type=checkbox] {
             order: -1;
             margin: 0 0.3rem 0 0;
-            accent-color: darken($themeGlobalBg, 10);
+            accent-color: var(--checkbox-accent-color);
         }
     }
 }
