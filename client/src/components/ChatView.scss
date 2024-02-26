@@ -63,13 +63,13 @@ $togglerHeight: 1.6rem;
         color: var(--bs-body-color);
 
         .timestamp {
-            color: #555;
+            color: var(--chat-timestamp);
         }
         &.type-error {
-            color: #ff389c;
+            color: var(--chat-error);
         }
         &.type-warning {
-            color:#FF4500 ;
+            color: var(--chat-warning);
         }
     }
     .field {

@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/functions";
+
 @import "~bootstrap/scss/variables";
 $gameZ: 0;
 $optionsZ: 1000;
@@ -17,7 +18,7 @@ $lighterBg:#e3e1f5;
 $lightestBg: #f4f4fb;
 
 :root, [data-bs-theme="light"] {
-    --bs-body-color: #{$indigo-900};
+    --bs-body-color: #{$purple-900};
     --bs-body-bg: #{$purple-100};
     --bs-secondary-color: #{$indigo-900};
     --bs-secondary-bg: #{$indigo-200};
@@ -27,8 +28,8 @@ $lightestBg: #f4f4fb;
     --bs-emphasis-color: #{$black};
     --bs-border-color: #{$black};
     --navbar-bg: #{$purple-400};
-    --hand-bg: #{$indigo-200};
-    --player-bg: #{$indigo-200};
+    --hand-bg: #{$purple-200};
+    --player-bg: #{$purple-200};
     --table-bg: #{$purple-400};
     --winner-player-bg: #{$pink-400};
     --options-bg: #{$purple-100};
@@ -40,10 +41,13 @@ $lightestBg: #f4f4fb;
     --white-card-group-bg: #{$purple-300};
     --hovered-white-card-group-bg: #{$pink-200};
     --active-white-card-group-bg: #{$pink-300};
-    --button-bg: #{$purple-100};
+    --button-bg: #{$purple-200};
     --button-color: #{$purple-900};
-    --button-border: #{$purple-800};
-    --login-legal: #333;
+    --button-border: #{$gray-800};
+    --login-legal: #{$gray-800};
+    --chat-timestamp: #{$indigo-500};
+    --chat-error: #{$pink};
+    --chat-warning: #{$orange};
 }
 [data-bs-theme="dark"] {
     --bs-body-color: #{$purple-100};
@@ -73,6 +77,9 @@ $lightestBg: #f4f4fb;
     --button-color: #{$purple-100};
     --button-border: #{$purple-300};
     --login-legal: #{$purple-300};
+    --chat-timestamp: #{$purple-200};
+    --chat-error: #{$pink};
+    --chat-warning: #{$orange};
 
 }
 
