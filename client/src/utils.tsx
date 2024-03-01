@@ -139,3 +139,4 @@ export const englishList = (items: ReactNode[], verb?: [string, string]) => {
 export const sleep = async (millis: number) => {
   await new Promise<void>(resolve => setTimeout(() => resolve(), millis))
 }
+/* vim: set ft=typescriptreact : */

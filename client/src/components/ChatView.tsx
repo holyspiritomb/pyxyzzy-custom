@@ -88,3 +88,4 @@ const ChatView = ({ chatMessages }: ChatViewProps) => {
 }
 
 export default ChatView
+/* vim: set ft=typescriptreact : */

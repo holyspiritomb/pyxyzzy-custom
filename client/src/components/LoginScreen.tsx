@@ -89,3 +89,4 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen
+/* vim: set ft=typescriptreact : */

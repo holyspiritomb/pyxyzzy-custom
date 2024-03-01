@@ -278,3 +278,4 @@ const GameOptions = () => {
 }
 
 export default GameOptions
+/* vim: set ft=typescriptreact : */

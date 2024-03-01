@@ -53,3 +53,4 @@ export default class MessageHandler {
     this.add(new ChatMessage("log", message))
   }
 }
+/* vim: set ft=typescriptreact : */

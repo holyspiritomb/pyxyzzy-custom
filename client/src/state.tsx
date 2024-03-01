@@ -443,3 +443,4 @@ export class AppState {
     }
   }
 }
+/* vim: set ft=typescriptreact : */

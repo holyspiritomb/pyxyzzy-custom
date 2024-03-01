@@ -14,3 +14,4 @@ const PlayerActions = ({ children }: PlayerActionsProps) => {
 }
 
 export default PlayerActions
+/* vim: set ft=typescriptreact : */

@@ -5,3 +5,4 @@ const ExternalLink = ({ href, children }: { href: string, children?: any }) => (
 )
 
 export default ExternalLink
+/* vim: set ft=typescriptreact : */

@@ -202,3 +202,4 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
 }
 
 export default GameList
+/* vim: set ft=typescriptreact : */

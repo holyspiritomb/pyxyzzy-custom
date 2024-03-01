@@ -253,3 +253,4 @@ export const WhiteCardGroup = ({ cards, active, actions, scale, onClick }: White
     </div>
   )
 }
+/* vim: set ft=typescriptreact : */

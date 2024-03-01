@@ -26,3 +26,4 @@ const EventPlayerMention = ({ player }: EventPlayerMentionProps) => {
 }
 
 export default EventPlayerMention
+/* vim: set ft=typescriptreact : */

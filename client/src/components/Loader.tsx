@@ -11,3 +11,4 @@ const Loader = ({ children, className }: { children?: any, className?: string })
 }
 
 export default Loader
+/* vim: set ft=typescriptreact : */

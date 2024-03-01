@@ -8,3 +8,4 @@ export const UserContext = createContext<UserSession | null>(null)
 export const GameContext = createContext<GameState | null>(null)
 export const ActingContext = createContext<boolean>(false)
 export const ChatContext = createContext<boolean>(false)
+/* vim: set ft=typescriptreact : */

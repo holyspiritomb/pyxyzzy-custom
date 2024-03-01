@@ -67,3 +67,4 @@ const PlayersView = () => {
 }
 
 export default PlayersView
+/* vim: set ft=typescriptreact : */

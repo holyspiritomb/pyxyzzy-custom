@@ -17,3 +17,4 @@ const ConnectingScreen = ({ state, retryTime }: { state: string, retryTime: numb
 )
 
 export default ConnectingScreen
+/* vim: set ft=typescriptreact : */

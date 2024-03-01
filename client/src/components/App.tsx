@@ -100,3 +100,4 @@ class App extends Component<{}, AppComponentState> {
 }
 
 export default App
+/* vim: set ft=typescriptreact : */
