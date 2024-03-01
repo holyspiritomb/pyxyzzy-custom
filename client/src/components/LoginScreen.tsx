@@ -3,6 +3,7 @@ import "./LoginScreen.scss"
 import ExternalLink from "./ExternalLink"
 import {useMounted} from "../utils"
 import {AppStateContext, ConfigContext} from "./contexts"
+import ThemeButton from "./ThemeToggle"
 
 const LoginScreen = () => {
   const config = useContext(ConfigContext)!
@@ -76,6 +77,7 @@ const LoginScreen = () => {
           <button type="submit" disabled={!canSubmit}>Play</button>
         </form>
         {nameProblemList}
+        <ThemeButton />
         <p className="legal">
           pyXyzzy is a clone of <ExternalLink href="https://www.cardsagainsthumanity.com/">Cards Against Humanity
           </ExternalLink> and uses its cards and rules, available under

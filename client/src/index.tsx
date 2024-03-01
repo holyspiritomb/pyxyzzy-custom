@@ -5,6 +5,7 @@ import Modal from "react-modal"
 import App from "./components/App"
 import { toast } from "react-toastify"
 import log from "loglevel"
+import {getStoredTheme, getPreferredTheme, getCurrTheme} from "./components/ThemeToggle"
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement!);

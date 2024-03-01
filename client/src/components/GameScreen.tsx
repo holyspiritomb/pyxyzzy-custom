@@ -6,6 +6,7 @@ import GameOptions from "./GameOptions"
 import {BlackCardView, WhiteCardGroup, WhiteCardPlaceholder, WhiteCardView} from "./cards"
 import {GameState, WhiteCard} from "../state"
 import PlayersView from "./PlayersView"
+import ThemeButton from "./ThemeToggle"
 
 // minimum scale to render cards at. if this doesn't fit, well, you're screwed
 const MINIMUM_CARD_SCALE = 0.7
@@ -65,6 +66,7 @@ const GameControls = () => {
         <div className="game-controls">
           {controls}
         </div>
+        <ThemeButton />
         <div className="game-info">
           <div className="game-code">Game <b>{game.code}</b></div>
           <button type="button" onClick={handleLeave} disabled={acting}>Leave game</button>
