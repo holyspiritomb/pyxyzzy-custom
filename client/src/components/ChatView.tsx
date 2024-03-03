@@ -1,13 +1,15 @@
-import {FormEvent, useContext, useEffect, useRef, useState} from "react"
+import {FormEvent, useContext, useEffect, useRef, useState, useId } from "react"
 import "./ChatView.scss"
 import {ChatMessage} from "../MessageHandler"
 import {AppStateContext, ChatContext, GameContext} from "./contexts"
+import {uniqueId} from "../utils.tsx"
 
 interface ChatMessageProps {
   message: ChatMessage
+  key: number
 }
 
-const ChatMessageView = ({ message }: ChatMessageProps) => {
+const ChatMessageView = ({ message }: ChatMessageProps, key: number) => {
   // TODO: better timestamp formatting?
   return (
       <div className={`message type-${message.type}`}>
@@ -64,7 +66,7 @@ const ChatView = ({ chatMessages }: ChatViewProps) => {
           </button>
           <ChatContext.Provider value={true}>
             <div className="messages" ref={scrollRef}>
-              {chatMessages.map(message => <ChatMessageView message={message} />)}
+              {chatMessages.map(message => <ChatMessageView message={message} key={uniqueId()}/>)}
             </div>
           </ChatContext.Provider>
           <form className="field" onSubmit={handleSubmit}>
