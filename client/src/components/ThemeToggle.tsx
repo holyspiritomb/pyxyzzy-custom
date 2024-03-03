@@ -1,5 +1,3 @@
-import React from "react"
-
 enum Color {
     dark = "dark",
     light = "light",

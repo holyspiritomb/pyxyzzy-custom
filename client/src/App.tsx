@@ -1,16 +1,17 @@
-import React, {Component} from "react"
-import "react-toastify/dist/ReactToastify.css"
-import "./App.scss"
-import ConnectingScreen from "./ConnectingScreen"
-import GameList from "./GameList"
-import GameScreen from "./GameScreen"
-import LoginScreen from "./LoginScreen"
-import {ActingContext, AppStateContext, ConfigContext, GameContext, UserContext} from "./contexts"
-import {AppState, GameState, UserSession} from "../state"
-import {ConfigRoot} from "../api"
-import {ConnectionState} from "../GameSocket"
-import {toast} from "react-toastify"
-import ChatView from "./ChatView"
+import React, {Component, StrictMode} from "react";
+import ConnectingScreen from "./components/ConnectingScreen";
+import GameList from "./components/GameList";
+import GameScreen from "./components/GameScreen";
+import LoginScreen from "./components/LoginScreen";
+import {ActingContext, AppStateContext, ConfigContext, GameContext, UserContext} from "./components/contexts"
+import {AppState, GameState, UserSession} from "./state"
+import {ConfigRoot} from "./api"
+import {ConnectionState} from "./GameSocket"
+import {toast, ToastContainer} from "react-toastify"
+import ChatView from "./components/ChatView"
+import "react-toastify/dist/ReactToastify.css";
+import "./components/App.scss";
+import { getPreferredTheme } from "./components/ThemeToggle";
 
 const SERVER_URL = `ws://${window.location.hostname}:8080/ws`
 
@@ -80,6 +81,14 @@ class App extends Component<{}, AppComponentState> {
     if (connectionState !== "connected") {
       connectingScreen = <ConnectingScreen state={connectionState} retryTime={retryTime} />
     }
+    function getToastTheme() {
+      let themeColor = getPreferredTheme();
+      if (themeColor === "auto") {
+        themeColor = "light";
+      }
+      return themeColor
+    }
+    
 
     return (
         <ConfigContext.Provider value={config}>
@@ -87,6 +96,16 @@ class App extends Component<{}, AppComponentState> {
             <UserContext.Provider value={userSession}>
               <GameContext.Provider value={gameState}>
                 <ActingContext.Provider value={acting}>
+                  <ToastContainer
+                    position="bottom-left"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    draggable
+                    pauseOnHover
+                    theme={getToastTheme()}
+                   />
                   {gameScreen}
                   {chatView}
                   {connectingScreen}
@@ -99,5 +118,5 @@ class App extends Component<{}, AppComponentState> {
   }
 }
 
-export default App
+export default App;
 /* vim: set ft=typescriptreact : */
