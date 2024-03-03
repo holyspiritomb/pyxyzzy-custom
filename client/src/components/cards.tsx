@@ -1,5 +1,5 @@
 import React, {ComponentType, useEffect, useState} from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import "./cards.scss"
 import {Lock} from "../utils"
 import {AbstractCard, BlackCard, WhiteCard} from "../state"
@@ -95,6 +95,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
 
   const promise = fontSizeComputerLock.acquire(async () => {
     const container = document.getElementById("card-size-measurement")!
+    const root = createRoot(container!)
     container.style.display = "block"
 
     let currentSize = MAXIMUM_TEXT_SIZE
@@ -102,12 +103,19 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     // binary search to find optimal size
     let lowerBound = MINIMUM_TEXT_SIZE
     let upperBound = MAXIMUM_TEXT_SIZE
+    function CardWithCallbackAfterRender() {
+      useEffect(() => {
+        console.log("rendered");
+      });
+      return <CardComponent card={card} givenTextSize={currentSize}/>
+    }
     for (let i = 0; i < 10; i++) {
       // render the component to compute text height
       // the function is run before the await returns, so ignore the warning:
       // eslint-disable-next-line no-loop-func
       await new Promise<void>(resolve => {
-        ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
+        // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
+        root.render(<CardWithCallbackAfterRender/>);
       })
       const targetHeight = 180 - container.querySelector<HTMLElement>(".bottom")!.offsetHeight
       const textHeight = container.querySelector<HTMLElement>(".text")!.offsetHeight
@@ -124,7 +132,8 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
       currentSize = (lowerBound + upperBound) / 2
     }
 
-    ReactDOM.unmountComponentAtNode(container)
+    // ReactDOM.unmountComponentAtNode(container)
+    root.unmount();
     container.style.display = "none"
 
     return bestFitting
