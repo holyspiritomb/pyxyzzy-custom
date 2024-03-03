@@ -9,6 +9,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
+    appType: "spa",
+    jsx: "react-jsx",
     plugins: [
       react(),
       tsconfigPaths(),
@@ -18,10 +20,7 @@ export default defineConfig(({ mode }) => {
       buildPathPlugin(),
       basePlugin(),
       importPrefixPlugin(),
-      htmlPlugin(mode),
       svgrPlugin(),
-      
-      
     ],
   };
 });
@@ -198,23 +197,4 @@ function svgrPlugin(): Plugin {
       }
     },
   };
-}
-
-
-
-// Replace %ENV_VARIABLES% in index.html
-// https://vitejs.dev/guide/api-plugin.html#transformindexhtml
-// Migration guide: Follow the guide below, you may need to rename your environment variable to a name that begins with VITE_ instead of REACT_APP_
-// https://vitejs.dev/guide/env-and-mode.html#html-env-replacement
-function htmlPlugin(mode: string): Plugin {
-	const env = loadEnv(mode, ".", ["REACT_APP_", "NODE_ENV", "PUBLIC_URL"]);
-	return {
-		name: "html-plugin",
-		transformIndexHtml: {
-			order: "pre",
-			handler(html) {
-				return html.replace(/%(.*?)%/g, (match, p1) => env[p1] ?? match);
-			},
-		},
-	};
 }
