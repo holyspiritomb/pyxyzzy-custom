@@ -2,7 +2,7 @@ import {FormEvent, useContext, useEffect, useRef, useState, useId } from "react"
 import "./ChatView.scss"
 import {ChatMessage} from "../MessageHandler"
 import {AppStateContext, ChatContext, GameContext} from "./contexts"
-import {uniqueId} from "../utils.tsx"
+import {uniqueId} from "../utils"
 
 interface ChatMessageProps {
   message: ChatMessage
