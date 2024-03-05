@@ -1,4 +1,4 @@
-import React, {FormEvent, useContext, useState} from "react"
+import React, {FormEvent, useContext, useState, StrictMode, InputHTMLAttributes} from "react"
 import "./LoginScreen.scss"
 import ExternalLink from "./ExternalLink"
 import {useMounted} from "../utils"
@@ -38,6 +38,8 @@ const LoginScreen = () => {
     setLoggingIn(true)
     try {
       await app.login(name)
+      localStorage.removeItem("name")
+      localStorage.setItem("name", name)
       if (!mounted.is) return
       setLoginError(null)
     } catch (error) {
@@ -55,6 +57,17 @@ const LoginScreen = () => {
         </ul>
     )
   }
+  type PreviousName = string | undefined;
+
+  function getPreviousName(): PreviousName {
+    let prevName = localStorage.getItem("name");
+    if (!prevName) {
+      return "Name" as PreviousName
+    } else {
+      return prevName as PreviousName
+    }
+  }
+
 
   return (
       <div className="login">
@@ -69,7 +82,7 @@ const LoginScreen = () => {
           <input
               type="text"
               id="login-name"
-              placeholder="Name"
+              placeholder={getPreviousName()}
               disabled={loggingIn}
               maxLength={config.users.username.length.max}
               value={name}
