@@ -17,7 +17,8 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
 
 @function scale-card($measure, $fontSize: 1.0) {
     // @return $measure / 1px * 0.01em / $fontSize;
-    @return math.div($measure, 1px) * math.div(0.01em, $fontSize);
+    @return calc($measure / 1px * 0.01em / $fontSize);
+    // @return math.div($measure, 1px) * math.div(0.01em, $fontSize);
 }
 .cards .group {
     font-size: 100px; // everything scales relative to this
@@ -53,7 +54,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
 }
 .card {
     flex: none;
-    font-family: "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Inter variable", "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100px; // everything scales relative to this
     border: 1px solid $cardBorder;
     border-radius: 4%;
@@ -130,6 +131,10 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         word-wrap: break-word;
         overflow-wrap: break-word;
         font-family:inherit;
+        max-height: scale-card(850px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        // border: 1px dotted red;
 
         em {
             font-style: italic;
