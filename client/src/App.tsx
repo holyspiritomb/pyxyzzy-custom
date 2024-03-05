@@ -1,4 +1,4 @@
-import React, {Component, StrictMode} from "react";
+import {Component, StrictMode } from "react";
 import ConnectingScreen from "./components/ConnectingScreen";
 import GameList from "./components/GameList";
 import GameScreen from "./components/GameScreen";
@@ -12,6 +12,8 @@ import ChatView from "./components/ChatView"
 import "react-toastify/dist/ReactToastify.css";
 import "./components/App.scss";
 import { getPreferredTheme } from "./components/ThemeToggle";
+// import "./components/Theme";
+import log from "loglevel";
 
 const SERVER_URL = `ws://${window.location.hostname}:8080/ws`
 
@@ -58,10 +60,12 @@ class App extends Component<{}, AppComponentState> {
   }
 
   componentDidMount() {
+    log.debug("app rendered");
     this.state.appState.connection.connect(SERVER_URL)
   }
 
   componentWillUnmount() {
+    log.debug("app destroyed")
     this.state.appState.connection.disconnect()
   }
 
@@ -81,39 +85,42 @@ class App extends Component<{}, AppComponentState> {
     if (connectionState !== "connected") {
       connectingScreen = <ConnectingScreen state={connectionState} retryTime={retryTime} />
     }
-    function getToastTheme() {
+    function getToastTheme(): "dark" | "light" | "colored" {
       let themeColor = getPreferredTheme();
       if (themeColor === "auto") {
-        themeColor = "light";
+        return "colored";
       }
-      return themeColor
+      return themeColor;
     }
     
 
     return (
+      <StrictMode>
         <ConfigContext.Provider value={config}>
           <AppStateContext.Provider value={appState}>
             <UserContext.Provider value={userSession}>
               <GameContext.Provider value={gameState}>
                 <ActingContext.Provider value={acting}>
-                  <ToastContainer
-                    position="bottom-left"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    draggable
-                    pauseOnHover
-                    theme={getToastTheme()}
-                   />
-                  {gameScreen}
-                  {chatView}
-                  {connectingScreen}
+                    <ToastContainer
+                      position="bottom-left"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      draggable
+                      limit={3}
+                      pauseOnHover
+                      theme={getToastTheme()}
+                      />
+                    {gameScreen}
+                    {chatView}
+                    {connectingScreen}
                 </ActingContext.Provider>
               </GameContext.Provider>
             </UserContext.Provider>
           </AppStateContext.Provider>
         </ConfigContext.Provider>
+      </StrictMode>
     )
   }
 }
