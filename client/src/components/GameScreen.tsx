@@ -103,14 +103,20 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
   } else if (state.state === "judging") {
     action = <>Waiting for {state.cardCzar.name} to choose a winner&hellip;</>
   } else if (state.gameWinner && (state.state === "round_ended" || state.state === "game_ended")) {
+      console.log(state.gameWinner)
     const name = state.gameWinner.id === user.id ? "You" : state.gameWinner.name
     action = <>{name} won the game!</>
   } else if (state.state === "game_ended") {
+      console.log(state.gameWinner)
+      console.log(state)
     action = <>The game ended.</>
   } else if (state.state === "round_ended") {
     if (state.roundWinner) {
       const name = state.roundWinner.id === user.id ? "You" : state.roundWinner.name
-      // const winningCard = state.app
+      console.log(state.roundWinner)
+      let bcText = state.currentRound.blackCard.text;
+      let winningCardsId = state.currentRound.winningCardsId;
+      console.log(state.currentRound.whiteCards)
       action = <>{name} won the round. Next round starts in {state.options.round_end_time} seconds.</>
     } else {
       action = <>The round has been cancelled. Next round starts in {state.options.round_end_time} seconds.</>
@@ -154,6 +160,7 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
       return
     try {
       await app.chooseWinner(game.currentRound.whiteCards![selectedWhitePos][0])
+      // console.log(game.currentRound.whiteCards![selectedWhitePos][0].text)
     } catch (error) {
       unknownError(error)
     }
