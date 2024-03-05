@@ -95,7 +95,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
 
   const promise = fontSizeComputerLock.acquire(async () => {
     const container = document.getElementById("card-size-measurement")!
-    const root = createRoot(container!)
+    const cardRoot = createRoot(container!)
     container.style.display = "block"
 
     let currentSize = MAXIMUM_TEXT_SIZE
@@ -105,7 +105,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     let upperBound = MAXIMUM_TEXT_SIZE
     function CardWithCallbackAfterRender() {
       useEffect(() => {
-        console.log("rendered");
+        console.log("card rendered");
       });
       return <CardComponent card={card} givenTextSize={currentSize}/>
     }
@@ -115,10 +115,11 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
       // eslint-disable-next-line no-loop-func
       await new Promise<void>(resolve => {
         // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
-        root.render(<CardWithCallbackAfterRender/>);
+        cardRoot.render(<CardWithCallbackAfterRender/>);
       })
       const targetHeight = 180 - container.querySelector<HTMLElement>(".bottom")!.offsetHeight
       const textHeight = container.querySelector<HTMLElement>(".text")!.offsetHeight
+      
       // descend into binary search, keeping track of the largest text size that fit on the card
       if (textHeight > targetHeight) {
         upperBound = currentSize
@@ -133,7 +134,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     }
 
     // ReactDOM.unmountComponentAtNode(container)
-    root.unmount();
+    cardRoot.unmount();
     container.style.display = "none"
 
     return bestFitting
