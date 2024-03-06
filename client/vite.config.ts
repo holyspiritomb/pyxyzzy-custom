@@ -3,14 +3,22 @@ import { readFileSync, existsSync } from "node:fs";
 import { defineConfig, loadEnv, Plugin, createFilter, transformWithEsbuild } from "vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
+import Inspect from 'vite-plugin-inspect';
+import progress from 'vite-plugin-progress';
 
-
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
     appType: "spa",
     jsx: "react-jsx",
+    build: {
+	  minify: false,
+	  manifest: true,
+    },
+    esbuild: {
+      jsxInject: `import React from 'react'`,
+	  jsx: "preserve",
+    },
     plugins: [
       react(),
       tsconfigPaths(),
@@ -21,6 +29,8 @@ export default defineConfig(({ mode }) => {
       basePlugin(),
       importPrefixPlugin(),
       svgrPlugin(),
+      Inspect(),
+      progress()
     ],
   };
 });
