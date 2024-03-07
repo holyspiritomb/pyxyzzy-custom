@@ -2,35 +2,33 @@ import { resolve } from "node:path";
 import { readFileSync, existsSync } from "node:fs";
 import { defineConfig, loadEnv, Plugin, createFilter, transformWithEsbuild } from "vite";
 import react from "@vitejs/plugin-react";
+import checker from 'vite-plugin-checker';
 import tsconfigPaths from "vite-tsconfig-paths";
-import Inspect from 'vite-plugin-inspect';
 import progress from 'vite-plugin-progress';
 
 export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
-    appType: "spa",
-    jsx: "react-jsx",
     build: {
 	  minify: false,
 	  manifest: true,
     },
-    esbuild: {
-      jsxInject: `import React from 'react'`,
-	  jsx: "preserve",
-    },
     plugins: [
       react(),
+      checker({
+        overlay: { initialIsOpen: false },
+        typescript: true,
+        eslint: {
+          lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
+        },
+      }),
       tsconfigPaths(),
       envPlugin(),
-      devServerPlugin(),
       sourcemapPlugin(),
-      buildPathPlugin(),
-      basePlugin(),
       importPrefixPlugin(),
-      svgrPlugin(),
-      Inspect(),
-      progress()
+      progress({
+        format: 'Building :bar :percent',
+      }),
     ],
   };
 });
@@ -71,39 +69,6 @@ function envPlugin(): Plugin {
   };
 }
 
-// Setup HOST, SSL, PORT
-// Migration guide: Follow the guides below
-// https://vitejs.dev/config/server-options.html#server-host
-// https://vitejs.dev/config/server-options.html#server-https
-// https://vitejs.dev/config/server-options.html#server-port
-function devServerPlugin(): Plugin {
-	return {
-		name: "dev-server-plugin",
-		config(_, { mode }) {
-			const { HOST, PORT, HTTPS, SSL_CRT_FILE, SSL_KEY_FILE } = loadEnv(
-				mode,
-				".",
-				["HOST", "PORT", "HTTPS", "SSL_CRT_FILE", "SSL_KEY_FILE"],
-			);
-			const https = HTTPS === "true";
-			return {
-				server: {
-					host: HOST || "localhost",
-					port: parseInt(PORT || "3000", 10),
-					open: true,
-					...(https &&
-						SSL_CRT_FILE &&
-						SSL_KEY_FILE && {
-							https: {
-								cert: readFileSync(resolve(SSL_CRT_FILE)),
-								key: readFileSync(resolve(SSL_KEY_FILE)),
-							},
-						}),
-				},
-			};
-		},
-	};
-}
 
 // Migration guide: Follow the guide below
 // https://vitejs.dev/config/build-options.html#build-sourcemap
@@ -123,37 +88,6 @@ function sourcemapPlugin(): Plugin {
 	};
 }
 
-// Migration guide: Follow the guide below
-// https://vitejs.dev/config/build-options.html#build-outdir
-function buildPathPlugin(): Plugin {
-	return {
-		name: "build-path-plugin",
-		config(_, { mode }) {
-			const { BUILD_PATH } = loadEnv(mode, ".", [
-				"BUILD_PATH",
-			]);
-			return {
-				build: {
-					outDir: BUILD_PATH || "dist",
-				},
-			};
-		},
-	};
-}
-
-// Migration guide: Follow the guide below and remove homepage field in package.json
-// https://vitejs.dev/config/shared-options.html#base
-function basePlugin(): Plugin {
-	return {
-		name: "base-plugin",
-		config(_, { mode }) {
-			const { PUBLIC_URL } = loadEnv(mode, ".", ["PUBLIC_URL"]);
-			return {
-				base: PUBLIC_URL || "",
-			};
-		},
-	};
-}
 
 // To resolve modules from node_modules, you can prefix paths with ~
 // https://create-react-app.dev/docs/adding-a-sass-stylesheet
