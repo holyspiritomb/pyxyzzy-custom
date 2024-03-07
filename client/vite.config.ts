@@ -10,8 +10,8 @@ export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
     build: {
-	  minify: false,
-	  manifest: true,
+      minify: false,
+      manifest: true,
     },
     plugins: [
       react(),
@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => {
       }),
       tsconfigPaths(),
       envPlugin(),
-      sourcemapPlugin(),
       importPrefixPlugin(),
       progress({
         format: 'Building :bar :percent',
@@ -70,25 +69,6 @@ function envPlugin(): Plugin {
 }
 
 
-// Migration guide: Follow the guide below
-// https://vitejs.dev/config/build-options.html#build-sourcemap
-function sourcemapPlugin(): Plugin {
-	return {
-		name: "sourcemap-plugin",
-		config(_, { mode }) {
-			const { GENERATE_SOURCEMAP } = loadEnv(mode, ".", [
-				"GENERATE_SOURCEMAP",
-			]);
-			return {
-				build: {
-					sourcemap: GENERATE_SOURCEMAP === "true",
-				},
-			};
-		},
-	};
-}
-
-
 // To resolve modules from node_modules, you can prefix paths with ~
 // https://create-react-app.dev/docs/adding-a-sass-stylesheet
 // Migration guide: Follow the guide below
@@ -104,41 +84,4 @@ function importPrefixPlugin(): Plugin {
 			};
 		},
 	};
-}
-
-// In Create React App, SVGs can be imported directly as React components. This is achieved by svgr libraries.
-// https://create-react-app.dev/docs/adding-images-fonts-and-files/#adding-svgs
-function svgrPlugin(): Plugin {
-  const filter = createFilter("**/*.svg");
-  const postfixRE = /[?#].*$/s;
-
-  return {
-    name: "svgr-plugin",
-    async transform(code, id) {
-      if (filter(id)) {
-        const { transform } = await import("@svgr/core");
-        const { default: jsx } = await import("@svgr/plugin-jsx");
-
-        const filePath = id.replace(postfixRE, "");
-        const svgCode = readFileSync(filePath, "utf8");
-
-        const componentCode = await transform(svgCode, undefined, {
-          filePath,
-          caller: {
-            previousExport: code,
-            defaultPlugins: [jsx],
-          },
-        });
-
-        const res = await transformWithEsbuild(componentCode, id, {
-          loader: "jsx",
-        });
-
-        return {
-          code: res.code,
-          map: null,
-        };
-      }
-    },
-  };
 }
