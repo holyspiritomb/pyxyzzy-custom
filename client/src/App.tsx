@@ -12,7 +12,6 @@ import ChatView from "./components/ChatView"
 import "react-toastify/dist/ReactToastify.css";
 import "./components/App.scss";
 import { getPreferredTheme } from "./components/ThemeToggle";
-// import "./components/Theme";
 import log from "loglevel";
 
 const SERVER_URL = `ws://${window.location.hostname}:8080/ws`
@@ -35,8 +34,8 @@ class AppComponentState {
 
 }
 
-class App extends Component<{}, AppComponentState> {
-  constructor(props: {}) {
+class App extends Component<object, AppComponentState> {
+  constructor(props: object) {
     super(props)
 
     const appState = new AppState()
@@ -86,11 +85,12 @@ class App extends Component<{}, AppComponentState> {
       connectingScreen = <ConnectingScreen state={connectionState} retryTime={retryTime} />
     }
     function getToastTheme(): "dark" | "light" | "colored" {
-      let themeColor = getPreferredTheme();
+      const themeColor = getPreferredTheme();
       if (themeColor === "auto") {
         return "colored";
+      } else {
+        return themeColor;
       }
-      return themeColor;
     }
     
 

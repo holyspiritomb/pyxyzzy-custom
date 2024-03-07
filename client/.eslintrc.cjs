@@ -12,12 +12,14 @@ module.exports = {
   parserOptions: {
       project: ['./tsconfig.json'],
   },
-  plugins: ['react'],
+  plugins: ['react', 'react-hooks', 'react-refresh'],
   rules: {
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-unused-vars": 0,
     "@typescript-eslint/no-unsafe-member-access": 0,
     "@typescript-eslint/ban-types": 1,
+    "@typescript-eslint/no-unnecessary-type-assertion": 0,
+    "prefer-const": 1,
     "no-extra-semi": 1,
   },
   settings: {

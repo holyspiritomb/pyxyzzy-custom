@@ -12,7 +12,7 @@ interface ThemeProps {
 
 export function getStoredTheme() {
   return localStorage.getItem('theme') as ThemeColor; // ThemeColor || null
-};
+}
 
 export const getPreferredTheme = () => {
   const storedTheme = getStoredTheme();
@@ -28,11 +28,11 @@ export const getCurrTheme = () => {
 
 export function setStoredTheme(color: ThemeColor) {
   return localStorage.setItem('theme', color);
-};
+}
 
 export function setTheme(color: ThemeColor) {
     document.documentElement.setAttribute('data-bs-theme', color);
-};
+}
 
 const ThemeButton = () => {
   const toggleTheme = () => {

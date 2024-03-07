@@ -60,7 +60,7 @@ const LoginScreen = () => {
   type PreviousName = string | undefined;
 
   function getPreviousName(): PreviousName {
-    let prevName = localStorage.getItem("name");
+    const prevName = localStorage.getItem("name");
     if (!prevName) {
       return "Name" as PreviousName
     } else {
@@ -75,7 +75,7 @@ const LoginScreen = () => {
         <p className="help-text">
           pyXyzzy is a <ExternalLink href="https://www.cardsagainsthumanity.com/">Cards Against Humanity
           </ExternalLink> clone, modeled after <ExternalLink href="https://github.com/ajanata/PretendYoureXyzzy">
-          Pretend You're Xyzzy</ExternalLink> but completely rewritten for a modern experience.
+          Pretend You&apos;re Xyzzy</ExternalLink> but completely rewritten for a modern experience.
         </p>
         <p className="help-text">Choose a name to start playing.</p>
         <form onSubmit={handleLogin}>
