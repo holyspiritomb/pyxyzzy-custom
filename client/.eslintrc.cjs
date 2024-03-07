@@ -10,7 +10,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-      project: ['./tsconfig.json', './tsconfig.node.json'],
+      project: ['./tsconfig.json'],
   },
   plugins: ['react'],
   rules: {
@@ -24,6 +24,5 @@ module.exports = {
       "react": {
           "version": "detect"
       }
-
   }
 }
