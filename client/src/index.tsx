@@ -13,7 +13,7 @@ if (!import.meta.env.NODE_ENV || import.meta.env.NODE_ENV === "development") {
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement!);
-root.render(<App />);
 Modal.setAppElement("#root");
+root.render(<App />);
 
 /* vim: set ft=typescriptreact : */
