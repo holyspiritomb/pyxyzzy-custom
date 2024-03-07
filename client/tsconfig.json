@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
       "dom",
@@ -9,26 +9,22 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "allowJs": true,
+    "allowJs": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": false,
     "listFiles": true,
-    "paths": {
-      "~/*": ["./node_modules/*"]
-    },
+    "types": ["vite/client"]
   },
   "include": [
     "src"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
 }
