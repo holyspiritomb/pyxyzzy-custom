@@ -26,25 +26,19 @@
   },
   "browserslist": {
     "production": [
-      "last 2 firefox versions",
-      "last 2 firefoxandroid versions",
-      "last 2 chrome versions",
-      "last 2 chromeandroid versions",
-      "last 2 safari versions",
-      "last 2 ios versions",
-      "last 2 edge versions",
-      "firefox esr"
+      "chrome121",
+      "firefox115",
+      "edge121",
+      "safari17.2",
+      "ios17.2"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "chrome122",
+      "firefox123",
+      "safari17.3"
     ]
   },
   "devDependencies": {
-    "@svgr/core": "^8.1.0",
-    "@svgr/plugin-jsx": "^8.1.0",
-    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.22",
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
@@ -57,7 +51,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.1.1",
-    "vite-plugin-inspect": "^0.8.3",
     "vite-plugin-progress": "^0.0.7",
     "vite-tsconfig-paths": "^4.3.1"
   }
