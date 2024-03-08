@@ -72,7 +72,7 @@ const cardTextSizeCache: { [key: string]: Promise<number> | number } = {}
 
 // since the #card-size-measurement container is shared by the code below, and the rendering process requires an
 // async function, we must lock access to the container
-let fontSizeComputerLock = new Lock()
+const fontSizeComputerLock = new Lock()
 
 interface CardProps<C extends AbstractCard> {
   card: C
