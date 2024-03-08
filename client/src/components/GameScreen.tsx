@@ -79,10 +79,23 @@ const GameControls = () => {
   )
 }
 
+
+function findWinningCardText(pick: number, cardIdStr: string, obj: NonNullable<unknown>) {
+  if (pick === 1) {
+    for (const key in obj) {
+      if (obj[key][0]["id"] === cardIdStr) {
+        const winnerText = obj[key][0]["text"]
+        return ` for "${winnerText}"` as string
+      }
+    }
+  } else {
+    return "."
+  }
+}
+
 const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewProps) => {
   const state = useContext(GameContext)!
   const user = useContext(UserContext)!
-  // const app = useContext(AppStateContext)!
 
   let action = null
   if (state.shouldPlayWhiteCards) {
@@ -107,17 +120,20 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
     const name = state.gameWinner.id === user.id ? "You" : state.gameWinner.name
     action = <>{name} won the game!</>
   } else if (state.state === "game_ended") {
-      console.log(state.gameWinner)
-      console.log(state)
+      // console.log(state.gameWinner)
+      // console.log(state)
     action = <>The game ended.</>
   } else if (state.state === "round_ended") {
     if (state.roundWinner) {
       const name = state.roundWinner.id === user.id ? "You" : state.roundWinner.name
-      console.log(state.roundWinner)
-      let bcText = state.currentRound.blackCard.text;
-      let winningCardsId = state.currentRound.winningCardsId;
-      console.log(state.currentRound.whiteCards)
-      action = <>{name} won the round. Next round starts in {state.options.round_end_time} seconds.</>
+      // console.log(state.roundWinner)
+      // const bcText = state.currentRound.blackCard.text;
+      const bcPick = state.currentRound.blackCard.pickCount;
+      const winningCardsId = state.currentRound.winningCardsId;
+      const whiteCards = state.currentRound.whiteCards;
+      const winningWhiteCardText = findWinningCardText(bcPick, winningCardsId, whiteCards);
+      // console.log(bcText, winningWhiteCardText)
+      action = <>{name} won the round{winningWhiteCardText} Next round starts in {state.options.round_end_time} seconds.</>
     } else {
       action = <>The round has been cancelled. Next round starts in {state.options.round_end_time} seconds.</>
     }
