@@ -5,7 +5,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime'
+    'plugin:react/jsx-runtime',
+    "plugin:react-hooks/recommended"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -21,6 +22,7 @@ module.exports = {
     "@typescript-eslint/no-unnecessary-type-assertion": 0,
     "prefer-const": 1,
     "no-extra-semi": 1,
+    "react-refresh/only-export-components": "warn"
   },
   settings: {
       "react": {
