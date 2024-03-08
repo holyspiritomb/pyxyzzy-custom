@@ -16,9 +16,9 @@
     "typescript": "^5.3.3"
   },
   "scripts": {
-    "start": "vite -l info -d true",
+    "start": "vite --host",
     "build": "tsc && vite build",
-    "dev": "vite",
+    "dev": "vite --host",
     "dev:clean": "npm run dev -- --force",
     "lint": "eslint src",
     "serve": "vite preview",
@@ -26,18 +26,21 @@
   },
   "browserslist": {
     "production": [
-      "chrome121",
-      "firefox115",
-      "edge121",
-      "safari17.2",
-      "ios17.2"
+      "last 2 firefox versions",
+      "last 2 firefoxandroid versions",
+      "last 2 chrome versions",
+      "last 2 chromeandroid versions",
+      "last 2 safari versions",
+      "last 2 ios versions",
+      "last 2 edge versions",
+      "firefox esr"
     ],
     "development": [
-      "chrome122",
-      "firefox123",
-      "safari17.3"
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
-  },
+ },
   "devDependencies": {
     "@types/node": "^20.11.22",
     "@types/react": "^18.2.60",
