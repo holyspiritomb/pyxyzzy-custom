@@ -108,7 +108,7 @@ class App extends Component<object, AppComponentState> {
                       newestOnTop={false}
                       closeOnClick
                       draggable
-                      limit={3}
+                      limit={6}
                       pauseOnHover
                       theme={getToastTheme()}
                       />
