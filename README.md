@@ -1,4 +1,22 @@
-# pyXyzzy
+# pyXyzzy-custom
+
+pyXyzzy-custom is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][cah-official] modeled after [Pretend You're Xyzzy][pyx-github]. I am deeply indebted to PurkkaKoodari's original [pyXyzzy][pyx-upstream] project in creating the python backend and the React client from scratch.
+
+Differences from PurkkaKoodari's project:
+
+- Updated to [React 18][react-18]
+- Uses [Vite][vitejs] with Node 20 (LTS) to build the client
+- Updated all node dependencies (as of 9 March 2024)
+- Cards use the [Inter][inter] font
+- Toggleable dark mode
+- And the UI is now purple with some pink accents because I like pink and purple 💜
+
+[pyx-upstream]: https://gitlab.com/PurkkaKoodari/pyxyzzy
+[react-18]: https//react.dev
+[vitejs]: https://vitejs.dev
+[inter]: https://rsms.me/inter/
+
+The original readme by PurkkaKoodari is as follows:
 
 pyXyzzy is a clone of [Cards Against Humanity][cah-official]. It is modeled after [Pretend You're Xyzzy][pyx-github],
 but completely rewritten from scratch using Python 3.7+, asyncio and [websockets][websockets-docs] for the backend and
