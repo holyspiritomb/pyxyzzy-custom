@@ -1,5 +1,5 @@
 import {toast} from "react-toastify"
-import React, {ReactNode} from "react"
+import {ReactNode} from "react"
 
 export type ChatMessageType = "log" | "info" | "warning" | "error" | "chat"
 
