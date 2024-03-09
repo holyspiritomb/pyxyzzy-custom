@@ -115,7 +115,8 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
       // eslint-disable-next-line no-loop-func
       await new Promise<void>(resolve => {
         // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
-        cardRoot.render(<CardWithCallbackAfterRender/>);
+        const theCard = cardRoot.render(<CardWithCallbackAfterRender/>);
+        resolve(theCard);
       })
       const targetHeight = 180 - container.querySelector<HTMLElement>(".bottom")!.offsetHeight
       const textHeight = container.querySelector<HTMLElement>(".text")!.offsetHeight
