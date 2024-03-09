@@ -1,4 +1,4 @@
-import React, {Component, useContext} from "react"
+import {Component, useContext} from "react"
 import "./GameScreen.scss"
 import {handleAllErrorsAsUnknown, range, unknownError, useWindowWidth} from "../utils"
 import {ActingContext, AppStateContext, ConfigContext, GameContext, UserContext} from "./contexts"
