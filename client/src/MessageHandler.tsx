@@ -31,6 +31,7 @@ export default class MessageHandler {
   }
 
   chat(message: ReactNode) {
+    toast(message)
     this.add(new ChatMessage("chat", message))
   }
 
