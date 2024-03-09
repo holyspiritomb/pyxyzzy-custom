@@ -88,6 +88,11 @@ function findWinningCardText(pick: number, cardIdStr: string, obj: NonNullable<u
         return ` for "${winnerText}"` as string
       }
     }
+  } else if (pick === 2 ){
+    console.log(obj)
+    for (const key in obj) {
+      console.log(obj[key])
+    }
   } else {
     return "."
   }
