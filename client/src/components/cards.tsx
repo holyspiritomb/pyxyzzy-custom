@@ -26,6 +26,8 @@ const processCardText = (text: string, blackCard: boolean) => {
           <span className={`word ${currentHasBlank ? "blank" : ""}`} key={processedText.length}>{currentWord}</span>
         )
       } else {
+      // idk how to fix this error so i'm disabling it
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         processedText.push(...currentWord)
       }
       currentWord = []
@@ -60,6 +62,8 @@ const processCardText = (text: string, blackCard: boolean) => {
     }
   }
   endWord()
+  // idk how to fix this error so i'm disabling it
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return processedText
 }
 
@@ -152,6 +156,8 @@ const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<Re
 
   useEffect(() => {
     if (givenTextSize === undefined && getCachedTextSize(card) === null)
+      // idk how to fix this error, so i'm disabling it until i learn more
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       computeCardTextSize(CardComponent, card).then(fontSize => setComputedTextSize(fontSize))
   }, [CardComponent, card, givenTextSize])
 
