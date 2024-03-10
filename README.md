@@ -1,24 +1,38 @@
 # pyXyzzy-custom
 
-pyXyzzy-custom is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][cah-official] modeled after [Pretend You're Xyzzy][pyx-github]. I am deeply indebted to PurkkaKoodari's [pyXyzzy][pyx-upstream] project in which they created the python backend and the React frontend from scratch.
+pyXyzzy-custom is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][cah-official] modeled after [Pretend You're Xyzzy][pyx-github]. It is deeply indebted to PurkkaKoodari's [pyXyzzy][pyx-upstream] project in which they created the entire Python backend and the React frontend from scratch.
 
 ### Differences from PurkkaKoodari's project:
 
 Client differences:
-- Updated to [React 18][react-18]
-- Uses [Vite][vitejs] with Node 20 (LTS) to build the client
+- Uses [React 18][react-18]
+- Uses [Vite][vitejs] for building, dev serving and linting
+- Requires nodejs 20+
+- Uses npm's [dart-sass][sass-npm] implementation
 - Updated all node dependencies (as of 9 March 2024)
 - Cards use the [Inter][inter] font
 - Toggleable dark mode
-- And the UI is now purple with some pink accents because I like pink and purple 💜
+- And the UI is now purple with pink accents because I like pink and purple 💜
 
 Backend differences:
-- Python backend has a `pyxyzzy-server` script
+- Requires Python 3.8+
+- Updated python dependencies (as of March 2024)
+- Has a `pyxyzzy-server` wrapper script
+
+## Bugs
+
+- Card text overflows card
+- Blank cards not working
+
+## Important Caveat
+
+I am a beginner with TypeScript and Sass. My goal is to have something that works for deploying only on my local network that is tailored to my specific needs.
 
 [pyx-upstream]: https://gitlab.com/PurkkaKoodari/pyxyzzy
 [react-18]: https//react.dev
 [vitejs]: https://vitejs.dev
 [inter]: https://rsms.me/inter/
+[sass-npm]: https://www.npmjs.com/package/sass
 
 ### The original readme by PurkkaKoodari is as follows:
 
