@@ -21,7 +21,7 @@ Backend differences:
 
 ## Bugs
 
-- Card text overflows card
+- ~~Card text overflows card~~ Fixed!
 - Blank cards not working
 
 ## Important Caveat
