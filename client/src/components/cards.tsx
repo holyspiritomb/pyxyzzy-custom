@@ -1,5 +1,6 @@
 import React, {ComponentType, useEffect, useState} from "react"
 import { createRoot } from "react-dom/client"
+import {Textfit} from "@ataverascrespo/react-textfit"
 import "./cards.scss"
 import {Lock} from "../utils"
 import {AbstractCard, BlackCard, WhiteCard} from "../state"
@@ -96,11 +97,11 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     const size = cardTextSizeCache[card.fontSizeCacheKey]
     return typeof size === "number" ? size : await size
   }
-
-  const promise = fontSizeComputerLock.acquire(async () => {
     const container = document.getElementById("card-size-measurement")!
     const cardRoot = createRoot(container!)
     container.style.display = "block"
+
+  const promise = fontSizeComputerLock.acquire(async () => {
 
     let currentSize = MAXIMUM_TEXT_SIZE
     let bestFitting = MINIMUM_TEXT_SIZE
@@ -109,9 +110,11 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     let upperBound = MAXIMUM_TEXT_SIZE
     function CardWithCallbackAfterRender() {
       useEffect(() => {
-        console.log("card rendered");
+        console.log("card rendered", card);
       });
-      return <CardComponent card={card} givenTextSize={currentSize}/>
+      return (
+          <CardComponent card={card} givenTextSize={currentSize}/>
+      )
     }
     for (let i = 0; i < 10; i++) {
       // render the component to compute text height
@@ -167,7 +170,7 @@ const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<Re
 interface BlackCardViewProps extends CardProps<BlackCard> {}
 
 export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps) => {
-  const textSize = useCardTextSize(BlackCardView, card, givenTextSize)
+  //const textSize = useCardTextSize(BlackCardView, card, givenTextSize)
 
   if (scale === undefined)
     scale = 1
@@ -185,11 +188,17 @@ export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps
         <div>PICK <span className="number"><span>{card.pickCount}</span></span></div>
       </div>
   }
+    //<div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
+      //<div className="text" style={{fontSize: `${textSize * scale}px`}}>
   return (
-    <div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
-      <div className="text" style={{fontSize: `${textSize * scale}px`}}>
+    <div className="black card" data-bs-theme="light">
+      <Textfit
+          className="textfit text"
+          max={18}
+          min={12}
+        >
         {processCardText(card.text, true)}
-      </div>
+      </Textfit>
       <div className="bottom">
         <div className="pack-name">{card.packName}</div>
         {drawPick}
@@ -204,11 +213,12 @@ interface WhiteCardViewProps extends CardProps<WhiteCard> {
 }
 
 export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }: WhiteCardViewProps) => {
-  const textSize = useCardTextSize(WhiteCardView, card, givenTextSize)
+  // const textSize = useCardTextSize(WhiteCardView, card, givenTextSize)
 
   if (scale === undefined)
     scale = 1
 
+      //<div className="text" style={{fontSize: `${textSize * scale}px`}}>
   return (
     // everything scales relative to the fontSize on the card
     (<div
@@ -216,9 +226,12 @@ export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }:
         data-bs-theme="light"
         style={{fontSize: `${100 * scale}px`}}
         onClick={onClick}>
-      <div className="text" style={{fontSize: `${textSize * scale}px`}}>
-        {processCardText(card.text, false)}
-      </div>
+        <Textfit
+          className="textfit text"
+          max={18}
+          min={4}
+          >
+        {processCardText(card.text, false)}</Textfit>
       <div className="bottom">
         <div className="pack-name">{card.packName}</div>
       </div>

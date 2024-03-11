@@ -54,7 +54,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
 }
 .card {
     flex: none;
-    font-family: "Inter variable", "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "InterVariable", "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100px; // everything scales relative to this
     border: 1px solid $cardBorder;
     border-radius: 4%;
@@ -101,6 +101,11 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
             margin-right: -0.6ch;
             font-family:inherit;
 
+            > div[style*="block"] {
+              display: flex !important;
+              flex-wrap: wrap;
+            }
+
             .word {
                 display: flex;
                 flex-wrap: nowrap;
@@ -131,9 +136,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         word-wrap: break-word;
         overflow-wrap: break-word;
         font-family:inherit;
-        max-height: scale-card(850px);
-        overflow-y: auto;
-        scrollbar-width: thin;
+        max-height: calc(100% - scale-card(16px, 0.11));
         // border: 1px dotted red;
 
         em {
