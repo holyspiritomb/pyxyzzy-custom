@@ -191,7 +191,7 @@ export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps
     //<div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
       //<div className="text" style={{fontSize: `${textSize * scale}px`}}>
   return (
-    <div className="black card" data-bs-theme="light">
+    <div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
       <Textfit
           className="textfit text"
           max={18}
