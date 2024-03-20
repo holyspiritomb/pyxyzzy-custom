@@ -18,7 +18,7 @@ const getSessionFromStorage = () => {
   try {
     const sessionJson = localStorage.getItem(SESSION_STORAGE_KEY)
     if (!sessionJson) return null
-    const session = JSON.parse(sessionJson)
+    const session = JSON.parse(sessionJson) as AuthenticateResponse
     if (!("id" in session && "token" in session)) return null
     return new UserSession(session)
   } catch (_) {
