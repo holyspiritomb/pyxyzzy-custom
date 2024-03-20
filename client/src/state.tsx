@@ -315,7 +315,7 @@ export class AppState {
       round: this.game.currentRound.id,
       winner: winningCard.id,
     }, true)
-    log.debug("[DEBUG]", "winning card: ", winningCard["text"])
+    log.debug("[DEBUG]", "winning card: ", winningCard)
   }
 
   async sendChat(text: string) {

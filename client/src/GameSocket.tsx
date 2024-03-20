@@ -27,6 +27,7 @@ const getSessionFromStorage = () => {
 }
 
 const saveSessionInStorage = (session: UserSession | null) => {
+  log.debug("[DEBUG] save session in storage", session)
   localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session))
 }
 
