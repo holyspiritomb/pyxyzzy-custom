@@ -87,7 +87,7 @@ class App extends Component<object, AppComponentState> {
     function getToastTheme(): "dark" | "light" | "colored" {
       const themeColor = getPreferredTheme();
       if (themeColor === "auto" || themeColor === "light") {
-        return "colored";
+        return "light";
       } else {
         return themeColor;
       }
