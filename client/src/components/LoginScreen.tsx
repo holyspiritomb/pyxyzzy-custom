@@ -1,4 +1,4 @@
-import React, {FormEvent, useContext, useState, StrictMode, InputHTMLAttributes} from "react"
+import {FormEvent, useContext, useState} from "react"
 import "./LoginScreen.scss"
 import ExternalLink from "./ExternalLink"
 import {useMounted} from "../utils"

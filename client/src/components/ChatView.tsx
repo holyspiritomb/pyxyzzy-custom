@@ -1,4 +1,4 @@
-import {FormEvent, useContext, useEffect, useRef, useState, useId } from "react"
+import {FormEvent, useContext, useEffect, useRef, useState } from "react"
 import "./ChatView.scss"
 import {ChatMessage} from "../MessageHandler"
 import {AppStateContext, ChatContext, GameContext} from "./contexts"
