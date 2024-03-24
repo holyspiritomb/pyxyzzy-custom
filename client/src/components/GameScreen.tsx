@@ -89,9 +89,12 @@ function findWinningCardText(pick: number, cardIdStr: string, obj: NonNullable<u
       }
     }
   } else if (pick === 2 ){
-    console.log(obj)
     for (const key in obj) {
-      console.log(obj[key])
+      if ( (obj[key][0]["id"] === cardIdStr) || (obj[key][1]["id"] === cardIdStr) ) {
+        const winnerTextOne = obj[key][0]["text"] as string
+        const winnerTextTwo = obj[key][1]["text"] as string
+        return ` for "${winnerTextOne}" and "${winnerTextTwo}"` as string
+      }
     }
   } else {
     return "."
@@ -121,29 +124,23 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
   } else if (state.state === "judging") {
     action = <>Waiting for {state.cardCzar.name} to choose a winner&hellip;</>
   } else if (state.gameWinner && (state.state === "round_ended" || state.state === "game_ended")) {
-      console.log(state.gameWinner)
     const name = state.gameWinner.id === user.id ? "You" : state.gameWinner.name
     action = <>{name} won the game!</>
   } else if (state.state === "game_ended") {
-      // console.log(state.gameWinner)
-      // console.log(state)
     action = <>The game ended.</>
   } else if (state.state === "round_ended") {
     if (state.roundWinner) {
       const name = state.roundWinner.id === user.id ? "You" : state.roundWinner.name
-      // console.log(state.roundWinner)
       // const bcText = state.currentRound.blackCard.text;
       const bcPick = state.currentRound.blackCard.pickCount;
       const winningCardsId = state.currentRound.winningCardsId;
       const whiteCards = state.currentRound.whiteCards;
       const winningWhiteCardText = findWinningCardText(bcPick, winningCardsId, whiteCards);
-      // console.log(bcText, winningWhiteCardText)
       action = <>{name} won the round{winningWhiteCardText} Next round starts in {state.options.round_end_time} seconds.</>
     } else {
       action = <>The round has been cancelled. Next round starts in {state.options.round_end_time} seconds.</>
     }
   }
-
   return action && <h3 className="instructions">{action}</h3>
 }
 
