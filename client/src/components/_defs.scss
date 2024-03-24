@@ -48,6 +48,24 @@ $lightestBg: #f4f4fb;
     --chat-timestamp: #{$indigo-500};
     --chat-error: #{$pink};
     --chat-warning: #{$orange};
+    --toastify-color-progress-light: linear-gradient(
+        to right,
+        #4cd964,
+        #5ac8fa,
+        #007aff,
+        #34aadc,
+        #5856d6,
+        #ff2d55
+    );
+    --toastify-color-progress-dark: linear-gradient(
+        to right,
+        #4cd964,
+        #5ac8fa,
+        #007aff,
+        #34aadc,
+        #5856d6,
+        #ff2d55
+    );
 }
 [data-bs-theme="dark"] {
     --bs-body-color: #{$purple-100};
@@ -80,6 +98,15 @@ $lightestBg: #f4f4fb;
     --chat-timestamp: #{$purple-200};
     --chat-error: #{$pink};
     --chat-warning: #{$orange};
+    --toastify-color-progress-dark: linear-gradient(
+        to right,
+        #4cd964,
+        #5ac8fa,
+        #007aff,
+        #34aadc,
+        #5856d6,
+        #ff2d55
+    );
 
 }
 
