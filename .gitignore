@@ -3,6 +3,7 @@ config.dev.toml
 cards.dev.db
 cards.*.db
 config.*.toml
+cardscripts/
 
 # JS template not included
 
