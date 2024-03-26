@@ -123,6 +123,7 @@ class GameConnection(ABC):
             raise InvalidRequest("only text JSON messages allowed")
         try:
             parsed = json.loads(message)
+            LOGGER.debug(message)
         except JSONDecodeError:
             raise InvalidRequest("invalid JSON")
         if not isinstance(parsed, dict):
@@ -296,6 +297,7 @@ class GameConnection(ABC):
     @handlers.register(ApiAction.game_options)
     @require_host
     def _handle_game_options(self, content: dict):
+        LOGGER.debug(content)
         changes = {}
         for field in fields(GameOptions):
             if field.name in content:
@@ -305,6 +307,7 @@ class GameConnection(ABC):
                 if field.name == "card_packs":
                     try:
                         value = tuple(self.server.card_packs.find_by("id", CardPackID(UUID(uuid))) for uuid in value)
+                        LOGGER.debug("Added pack: %s", value[0].name)
                     except (TypeError, ValueError, KeyError):
                         raise InvalidRequest("invalid card_packs list")
                 changes[field.name] = value
