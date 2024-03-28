@@ -12,9 +12,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
-    "react-toastify": "^10.0.4",
+    "react-toastify": "^10.0.5",
     "sass": "^1.71.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "scripts": {
     "start": "vite --host",
@@ -44,20 +44,20 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.22",
-    "@types/react": "^18.2.60",
-    "@types/react-dom": "^18.2.19",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.22",
     "@types/react-modal": "^3.16.3",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-react-refresh": "^0.4.6",
     "react-compound-timer": "^2.0.5",
-    "vite": "^5.1.1",
+    "vite": "^5.1.7",
     "vite-plugin-checker": "^0.6.4",
     "vite-plugin-progress": "^0.0.7",
-    "vite-tsconfig-paths": "^4.3.1"
+    "vite-tsconfig-paths": "^4.3.2"
   }
 }
