@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
+      envPlugin(),
+      tsconfigPaths(),
+      importPrefixPlugin(),
       checker({
         overlay: { initialIsOpen: false },
         typescript: true,
@@ -22,9 +25,6 @@ export default defineConfig(({ mode }) => {
           lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
         },
       }),
-      tsconfigPaths(),
-      envPlugin(),
-      importPrefixPlugin(),
       progress({
         format: 'Building :bar :percent',
       }),
