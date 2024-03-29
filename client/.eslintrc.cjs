@@ -11,7 +11,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-      project: ['./tsconfig.json'],
+    project: ['./tsconfig.json'],
   },
   plugins: ['react', 'react-hooks', 'react-refresh'],
   rules: {
@@ -32,8 +32,8 @@ module.exports = {
     "react-refresh/only-export-components": 1
   },
   settings: {
-      "react": {
-          "version": "detect"
-      }
+    "react": {
+      "version": "detect"
+    }
   }
 }
