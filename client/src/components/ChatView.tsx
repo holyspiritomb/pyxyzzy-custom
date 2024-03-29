@@ -12,9 +12,9 @@ interface ChatMessageProps {
 const ChatMessageView = ({ message }: ChatMessageProps, key: number) => {
   // TODO: better timestamp formatting?
   return (
-      <div className={`message type-${message.type}`}>
-        <span className="timestamp">[{message.time.toLocaleTimeString()}]</span> {message.contents}
-      </div>
+    <div className={`message type-${message.type}`}>
+      <span className="timestamp">[{message.time.toLocaleTimeString()}]</span> {message.contents}
+    </div>
   )
 }
 
@@ -59,33 +59,33 @@ const ChatView = ({ chatMessages }: ChatViewProps) => {
   }
 
   return (
-      <div className={`chat-container ${open ? "open" : ""} ${unreadChats ? "unread" : ""}`}>
-        <div className="chat">
-          <button type="button" className="toggler" onClick={toggleOpen}>
-            Chat{unreadChats ? ` (${unreadChats})` : ""} <span className="arrow">&#x25B2;</span>
+    <div className={`chat-container ${open ? "open" : ""} ${unreadChats ? "unread" : ""}`}>
+      <div className="chat">
+        <button type="button" className="toggler" onClick={toggleOpen}>
+          Chat{unreadChats ? ` (${unreadChats})` : ""} <span className="arrow">&#x25B2;</span>
+        </button>
+        <ChatContext.Provider value={true}>
+          <div className="messages" ref={scrollRef}>
+            {chatMessages.map(message => <ChatMessageView message={message} key={uniqueId()}/>)}
+          </div>
+        </ChatContext.Provider>
+        <form className="field" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            id="chat-input"
+            title="Send messages to other players"
+            placeholder="Send message"
+            value={fieldText}
+            onChange={e => setFieldText(e.target.value)}
+            disabled={game === null} />
+          <button
+            type="submit"
+            disabled={game === null}>
+            Send
           </button>
-          <ChatContext.Provider value={true}>
-            <div className="messages" ref={scrollRef}>
-              {chatMessages.map(message => <ChatMessageView message={message} key={uniqueId()}/>)}
-            </div>
-          </ChatContext.Provider>
-          <form className="field" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                id="chat-input"
-                title="Send messages to other players"
-                placeholder="Send message"
-                value={fieldText}
-                onChange={e => setFieldText(e.target.value)}
-                disabled={game === null} />
-            <button
-                type="submit"
-                disabled={game === null}>
-              Send
-            </button>
-          </form>
-        </div>
+        </form>
       </div>
+    </div>
   )
 }
 
