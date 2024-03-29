@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useContext, useEffect, useRef, useState} from "react"
+import {ChangeEvent, useContext, useEffect, useRef, useState} from "react"
 import "./GameOptions.scss"
 import {uniqueId, unknownError} from "../utils"
 import {AppStateContext, ConfigContext, GameContext} from "./contexts"
