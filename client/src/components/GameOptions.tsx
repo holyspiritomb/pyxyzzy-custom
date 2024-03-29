@@ -18,9 +18,9 @@ const OptionsInputField = ({ type, name, title, label, handleChange, value, ...a
   if (type === "checkbox") {
     return (
       <label className={`field type-${type}`}
-          htmlFor={`game-options-${name}`}
-          title={title}>
-          {label}
+        htmlFor={`game-options-${name}`}
+        title={title}>
+        {label}
           <input
             type={type}
             id={`game-options-${name}`}
@@ -111,18 +111,18 @@ const OptionsInput = ({ name, type, ...attrs }: OptionsInputProps) => {
     }
   
     return (
-        <>
-          {config.card_packs.map(pack => (
-            <OptionsInputField
-                key={pack.id}
-                type="checkbox"
-                name={`cardpacks-${pack.id}`}
-                value={packs.includes(pack.id)}
-                handleChange={handlePackChange(pack.id)}
-                label={pack.name}
-                title={`${pack.black_cards} black cards\n${pack.white_cards} white cards`} />
-          ))}
-        </>
+      <>
+        {config.card_packs.map(pack => (
+          <OptionsInputField
+            key={pack.id}
+            type="checkbox"
+            name={`cardpacks-${pack.id}`}
+            value={packs.includes(pack.id)}
+            handleChange={handlePackChange(pack.id)}
+            label={pack.name}
+            title={`${pack.black_cards} black cards\n${pack.white_cards} white cards`} />
+        ))}
+      </>
     )
   }
 
@@ -139,11 +139,11 @@ const OptionsInput = ({ name, type, ...attrs }: OptionsInputProps) => {
 
   return (
     <OptionsInputField
-        type={type}
-        name={name}
-        value={fieldValue as (string | number | boolean)}
-        handleChange={handleFieldChange}
-        {...attrs as {label: string}} />
+      type={type}
+      name={name}
+      value={fieldValue as (string | number | boolean)}
+      handleChange={handleFieldChange}
+      {...attrs as {label: string}} />
   )
 }
 
@@ -172,96 +172,96 @@ const GameOptions = () => {
             <h4>Joining</h4>
             <div className="category-contents">
               <OptionsInput
-                  state={app}
-                  type="text"
-                  name="game_title"
-                  placeholder={defaultTitle}
-                  label="Game title"
-                  title="The title of the game, displayed in the public games list." />
+                state={app}
+                type="text"
+                name="game_title"
+                placeholder={defaultTitle}
+                label="Game title"
+                title="The title of the game, displayed in the public games list." />
               <OptionsInput
-                  state={app}
-                  type="checkbox"
-                  name="public"
-                  label="Public"
-                  title="If checked, the game will show up in the public games list." />
+                state={app}
+                type="checkbox"
+                name="public"
+                label="Public"
+                title="If checked, the game will show up in the public games list." />
               <OptionsInput
-                  state={app}
-                  type="text"
-                  name="password"
-                  placeholder="(no password)"
-                  label="Password"
-                  title="The password required to join the game." />
+                state={app}
+                type="text"
+                name="password"
+                placeholder="(no password)"
+                label="Password"
+                title="The password required to join the game." />
               <OptionsInput
-                  state={app}
-                  type="number"
-                  name="player_limit"
-                  min={config.game.player_limit.min}
-                  max={config.game.player_limit.max}
-                  required
-                  label="Max players"
-                  title="The maximum number of players in the game." />
+                state={app}
+                type="number"
+                name="player_limit"
+                min={config.game.player_limit.min}
+                max={config.game.player_limit.max}
+                required
+                label="Max players"
+                title="The maximum number of players in the game." />
             </div>
           </div>
           <div className="category idle">
             <h4>Idle timers</h4>
             <div className="category-contents">
               <OptionsInput
-                  state={app}
-                  type="number"
-                  name="think_time"
-                  min={config.game.think_time.min}
-                  max={config.game.think_time.max}
-                  required
-                  label="Think time"
-                  title="The number of seconds before a player is skipped for being idle." />
+                state={app}
+                type="number"
+                name="think_time"
+                min={config.game.think_time.min}
+                max={config.game.think_time.max}
+                required
+                label="Think time"
+                title="The number of seconds before a player is skipped for being idle." />
               <OptionsInput
-                  state={app}
-                  type="number"
-                  name="round_end_time"
-                  min={config.game.round_end_time.min}
-                  max={config.game.round_end_time.max}
-                  required
-                  label="Round end time"
-                  title="The number of seconds the round's winner is shown for before starting a new round." />
+                state={app}
+                type="number"
+                name="round_end_time"
+                min={config.game.round_end_time.min}
+                max={config.game.round_end_time.max}
+                required
+                label="Round end time"
+                title="The number of seconds the round's winner is shown for before starting a new round." />
               <OptionsInput
-                  state={app}
-                  type="number"
-                  name="idle_rounds"
-                  min={config.game.idle_rounds.min}
-                  max={config.game.idle_rounds.max}
-                  required
-                  label="Idle rounds"
-                  title="The number of consecutive rounds a player must be idle to be kicked." />
+                state={app}
+                type="number"
+                name="idle_rounds"
+                min={config.game.idle_rounds.min}
+                max={config.game.idle_rounds.max}
+                required
+                label="Idle rounds"
+                title="The number of consecutive rounds a player must be idle to be kicked." />
             </div>
           </div>
           <div className="category rules">
             <h4>Rules</h4>
             <div className="category-contents">
               <OptionsInput
-                  type="number"
-                  name="blank_cards"
-                  min={config.game.blank_cards.count.min}
-                  max={config.game.blank_cards.count.max}
-                  required
-                  label="Blank cards"
-                  title="The number of blank white cards included in the deck." />
+                type="number"
+                name="blank_cards"
+                min={config.game.blank_cards.count.min}
+                max={config.game.blank_cards.count.max}
+                required
+                label="Blank cards"
+                title="The number of blank white cards included in the deck." />
               <OptionsInput
-                  type="number"
-                  name="point_limit"
-                  min={config.game.point_limit.min}
-                  max={config.game.point_limit.max}
-                  required
-                  label="Points to win"
-                  title="The number of points required to win the game." />
+                type="number"
+                name="point_limit"
+                min={config.game.point_limit.min}
+                max={config.game.point_limit.max}
+                required
+                label="Points to win"
+                title="The number of points required to win the game." />
             </div>
           </div>
           <div className="category packs">
             <h4>Cards</h4>
             <div className="category-contents">
               <OptionsInput
-                  state={app}
-                  type="card_packs"
-                  name="card_packs" />
+                state={app}
+                type="card_packs"
+                name="card_packs" />
             </div>
           </div>
           <div className="category playerlist">
