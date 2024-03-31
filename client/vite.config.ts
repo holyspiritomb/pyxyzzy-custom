@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
         eslint: {
           lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
         },
+        enableBuild: false,
       }),
       progress({
         format: 'Building :bar :percent',
