@@ -105,10 +105,8 @@ class App extends Component<object, AppComponentState> {
                       position="bottom-left"
                       autoClose={5000}
                       hideProgressBar={false}
-                      newestOnTop={false}
                       closeOnClick
                       draggable
-                      limit={6}
                       pauseOnHover
                       theme={getToastTheme()}
                       />
