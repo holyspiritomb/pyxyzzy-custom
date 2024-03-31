@@ -17,13 +17,14 @@
     "typescript": "^5.4.3"
   },
   "scripts": {
-    "start": "vite --host",
     "build": "tsc && vite build",
     "dev": "vite --host",
     "dev:clean": "npm run dev -- --force",
     "lint": "eslint src",
-    "serve": "vite preview",
-    "preview": "vite preview --port 3000"
+    "preview": "vite preview --host --port 7070",
+    "serve": "npm run preview",
+    "start": "vite --host",
+    "test": "echo \"Tests not implemented.\""
   },
   "browserslist": {
     "production": [
