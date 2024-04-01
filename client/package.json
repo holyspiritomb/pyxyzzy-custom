@@ -23,7 +23,7 @@
     "lint": "eslint src",
     "preview": "vite preview --host --port 7070",
     "serve": "npm run preview",
-    "start": "vite --host",
+    "start": "yes | npx serve -p 7070 dist",
     "test": "echo \"Tests not implemented.\""
   },
   "browserslist": {
