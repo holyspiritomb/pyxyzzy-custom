@@ -114,7 +114,7 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
         log.info("card rendered", card);
       });
       return (
-          <CardComponent card={card} givenTextSize={currentSize}/>
+        <CardComponent card={card} givenTextSize={currentSize}/>
       )
     }
     for (let i = 0; i < 10; i++) {
@@ -227,7 +227,7 @@ export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }:
         data-bs-theme="light"
         style={{fontSize: `${100 * scale}px`}}
         onClick={onClick}>
-        <Textfit
+      <Textfit
           className="textfit text"
           max={18}
           min={4}

@@ -8,7 +8,7 @@ import {
   UpdateRound,
   UpdateWhiteCard,
 } from "./api"
-import {englishList} from "./utils"
+import {englishList, uniqueId} from "./utils"
 import log from "loglevel"
 import MessageHandler from "./MessageHandler"
 import GameSocket from "./GameSocket"
@@ -338,18 +338,18 @@ export class AppState {
     switch (event.type) {
       case "card_czar_idle":
         this.messageHandler.warning(
-            <>
-              <EventPlayerMention player={event.player} /> (the Card Czar) was idle for too long. The white cards
-              played this round will be returned to hands.
-            </>
+          <>
+            <EventPlayerMention player={event.player} /> (the Card Czar) was idle for too long. The white cards
+            played this round will be returned to hands.
+          </>
         )
         break
       case "players_idle":
         const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} />), ["was", "were"])
         this.messageHandler.warning(
-            <>
-              {names} idle for too long and {event.players.length === 1 ? "was" : "were"} skipped this round.
-            </>
+          <>
+            {names} idle for too long and {event.players.length === 1 ? "was" : "were"} skipped this round.
+          </>
         )
         break
       case "too_few_cards_played":
@@ -358,9 +358,9 @@ export class AppState {
         break
       case "player_join":
         this.messageHandler.info(
-            <>
-              <EventPlayerMention player={event.player} /> joined the game.
-            </>
+          <>
+            <EventPlayerMention player={event.player} /> joined the game.
+          </>
         )
         break
       case "player_leave":
@@ -369,9 +369,9 @@ export class AppState {
           case "disconnect":
             if (!you) {
               this.messageHandler.info(
-                  <>
-                    <EventPlayerMention player={event.player} /> disconnected.
-                  </>
+                <>
+                  <EventPlayerMention player={event.player} /> disconnected.
+                </>
               )
             }
             break
@@ -380,9 +380,9 @@ export class AppState {
               this.messageHandler.error("You were kicked from the game.", false)
             } else {
               this.messageHandler.info(
-                  <>
-                    <EventPlayerMention player={event.player} /> was kicked from the game.
-                  </>
+                <>
+                  <EventPlayerMention player={event.player} /> was kicked from the game.
+                </>
               )
             }
             break
@@ -391,10 +391,10 @@ export class AppState {
               this.messageHandler.error("You were kicked from the game for being idle for too many rounds.", false)
             } else {
               this.messageHandler.warning(
-                  <>
-                    <EventPlayerMention player={event.player} /> was kicked from the game for being idle for too many
-                    rounds.
-                  </>
+                <>
+                  <EventPlayerMention player={event.player} /> was kicked from the game for being idle for too many
+                  rounds.
+                </>
               )
             }
             break
@@ -404,9 +404,9 @@ export class AppState {
               this.messageHandler.log("You left the game.")
             } else {
               this.messageHandler.info(
-                  <>
-                    <EventPlayerMention player={event.player} /> left the game.
-                  </>
+                <>
+                  <EventPlayerMention player={event.player} /> left the game.
+                </>
               )
             }
             break
@@ -417,24 +417,24 @@ export class AppState {
         break
       case "card_czar_leave":
         this.messageHandler.error(
-            <>
-              <EventPlayerMention player={event.player} /> (the Card Czar) has left the game. The white cards played
-              this round will be returned to hands.
-            </>
+          <>
+            <EventPlayerMention player={event.player} /> (the Card Czar) has left the game. The white cards played
+            this round will be returned to hands.
+          </>
         )
         break
       case "host_leave":
         this.messageHandler.info(
-            <>
-              <EventPlayerMention player={event.new_host} /> is now the host.
-            </>
+          <>
+            <EventPlayerMention player={event.new_host} /> is now the host.
+          </>
         )
         break
       case "chat_message":
         this.messageHandler.chat(
-            <>
-              <EventPlayerMention player={event.player} />: {event.text}
-            </>
+          <>
+            <EventPlayerMention player={event.player} />: {event.text}
+          </>
         )
         break
       default:

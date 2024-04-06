@@ -136,9 +136,9 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
         games.filter(game => game.title.toUpperCase().includes(trimmed) || game.code.includes(trimmed))
     if (filtered.length === 0) {
       gameList = (
-          <div className="no-games">
-            {trimmed === "" ? "There are currently no public games." : "No public games match your search."}
-          </div>
+        <div className="no-games">
+          {trimmed === "" ? "There are currently no public games." : "No public games match your search."}
+        </div>
       )
     } else {
       const gameCards = filtered.map(game => <GameListCard key={game.code} game={game} onJoin={handleJoinGame} />)
@@ -146,9 +146,9 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
         gameCards.push(<div className="game-spacer" key={`spacer ${i}`} />)
       }
       gameList = (
-          <div className="games">
-            {gameCards}
-          </div>
+        <div className="games">
+          {gameCards}
+        </div>
       )
     }
   }

@@ -101,7 +101,7 @@ class App extends Component<object, AppComponentState> {
             <UserContext.Provider value={userSession}>
               <GameContext.Provider value={gameState}>
                 <ActingContext.Provider value={acting}>
-                    <ToastContainer
+                  <ToastContainer
                       position="bottom-left"
                       autoClose={5000}
                       hideProgressBar={false}
@@ -110,9 +110,9 @@ class App extends Component<object, AppComponentState> {
                       pauseOnHover
                       theme={getToastTheme()}
                       />
-                    {gameScreen}
-                    {chatView}
-                    {connectingScreen}
+                  {gameScreen}
+                  {chatView}
+                  {connectingScreen}
                 </ActingContext.Provider>
               </GameContext.Provider>
             </UserContext.Provider>

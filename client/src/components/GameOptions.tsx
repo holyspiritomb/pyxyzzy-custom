@@ -21,7 +21,7 @@ const OptionsInputField = ({ type, name, title, label, handleChange, value, ...a
         htmlFor={`game-options-${name}`}
         title={title}>
         {label}
-          <input
+        <input
             type={type}
             id={`game-options-${name}`}
             title={title}

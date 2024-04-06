@@ -19,9 +19,9 @@ const EventPlayerMention = ({ player }: EventPlayerMentionProps) => {
   const isChatMessage = useContext(ChatContext)
 
   return isChatMessage ? (
-      <PlayerActions playerId={player.id}>{player.name}</PlayerActions>
+    <PlayerActions playerId={player.id}>{player.name}</PlayerActions>
   ) : (
-      <>{player.name}</>
+    <>{player.name}</>
   )
 }
 

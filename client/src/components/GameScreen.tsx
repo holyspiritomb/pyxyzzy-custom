@@ -55,27 +55,27 @@ const GameControls = () => {
   let controls = null
   if (game.isHost) {
     controls = (
-        <button type="button" onClick={handleStartStop} disabled={acting}>
-          {game.running ? "Stop game" : "Start game"}
-        </button>
+      <button type="button" onClick={handleStartStop} disabled={acting}>
+        {game.running ? "Stop game" : "Start game"}
+      </button>
     )
   }
 
   return (
-      <div className="nav">
-        <div className="game-controls">
-          {controls}
-        </div>
-        <ThemeButton />
-        <div className="game-info">
-          <div className="game-code">Game <b>{game.code}</b></div>
-          <button type="button" onClick={handleLeave} disabled={acting}>Leave game</button>
-        </div>
-        <div className="user-info">
-          <div className="user-name">Logged in as <b>{user.name}</b></div>
-          <button type="button" onClick={handleLogout} disabled={acting}>Log out</button>
-        </div>
+    <div className="nav">
+      <div className="game-controls">
+        {controls}
       </div>
+      <ThemeButton />
+      <div className="game-info">
+        <div className="game-code">Game <b>{game.code}</b></div>
+        <button type="button" onClick={handleLeave} disabled={acting}>Leave game</button>
+      </div>
+      <div className="user-info">
+        <div className="user-name">Logged in as <b>{user.name}</b></div>
+        <button type="button" onClick={handleLogout} disabled={acting}>Log out</button>
+      </div>
+    </div>
   )
 }
 
@@ -224,7 +224,7 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
       const won = game.state === "round_ended" && game.currentRound.winningCardsId === group[0].id
       const selected = selectedWhitePos === pos
       const actions = selected ? (
-          <button type="button" disabled={acting} onClick={() => confirmJudge()}>Confirm selection</button>
+        <button type="button" disabled={acting} onClick={() => confirmJudge()}>Confirm selection</button>
       ) : null
       return (
         <WhiteCardGroup
@@ -260,18 +260,18 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
     })
     const allSelected = chosenWhites.every(card => card !== null)
     const actions = game.shouldPlayWhiteCards ? (
-        <button type="button" onClick={() => confirmPlay()} disabled={acting || !allSelected}>
-          {groupSize > 1 ? "Confirm selections" : "Confirm selection"}
-        </button>
+      <button type="button" onClick={() => confirmPlay()} disabled={acting || !allSelected}>
+        {groupSize > 1 ? "Confirm selections" : "Confirm selection"}
+      </button>
     ) : null
     whiteCards = <WhiteCardGroup cards={placeholders} actions={actions} scale={scale} />
   }
 
   return (
-      <div className={`table ${wrapBlackCard ? "wrap-black" : ""} ${wrapGroups ? "wrap-groups" : ""}`}>
-        <BlackCardView card={game.currentRound.blackCard} scale={scale} />
-        <div className="cards">{whiteCards}</div>
-      </div>
+    <div className={`table ${wrapBlackCard ? "wrap-black" : ""} ${wrapGroups ? "wrap-groups" : ""}`}>
+      <BlackCardView card={game.currentRound.blackCard} scale={scale} />
+      <div className="cards">{whiteCards}</div>
+    </div>
   )
 }
 
@@ -298,19 +298,19 @@ const HandView = ({ chosenWhites, windowWidth, selectCard }: HandViewProps) => {
   scale = Math.max(scale, MINIMUM_CARD_SCALE)
 
   return (
-      <div className="hand">
-        <h3>Your hand</h3>
-        <div className="cards">
-          {game.hand.map(card =>
-            <WhiteCardView
+    <div className="hand">
+      <h3>Your hand</h3>
+      <div className="cards">
+        {game.hand.map(card =>
+          <WhiteCardView
                 key={card.id}
                 card={card}
                 disabled={!game.shouldPlayWhiteCards || chosenWhites.some(chosen => chosen && chosen.id === card.id)}
                 scale={scale}
                 onClick={() => !acting && selectCard(card)}/>
           )}
-        </div>
       </div>
+    </div>
   )
 }
 
@@ -393,26 +393,26 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
     }
 
     return (
-        <div className={`in-game game-state-${game.state} ${game.shouldJudge ? "should-judge" : ""} ${game.shouldPlayWhiteCards ? "should-play" : ""}`}>
-          <GameControls />
-          <GameOptions />
-          <InstructionsView
+      <div className={`in-game game-state-${game.state} ${game.shouldJudge ? "should-judge" : ""} ${game.shouldPlayWhiteCards ? "should-play" : ""}`}>
+        <GameControls />
+        <GameOptions />
+        <InstructionsView
               chosenWhites={this.state.chosenWhites!}
               selectedWhitePos={this.state.selectedWhitePos} />
-          <div className="scroll">
-            <TableView
+        <div className="scroll">
+          <TableView
                 chosenWhites={this.state.chosenWhites!}
                 selectedWhitePos={this.state.selectedWhitePos}
                 windowWidth={this.props.windowWidth}
                 unselectCard={unselectCard}
                 selectPos={pos => this.setState({selectedWhitePos: pos})} />
-            <PlayersView />
-            <HandView
+          <PlayersView />
+          <HandView
                 chosenWhites={this.state.chosenWhites!}
                 windowWidth={this.props.windowWidth}
                 selectCard={selectCard} />
-          </div>
         </div>
+      </div>
     )
   }
 }
@@ -421,13 +421,13 @@ const GameScreenContextWrapper = () => {
   const windowWidth = useWindowWidth()
 
   return (
-      <GameContext.Consumer>
-        {game => (
-            <GameScreen
+    <GameContext.Consumer>
+      {game => (
+        <GameScreen
                 game={game!}
                 windowWidth={windowWidth} />
         )}
-      </GameContext.Consumer>
+    </GameContext.Consumer>
   )
 }
 
