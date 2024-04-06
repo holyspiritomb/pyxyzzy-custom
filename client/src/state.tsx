@@ -345,7 +345,7 @@ export class AppState {
         )
         break
       case "players_idle":
-        const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} />), ["was", "were"])
+        const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} key={uniqueId()} />), ["was", "were"])
         this.messageHandler.warning(
           <>
             {names} idle for too long and {event.players.length === 1 ? "was" : "were"} skipped this round.
