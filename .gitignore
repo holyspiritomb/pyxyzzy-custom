@@ -4,6 +4,7 @@ cards.dev.db
 cards.*.db
 config.*.toml
 cardscripts/
+.vscode
 
 # JS template not included
 
