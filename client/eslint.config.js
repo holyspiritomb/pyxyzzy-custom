@@ -1,5 +1,6 @@
 // @ts-check
 
+import globals from 'globals';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
@@ -26,6 +27,14 @@ export default tseslint.config(
           jsx: true,
         }
       },
+      globals: {
+        ...globals.es2020,
+      },
+    },
+    settings: {
+      react: {
+        version: "detect"
+      }
     },
     rules: {
       "@typescript-eslint/ban-types": 1,
@@ -33,8 +42,8 @@ export default tseslint.config(
       "@typescript-eslint/no-misused-promises": 1,
       "@typescript-eslint/no-this-alias": 0,
       "@typescript-eslint/no-unnecessary-type-assertion": 0,
-      "@typescript-eslint/no-unsafe-argument": 1,
-      "@typescript-eslint/no-unsafe-assignment": 1,
+      "@typescript-eslint/no-unsafe-argument": 0,
+      "@typescript-eslint/no-unsafe-assignment": 0,
       "@typescript-eslint/no-unsafe-call": 1,
       "@typescript-eslint/no-unsafe-member-access": 0,
       "@typescript-eslint/no-unsafe-return": 0,
@@ -46,11 +55,7 @@ export default tseslint.config(
       "react/jsx-equals-spacing": 1,
       "react/jsx-indent": [1,2],
       "react/no-invalid-html-attribute": 2,
+      'react/no-unsafe': 0,
     },
-    settings: {
-      react: {
-        version: "detect"
-      }
-    }
   },
 );
