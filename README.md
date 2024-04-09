@@ -19,6 +19,50 @@ Backend differences:
 - Updated python dependencies (as of March 2024)
 - Has a `pyxyzzy-server` wrapper script
 
+## Installation
+
+### Server (backend)
+
+Requirements:
+- python 3.8+
+- python's `venv` module
+
+```bash
+# Make a virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install the server in the virtual environment
+pip install -r requirements.txt
+pip install -e .
+```
+
+### Client (frontend)
+
+Requirements:
+- nodejs v20
+- nvm (optional but highly recommended)
+
+```bash
+# Build the client
+cd client
+nvm use
+npm install --include=dev
+npm run build
+```
+
+## Running
+
+From the repository root, start the backend:
+```bash
+pyxyzzy-server config.toml # customize your configuration
+```
+
+From the client/ folder, in a separate terminal, start the frontend:
+```bash
+npm run start # for locally serving the built client on your network
+```
+
 ## Bugs
 
 - ~~Card text overflows card~~ Fixed!
