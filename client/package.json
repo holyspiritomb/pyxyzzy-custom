@@ -5,16 +5,22 @@
   "type": "module",
   "dependencies": {
     "@ataverascrespo/react-textfit": "^1.2.1",
+    "@vitejs/plugin-react": "^4.2.1",
     "bootstrap": "^5.3.3",
     "inter-ui": "^4.0.2",
     "jquery": "^3.7.1",
     "loglevel": "^1.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-compound-timer": "^2.0.5",
     "react-modal": "^3.16.1",
     "react-toastify": "^10.0.5",
     "sass": "^1.71.1",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "vite": "^5.1.7",
+    "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-progress": "^0.0.7",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "scripts": {
     "build": "tsc && vite build",
@@ -49,17 +55,11 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@types/react-modal": "^3.16.3",
-    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "globals": "^15.0.0",
-    "react-compound-timer": "^2.0.5",
-    "typescript-eslint": "^7.5.0",
-    "vite": "^5.1.7",
-    "vite-plugin-checker": "^0.6.4",
-    "vite-plugin-progress": "^0.0.7",
-    "vite-tsconfig-paths": "^4.3.2"
+    "typescript-eslint": "^7.5.0"
   }
 }
