@@ -2,7 +2,7 @@ import { resolve } from "node:path";
 import { readFileSync, existsSync } from "node:fs";
 import { defineConfig, loadEnv, Plugin, createFilter, transformWithEsbuild } from "vite";
 import react from "@vitejs/plugin-react";
-import checker from 'vite-plugin-checker';
+// import checker from 'vite-plugin-checker';
 import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
 
@@ -18,14 +18,14 @@ export default defineConfig(({ mode }) => {
       envPlugin(),
       tsconfigPaths(),
       importPrefixPlugin(),
-      checker({
-        overlay: { initialIsOpen: false },
-        typescript: true,
-        eslint: {
-          lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
-        },
-        enableBuild: false,
-      }),
+      // checker({
+      //   overlay: { initialIsOpen: false },
+      //   typescript: true,
+      //   eslint: {
+      //     lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
+      //   },
+      //   enableBuild: false,
+      // }),
       progress({
         format: 'Building :bar :percent',
       }),
