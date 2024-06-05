@@ -32,6 +32,8 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     &.multi .group-cards {
         background-color: $whiteCardGroup;
         padding: 0 scale-card(5px) scale-card(5px) 0;
+        max-width: 98vw;
+        overflow-x: auto;
     }
     &.multi.selected .group-cards {
         background-color: $activeWhiteCardGroup !important;
