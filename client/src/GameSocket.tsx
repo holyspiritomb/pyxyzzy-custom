@@ -2,6 +2,7 @@ import log from "loglevel"
 import {uniqueId} from "./utils"
 import {AppState, UserSession} from "./state"
 import {AuthenticateResponse, UpdateGame, UpdateOptions, UpdatePlayer, UpdateRoot, UpdateWhiteCard} from "./api"
+import MessageHandler from "./MessageHandler"
 
 /**
  * The UI version is sent to the server in the handshake and compared to see if we are using an outdated frontend from
@@ -281,6 +282,40 @@ export default class GameSocket {
       return
 
     log.debug("UPDATE", data)
+
+    if (data.game && data.game.state === "round_ended"){
+      // this.appState.messageHandler.info("Next round starts in 10 seconds.")
+      const winnerJson = data["game"]["current_round"]["winner"]
+      const winnerPlayerId = winnerJson["player"]
+      const winnerCardId = winnerJson["cards"]
+      const pick = data["game"]["current_round"]["black_card"]["pick_count"] as number
+      const bc = data["game"]["current_round"]["black_card"]["text"] as string
+      const bCard = bc.replaceAll('\\_', "_").replaceAll('\\I', "<i>").replaceAll('\\i', "</i>")
+      const logMsg = "Black card: " + bCard
+      this.appState.messageHandler.log(logMsg)
+      let winnerName = "Player"
+      for (const key of data.players){
+        if (key.id === winnerPlayerId) {
+          winnerName = key.name
+          break
+        }
+      }
+      if (pick === 1) {
+        for (const crd of data.game["current_round"]["white_cards"]){
+          // log.debug("[card]", crd)
+          if (crd[0]["id"] === winnerCardId) {
+            const winTxt = crd[0]["text"] as string
+            const winTxtCleaned = winTxt.replaceAll('\\I', "<i>").replaceAll('\\i', "</i>")
+            const logTxt = winnerName + " won the round for \"" + winTxtCleaned + "\""
+            this.appState.messageHandler.log(logTxt)
+          }
+        }
+      }
+      else {
+        const logTxt = winnerName + " won the round."
+        this.appState.messageHandler.log(logTxt)
+      }
+    }
 
     // reset all game state data when leaving a game
     if (data.game === null && this.gameStateJson.game !== null)
