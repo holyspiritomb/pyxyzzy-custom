@@ -2,7 +2,6 @@ import log from "loglevel"
 import {uniqueId} from "./utils"
 import {AppState, UserSession} from "./state"
 import {AuthenticateResponse, UpdateGame, UpdateOptions, UpdatePlayer, UpdateRoot, UpdateWhiteCard} from "./api"
-import MessageHandler from "./MessageHandler"
 
 /**
  * The UI version is sent to the server in the handshake and compared to see if we are using an outdated frontend from
@@ -283,40 +282,6 @@ export default class GameSocket {
 
     log.debug("UPDATE", data)
 
-    if (data.game && data.game.state === "round_ended"){
-      // this.appState.messageHandler.info("Next round starts in 10 seconds.")
-      const winnerJson = data["game"]["current_round"]["winner"]
-      const winnerPlayerId = winnerJson["player"]
-      const winnerCardId = winnerJson["cards"]
-      const pick = data["game"]["current_round"]["black_card"]["pick_count"] as number
-      const bc = data["game"]["current_round"]["black_card"]["text"] as string
-      const bCard = bc.replaceAll('\\_', "_").replaceAll('\\I', "<i>").replaceAll('\\i', "</i>")
-      const logMsg = "Black card: " + bCard
-      this.appState.messageHandler.log(logMsg)
-      let winnerName = "Player"
-      for (const key of data.players){
-        if (key.id === winnerPlayerId) {
-          winnerName = key.name
-          break
-        }
-      }
-      if (pick === 1) {
-        for (const crd of data.game["current_round"]["white_cards"]){
-          // log.debug("[card]", crd)
-          if (crd[0]["id"] === winnerCardId) {
-            const winTxt = crd[0]["text"] as string
-            const winTxtCleaned = winTxt.replaceAll('\\I', "<i>").replaceAll('\\i', "</i>")
-            const logTxt = winnerName + " won the round for \"" + winTxtCleaned + "\""
-            this.appState.messageHandler.log(logTxt)
-          }
-        }
-      }
-      else {
-        const logTxt = winnerName + " won the round."
-        this.appState.messageHandler.log(logTxt)
-      }
-    }
-
     // reset all game state data when leaving a game
     if (data.game === null && this.gameStateJson.game !== null)
       this.gameStateJson = {}
@@ -336,6 +301,54 @@ export default class GameSocket {
       for (const event of data.events) {
         log.debug("EVENT", event)
         this.appState!.handleEvent(event)
+      }
+    }
+
+    if (data.game) {
+      log.debug("[UPDATE GAME]", data)
+      if (data.game.state) {
+        log.debug("GAME STATE: ", data.game.state)
+        if (data.game.state === "playing") {
+          const blackCardText = data["game"]["current_round"]["black_card"]["text"] as string
+          const blackCardTextCleaned = blackCardText.replaceAll('\\_', "_").replaceAll('\\I', "\"").replaceAll('\\i', "\"")
+          const logMsg = "Black card: " + blackCardTextCleaned
+          log.debug(logMsg)
+          this.appState.messageHandler.log(logMsg)
+        } else if (data.game.state === "round_ended"){
+          // this.appState.messageHandler.info("Next round starts in 10 seconds.")
+          const winnerJson = data["game"]["current_round"]["winner"]
+          const winnerPlayerId = winnerJson["player"]
+          const winnerCardId = winnerJson["cards"]
+          log.debug("WINNER", winnerJson)
+          if (data.players) {
+            log.debug("PLAYERS", data.players)
+            let winnerName = "Player"
+            for (const key of data.players){
+              if (key.id === winnerPlayerId) {
+                winnerName = key.name
+                break
+              }
+            }
+            const pickCount = data["game"]["current_round"]["black_card"]["pick_count"] as number
+            if (pickCount && pickCount === 1) {
+              let winningCardText = "A winning card."
+              for (const whiteCard of data.game["current_round"]["white_cards"]){
+                if (whiteCard[0]["id"] === winnerCardId) {
+                  winningCardText = whiteCard[0]["text"] as string
+                  break
+                }
+              }
+              const winningCardTextCleaned = winningCardText.replaceAll('\\I', "<i>").replaceAll('\\i', "</i>")
+              const logMsg = winnerName + " won the round for \"" + winningCardTextCleaned + "\""
+              log.debug(logMsg)
+              this.appState.messageHandler.log(logMsg)
+            } else {
+              const logMsg = winnerName + " won the round."
+              log.debug(logMsg)
+              this.appState.messageHandler.log(logMsg)
+            }
+          }
+        }
       }
     }
   }
