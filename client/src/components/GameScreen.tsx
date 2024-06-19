@@ -125,21 +125,20 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
     action = <>Waiting for {state.cardCzar.name} to choose a winner&hellip;</>
   } else if (state.gameWinner && (state.state === "round_ended" || state.state === "game_ended")) {
     const name = state.gameWinner.id === user.id ? "You" : state.gameWinner.name
-    const bcPick = state.currentRound.blackCard.pickCount;
+    const pickCount = state.currentRound.blackCard.pickCount;
     const winningCardsId = state.currentRound.winningCardsId;
     const whiteCards = state.currentRound.whiteCards;
-    const winningWhiteCardText = findWinningCardText(bcPick, winningCardsId, whiteCards);
+    const winningWhiteCardText = findWinningCardText(pickCount, winningCardsId, whiteCards);
     action = <>{name} won the game{winningWhiteCardText}</>
   } else if (state.state === "game_ended") {
     action = <>The game ended.</>
   } else if (state.state === "round_ended") {
     if (state.roundWinner) {
       const name = state.roundWinner.id === user.id ? "You" : state.roundWinner.name
-      // const bcText = state.currentRound.blackCard.text;
-      const bcPick = state.currentRound.blackCard.pickCount;
+      const pickCount = state.currentRound.blackCard.pickCount;
       const winningCardsId = state.currentRound.winningCardsId;
       const whiteCards = state.currentRound.whiteCards;
-      const winningWhiteCardText = findWinningCardText(bcPick, winningCardsId, whiteCards);
+      const winningWhiteCardText = findWinningCardText(pickCount, winningCardsId, whiteCards);
       action = <>{name} won the round{winningWhiteCardText} Next round starts in {state.options.round_end_time} seconds.</>
     } else {
       action = <>The round has been cancelled. Next round starts in {state.options.round_end_time} seconds.</>
