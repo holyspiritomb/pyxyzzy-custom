@@ -103,15 +103,39 @@ const OptionsInput = ({ name, type, ...attrs }: OptionsInputProps) => {
 
   if (type === "card_packs") {
     const packs = fieldValue as string[]
+    const allPacks = config.card_packs.map(pack => pack.id)
+    const [allPacksSet, setAllPacks] = useState<boolean>(false)
 
     const handlePackChange = (packId: string) => (forceSave: boolean) => async (e: ChangeEvent<HTMLInputElement>) => {
       // add or remove the pack
       const newPacks = e.target.checked ? packs.concat(packId) : packs.filter(id => id !== packId)
+      if (newPacks.length === allPacks.length) {
+        setAllPacks(true)
+      } else {
+        setAllPacks(false)
+      }
+      await doUpdate(forceSave, newPacks)
+    }
+
+    const handleSelectAll = () => (forceSave: boolean) => async (e: ChangeEvent<HTMLInputElement>) => {
+      const newPacks = e.target.checked ? allPacks : packs
+      if (newPacks.length === allPacks.length && e.target.checked) {
+        setAllPacks(true)
+      } else {
+        setAllPacks(false)
+      }
       await doUpdate(forceSave, newPacks)
     }
   
     return (
       <>
+        <OptionsInputField
+          type="checkbox"
+          name={`cardpacks-all`}
+          value={allPacksSet}
+          handleChange={handleSelectAll()}
+          label="Select All"
+          title="EVERY SINGLE ONE" />
         {config.card_packs.map(pack => (
           <OptionsInputField
             key={pack.id}
