@@ -6,10 +6,6 @@ enum Color {
 
 type ThemeColor = keyof typeof Color
 
-interface ThemeProps {
-    color: ThemeColor,
-}
-
 export function getStoredTheme() {
   return localStorage.getItem('theme') as ThemeColor; // ThemeColor || null
 }
@@ -18,11 +14,12 @@ export const getPreferredTheme = () => {
   const storedTheme = getStoredTheme();
   if (storedTheme) {
     return storedTheme;
+  } else {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-export const getCurrTheme = () => {
+export const getCurrentTheme = () => {
     return document.documentElement.getAttribute('data-bs-theme') as ThemeColor;
 };
 
@@ -36,11 +33,11 @@ export function setTheme(color: ThemeColor) {
 
 const ThemeButton = () => {
   const toggleTheme = () => {
-    const currTheme = getCurrTheme();
+    const currentTheme = getCurrentTheme();
     const storedTheme = getStoredTheme();
-    const newTheme = currTheme === "dark" ? "light": "dark";
+    const newTheme = currentTheme === "dark" ? "light": "dark";
     console.log("Theme toggle clicked.")
-    console.log(`Current theme is ${currTheme}. Stored theme is ${storedTheme}. New theme will be ${newTheme}.`)
+    console.log(`Current theme is ${currentTheme}. Stored theme is ${storedTheme}. New theme will be ${newTheme}.`)
     setStoredTheme(newTheme);
     setTheme(newTheme);
   }
