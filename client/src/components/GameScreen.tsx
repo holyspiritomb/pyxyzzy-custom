@@ -125,11 +125,15 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
     action = <>Waiting for {state.cardCzar.name} to choose a winner&hellip;</>
   } else if (state.gameWinner && (state.state === "round_ended" || state.state === "game_ended")) {
     const name = state.gameWinner.id === user.id ? "You" : state.gameWinner.name
-    const pickCount = state.currentRound.blackCard.pickCount;
-    const winningCardsId = state.currentRound.winningCardsId;
-    const whiteCards = state.currentRound.whiteCards;
-    const winningWhiteCardText = findWinningCardText(pickCount, winningCardsId, whiteCards);
-    action = <>{name} won the game{winningWhiteCardText}</>
+    // if (state.currentRound) {
+    //   const pickCount = state.currentRound.blackCard.pickCount;
+    //   const winningCardsId = state.currentRound.winningCardsId;
+    //   const whiteCards = state.currentRound.whiteCards;
+    //   const winningWhiteCardText = findWinningCardText(pickCount, winningCardsId, whiteCards);
+    //   action = <>{name} won the game{winningWhiteCardText}</>
+    // } else {
+      action = <>{name} won the game.</>
+    // }
   } else if (state.state === "game_ended") {
     action = <>The game ended.</>
   } else if (state.state === "round_ended") {
