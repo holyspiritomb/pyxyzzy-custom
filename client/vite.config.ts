@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 // import checker from 'vite-plugin-checker';
 import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
+import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
 
 export default defineConfig(({ mode }) => {
   setEnv(mode);
@@ -18,6 +19,7 @@ export default defineConfig(({ mode }) => {
       envPlugin(),
       tsconfigPaths(),
       importPrefixPlugin(),
+      gitCommitHashPlugin({isLongHash: true}),
       // checker({
       //   overlay: { initialIsOpen: false },
       //   typescript: true,

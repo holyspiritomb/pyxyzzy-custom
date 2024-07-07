@@ -19,6 +19,7 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-git-commit-hash": "^1.0.7",
     "vite-plugin-progress": "^0.0.7",
     "vite-tsconfig-paths": "^4.3.2"
   },
