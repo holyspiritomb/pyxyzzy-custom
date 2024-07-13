@@ -68,7 +68,7 @@ const LoginScreen = () => {
     }
   }
 
-  const commitUrl = "https://gitlab.com/holyspiritomb/pyxyzzy-custom/-/" + GIT_COMMIT_HASH
+  const commitUrl = "https://gitlab.com/holyspiritomb/pyxyzzy-custom/-/commit/" + GIT_COMMIT_HASH
 
 
   return (
