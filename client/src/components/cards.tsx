@@ -1,6 +1,6 @@
 import React, {ComponentType, useEffect, useState} from "react"
 import { createRoot } from "react-dom/client"
-import {Textfit} from "@ataverascrespo/react-textfit"
+import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 import "./cards.scss"
 import {Lock} from "../utils"
 import {AbstractCard, BlackCard, WhiteCard} from "../state"

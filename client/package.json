@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@ataverascrespo/react-textfit": "^1.2.1",
+    "@ataverascrespo/react18-ts-textfit": "^1.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "bootstrap": "^5.3.3",
     "inter-ui": "^4.0.2",
