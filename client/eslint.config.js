@@ -7,6 +7,7 @@ import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactHooks from 'eslint-plugin-react-hooks';
+import { fixupPluginRules } from "@eslint/compat";
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -17,7 +18,7 @@ export default tseslint.config(
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react-refresh': reactRefresh,
-      'react-hooks': reactHooks,
+      'react-hooks': fixupPluginRules(reactHooks),
     },
     languageOptions: {
       parser: tseslint.parser,
