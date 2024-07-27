@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@ataverascrespo/react-textfit": "^1.2.1",
     "@ataverascrespo/react18-ts-textfit": "^1.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "bootstrap": "^5.3.3",
@@ -17,7 +16,7 @@
     "react-modal": "^3.16.1",
     "react-toastify": "^10.0.5",
     "sass": "^1.71.1",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
     "vite-plugin-checker": "^0.7.2",
     "vite-plugin-git-commit-hash": "^1.0.7",
@@ -30,7 +29,7 @@
     "dev:clean": "npm run dev -- --force",
     "lint": "eslint \"./src/**/*.{ts,tsx,js,jsx}\"",
     "preview": "vite preview --host --port 7070",
-    "serve": "npm run preview",
+    "serve": "yarn run preview",
     "start": "yes | npx serve -p 7070 dist",
     "test": "echo \"Tests not implemented.\""
   },
@@ -54,15 +53,15 @@
   "devDependencies": {
     "@eslint/compat": "^1.1.1",
     "@types/eslint": "^9.6.0",
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-modal": "^3.16.3",
-    "eslint": "^9.7.0",
+    "eslint": "9.8.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
-    "globals": "^15.1.0",
-    "typescript-eslint": "^7.5.0"
+    "globals": "^15.8.0",
+    "typescript-eslint": "^7.17.0"
   }
 }
