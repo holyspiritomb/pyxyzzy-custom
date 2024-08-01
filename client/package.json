@@ -26,7 +26,6 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite --host",
-    "dev:clean": "npm run dev -- --force",
     "lint": "eslint \"./src/**/*.{ts,tsx,js,jsx}\"",
     "preview": "vite preview --host --port 7070",
     "serve": "yarn run preview",
@@ -62,6 +61,6 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.8.0",
-    "typescript-eslint": "^7.17.0"
+    "typescript-eslint": "8.0.0"
   }
 }
