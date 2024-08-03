@@ -53,7 +53,7 @@ export default tseslint.config(
       "prefer-const": 1,
       "no-extra-semi": 1,
       "no-case-declarations": 0,
-      "react-refresh/only-export-components": 1,
+      "react-refresh/only-export-components": 0,
       "react/jsx-equals-spacing": 1,
       "react/jsx-indent": [1,2],
       "react/no-invalid-html-attribute": 2,
