@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useContext, useEffect, useState} from "react"
+import {ChangeEvent, FormEvent, useContext, useEffect, useState} from "react"
 import Modal from "react-modal"
 import {toast} from "react-toastify"
 import "./GameList.scss"

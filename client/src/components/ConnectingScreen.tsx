@@ -1,4 +1,3 @@
-import React from "react"
 import Loader from "./Loader"
 
 const CONNECTING_TEXTS: { [key: string]: string } = {
