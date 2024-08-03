@@ -28,8 +28,6 @@ const processCardText = (text: string, blackCard: boolean) => {
           <span className={`word ${currentHasBlank ? "blank" : ""}`} key={processedText.length}>{currentWord}</span>
         )
       } else {
-      // idk how to fix this error so i'm disabling it
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         processedText.push(...currentWord)
       }
       currentWord = []
@@ -64,8 +62,6 @@ const processCardText = (text: string, blackCard: boolean) => {
     }
   }
   endWord()
-  // idk how to fix this error so i'm disabling it
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return processedText
 }
 
@@ -119,8 +115,6 @@ const computeCardTextSize = async <C extends AbstractCard>(CardComponent: Compon
     }
     for (let i = 0; i < 10; i++) {
       // render the component to compute text height
-      // the function is run before the await returns, so ignore the warning:
-      // eslint-disable-next-line no-loop-func
       await new Promise<void>(resolve => {
         // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
         const theCard = cardRoot.render(<CardWithCallbackAfterRender/>);
@@ -192,7 +186,7 @@ export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps
     //<div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
       //<div className="text" style={{fontSize: `${textSize * scale}px`}}>
   return (
-    <div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
+    <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light">
       <Textfit
           className="textfit text"
           max={18}
