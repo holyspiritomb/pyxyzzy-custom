@@ -101,11 +101,12 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
             flex-wrap: wrap;
             line-height: 1.2;
             margin-right: -0.6ch;
-            font-family:inherit;
+            font-family: inherit;
 
             > div[style*="block"] {
               display: flex !important;
               flex-wrap: wrap;
+              font-size: inherit;
             }
 
             .word {
@@ -113,7 +114,8 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
                 flex-wrap: nowrap;
                 flex: none;
                 margin-right: 0.6ch;
-                font-family:inherit;
+                font-family: inherit;
+                font-size: inherit;
 
                 &.blank {
                     flex: 1 0 auto;
@@ -130,6 +132,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         }
         .pack-name {
             background-image: url("../images/card-logo-black.svg");
+            font-size:0.10em;
         }
     }
     .text {

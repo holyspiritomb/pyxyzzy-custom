@@ -46,6 +46,9 @@
         margin: 0;
         padding: 0 5px;
         text-align: center;
+        font-family: var(--bs-body-font-family);
+        font-size: calc(var(--bs-body-font-size) * 1.2);
+        font-weight: 400;
     }
     .cards {
         display: flex;
@@ -76,6 +79,9 @@
             padding: 0 10px;
             text-align: center;
             text-transform: uppercase;
+            font-family: var(--bs-body-font-family);
+            font-size: var(--bs-body-font-size);
+            font-weight: 400;
         }
     }
 }
