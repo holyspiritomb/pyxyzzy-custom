@@ -48,7 +48,13 @@ export default tseslint.config(
       "@typescript-eslint/no-unsafe-call": 1,
       "@typescript-eslint/no-unsafe-member-access": 0,
       "@typescript-eslint/no-unsafe-return": 0,
-      "@typescript-eslint/no-unused-vars": 1,
+      "@typescript-eslint/no-unused-vars": [
+        1,
+        {
+          "caughtErrorsIgnorePattern": "^_",
+          "argsIgnorePattern": "^[e|_]"
+        },
+      ],
       "@typescript-eslint/unbound-method": 1,
       "prefer-const": 1,
       "no-extra-semi": 1,
