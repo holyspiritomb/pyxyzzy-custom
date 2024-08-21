@@ -183,6 +183,7 @@ export class GameState {
   playerById(id: string): Player {
     const player = this.players.find(player => player.id === id)
     // TODO: see if this can be hit e.g. if the round winner leaves
+    // answer: this happens when bots leave immediately at the end of a game
     if (!player)
       throw new Error("player not found")
     return player
@@ -345,6 +346,8 @@ export class AppState {
         )
         break
       case "players_idle":
+        // TODO: Figure out how to make this call Safe(tm)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} key={uniqueId()} />), ["was", "were"])
         this.messageHandler.warning(
           <>
