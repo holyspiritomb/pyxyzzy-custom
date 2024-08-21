@@ -1,10 +1,4 @@
-enum Color {
-    dark = "dark",
-    light = "light",
-    auto = "auto",
-}
-
-type ThemeColor = keyof typeof Color
+type ThemeColor = "dark" | "light" | "auto"
 
 export function getStoredTheme() {
   return localStorage.getItem('theme') as ThemeColor; // ThemeColor || null
