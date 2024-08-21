@@ -36,15 +36,11 @@ export default tseslint.config(
       }
     },
     rules: {
-      "@typescript-eslint/no-unsafe-function-type": 1,
-      "@typescript-eslint/no-empty-object-type": 1,
       "@typescript-eslint/no-explicit-any": 0,
-      "@typescript-eslint/no-misused-promises": 1,
       "@typescript-eslint/no-this-alias": 0,
       "@typescript-eslint/no-unnecessary-type-assertion": 0,
       "@typescript-eslint/no-unsafe-argument": 0,
       "@typescript-eslint/no-unsafe-assignment": 0,
-      "@typescript-eslint/no-unsafe-call": 1,
       "@typescript-eslint/no-unsafe-member-access": 0,
       "@typescript-eslint/no-unsafe-return": 0,
       "@typescript-eslint/no-unused-vars": [
@@ -54,16 +50,11 @@ export default tseslint.config(
           "argsIgnorePattern": "^[e|_]"
         },
       ],
-      "@typescript-eslint/unbound-method": 1,
-      "prefer-const": 1,
       "no-extra-semi": 1,
       "no-case-declarations": 0,
-      "react-refresh/only-export-components": 0,
       "react/jsx-equals-spacing": 1,
       "react/jsx-indent": [1,2],
       "react/no-invalid-html-attribute": 2,
-      'react/no-unsafe': 0,
-      "react/prop-types": 1,
     },
   },
 );
