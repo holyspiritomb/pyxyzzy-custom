@@ -9,10 +9,11 @@ interface ChatMessageProps {
   key: number
 }
 
-const ChatMessageView = ({ message }: ChatMessageProps, key: number) => {
+const ChatMessageView = ({ message }: ChatMessageProps) => {
   // TODO: better timestamp formatting?
+  const msgKey = uniqueId()
   return (
-    <div className={`message type-${message.type}`}>
+    <div className={`message type-${message.type}`} key={msgKey}>
       <span className="timestamp">[{message.time.toLocaleTimeString()}]</span> {message.contents}
     </div>
   )
@@ -69,6 +70,8 @@ const ChatView = ({ chatMessages }: ChatViewProps) => {
             {chatMessages.map(message => <ChatMessageView message={message} key={uniqueId()}/>)}
           </div>
         </ChatContext.Provider>
+        {/* TODO: eslint says handleSubmit as arg is a misused promise */}
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <form className="field" onSubmit={handleSubmit}>
           <input
             type="text"
