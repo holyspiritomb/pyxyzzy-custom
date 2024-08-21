@@ -7,6 +7,7 @@ import {BlackCardView, WhiteCardGroup, WhiteCardPlaceholder, WhiteCardView} from
 import {GameState, WhiteCard} from "../state"
 import PlayersView from "./PlayersView"
 import ThemeButton from "./ThemeToggle"
+import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 
 // minimum scale to render cards at. if this doesn't fit, well, you're screwed
 const MINIMUM_CARD_SCALE = 0.7
@@ -55,6 +56,8 @@ const GameControls = () => {
   let controls = null
   if (game.isHost) {
     controls = (
+      // TODO: eslint says that handleStartStop as an arg is a misused promise
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       <button type="button" onClick={handleStartStop} disabled={acting}>
         {game.running ? "Stop game" : "Start game"}
       </button>
@@ -69,10 +72,14 @@ const GameControls = () => {
       <ThemeButton />
       <div className="game-info">
         <div className="game-code">Game <b>{game.code}</b></div>
+        {/* TODO: eslint says handleLeave as an arg is a misused promise */}
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <button type="button" onClick={handleLeave} disabled={acting}>Leave game</button>
       </div>
       <div className="user-info">
-        <div className="user-name">Logged in as <b>{user.name}</b></div>
+        <Textfit className="user-name" min={5} max={9} mode="single">Logged in as <b>{user.name}</b></Textfit>
+        {/* TODO: eslint says handleLogout as an arg is a misused promise */}
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <button type="button" onClick={handleLogout} disabled={acting}>Log out</button>
       </div>
     </div>
@@ -159,6 +166,8 @@ interface TableViewProps {
   selectPos(pos: number): void
 }
 
+// TODO: eslint says unselectCard and selectPos are unbound methods here
+// eslint-disable-next-line @typescript-eslint/unbound-method
 const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard, selectPos }: TableViewProps) => {
   const app = useContext(AppStateContext)!
   const config = useContext(ConfigContext)!
@@ -231,7 +240,9 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
       const won = game.state === "round_ended" && game.currentRound.winningCardsId === group[0].id
       const selected = selectedWhitePos === pos
       const actions = selected ? (
-        <button type="button" disabled={acting} onClick={() => confirmJudge()}>Confirm selection</button>
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        <button type="button" disabled={acting} onClick={() => confirmJudge()}>Confirm selection</button> // TODO: eslint reports arg to onClick is a misused promise
+
       ) : null
       return (
         <WhiteCardGroup
@@ -267,6 +278,8 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
     })
     const allSelected = chosenWhites.every(card => card !== null)
     const actions = game.shouldPlayWhiteCards ? (
+      // TODO: eslint says this arg to onClick is a misused promise
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       <button type="button" onClick={() => confirmPlay()} disabled={acting || !allSelected}>
         {groupSize > 1 ? "Confirm selections" : "Confirm selection"}
       </button>
@@ -342,30 +355,37 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
   }
 
   static getDerivedStateFromProps(props: GameScreenProps, state: GameScreenState) {
+    // TODO: props validation
+    // eslint-disable-next-line react/prop-types
     const {game} = props
     let newState = {}
     // clear chosen white cards if not playing any
+    // TODO: props validation
+    // eslint-disable-next-line react/prop-types
     const roundIdIfRunning = game.running ? game.currentRound.id : null
+    // TODO: props validation
+    // eslint-disable-next-line react/prop-types
     if (roundIdIfRunning !== state.currentRoundId || !game.shouldPlayWhiteCards) {
       newState = {
-        ...newState,
-        chosenWhites: game.running ? Array(game.currentRound.pickCount).fill(null) : null,
+        ...newState, // eslint-disable-next-line react/prop-types
+        chosenWhites: game.running ? Array(game.currentRound.pickCount).fill(null) : null, // TODO: props validation
         currentRoundId: roundIdIfRunning,
       }
     }
     // reset chosen white card as this slot is used for different purposes in different states
-    if (game.state !== state.currentGameState) {
+    // TODO: props validation
+    if (game.state !== state.currentGameState) { // eslint-disable-line react/prop-types
       newState = {
         ...newState,
-        selectedWhitePos: game.state === "playing" ? 0 : null,
-        currentGameState: game.state,
+        selectedWhitePos: game.state === "playing" ? 0 : null, // eslint-disable-line react/prop-types
+        currentGameState: game.state, // eslint-disable-line react/prop-types
       }
     }
     return newState
   }
 
-  render() {
-    const {game} = this.props
+  render() { // TODO: props validation
+    const {game} = this.props // eslint-disable-line react/prop-types
 
     const unselectCard = (posToClear: number) => {
       // unselect the card at the position
@@ -383,13 +403,15 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
       // can't reselect a card
       if (chosenWhites!.some(chosen => chosen && chosen.id === card.id))
         return
+      // TODO: props validation
       // ensure a valid slot is selected
-      if (!game.running || selectedWhitePos === null || selectedWhitePos >= game.currentRound.pickCount)
+      if (!game.running || selectedWhitePos === null || selectedWhitePos >= game.currentRound.pickCount) // eslint-disable-line react/prop-types
         return
       // put the card in place
       const newChosenWhites = [...chosenWhites!]
       newChosenWhites[selectedWhitePos] = card
       // find a free slot, if any
+      // eslint-disable-next-line react/prop-types
       const nextFreePos = range(selectedWhitePos + 1, game.currentRound.pickCount)
           .concat(range(0, selectedWhitePos))
           .find(pos => newChosenWhites[pos] === null) ?? null
@@ -400,6 +422,8 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
     }
 
     return (
+      // TODO: props validation
+      // eslint-disable-next-line react/prop-types
       <div className={`in-game game-state-${game.state} ${game.shouldJudge ? "should-judge" : ""} ${game.shouldPlayWhiteCards ? "should-play" : ""}`}>
         <GameControls />
         <GameOptions />
@@ -410,13 +434,15 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
           <TableView
                 chosenWhites={this.state.chosenWhites!}
                 selectedWhitePos={this.state.selectedWhitePos}
-                windowWidth={this.props.windowWidth}
+                // TODO: props validation
+                windowWidth={this.props.windowWidth} // eslint-disable-line
                 unselectCard={unselectCard}
                 selectPos={pos => this.setState({selectedWhitePos: pos})} />
           <PlayersView />
           <HandView
                 chosenWhites={this.state.chosenWhites!}
-                windowWidth={this.props.windowWidth}
+                // TODO: props validation
+                windowWidth={this.props.windowWidth} // eslint-disable-line
                 selectCard={selectCard} />
         </div>
       </div>
