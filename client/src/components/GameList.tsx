@@ -55,7 +55,8 @@ const GameListCard = ({ game, onJoin }: { game: GameListGame, onJoin: (code: str
     </div>
   )
 }
-
+// TODO: Learn how GameList function works re: chatMessages
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
   const [games, setGames] = useState<readonly GameListGame[] | "error" | null>(null)
   const [filter, setFilter] = useState("")
@@ -83,7 +84,7 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
   }, [forcedUpdate, app, mounted.is])
 
   const handleLogout = handleAllErrorsAsUnknown(() => app.logout())
-
+  // TODO: eslint thinks handleJoinGame is being misused. refactor?
   const handleJoinGame = async (code: string, password: string = "") => {
     try {
       await app.joinGame(code, password)
@@ -141,6 +142,8 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
         </div>
       )
     } else {
+      // TODO: eslint says that handleJoinGame as an argument is a misused promise
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       const gameCards = filtered.map(game => <GameListCard key={game.code} game={game} onJoin={handleJoinGame} />)
       for (let i = 0; i < 12; i++) {
         gameCards.push(<div className="game-spacer" key={`spacer ${i}`} />)
@@ -157,13 +160,19 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
     <div className="game-list">
       <div className="nav">
         <div className="create-game">
+          {/* TODO: eslint says that handleCreateGame as an argument is a misused promise */}
+          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <button type="button" onClick={handleCreateGame}>Create game</button>
         </div>
         <div className="join-private">
+          {/* TODO: eslint says that handleJoinGame as an argument is a misused promise */}
+          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <CodeJoinForm onJoin={handleJoinGame} />
         </div>
         <div className="user-info">
           <div className="user-name">Logged in as <b>{user.name}</b></div>
+          {/* TODO: eslint says that handleLogout as an argument is a misused promise */}
+          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <button type="button" onClick={handleLogout}>Log out</button>
         </div>
       </div>
@@ -185,6 +194,8 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
         onRequestClose={() => !acting && setJoinModalCode(null)}
         shouldCloseOnOverlayClick={!acting}>
         <p className="help-text">The game requires a password to join.</p>
+        {/* TODO: eslint says that handleModalJoin as an argument is a misused promise */}
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <form onSubmit={handleModalJoin}>
           <input
             type="password"
