@@ -6,7 +6,6 @@ import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactHooks from 'eslint-plugin-react-hooks';
-import { fixupPluginRules } from "@eslint/compat";
 
 export default tseslint.config(
   eslint.configs.recommended,
