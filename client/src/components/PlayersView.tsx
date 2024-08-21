@@ -2,6 +2,7 @@ import {useContext} from "react"
 import "./PlayersView.scss"
 import {GameContext} from "./contexts"
 import {Player} from "../state"
+import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 
 interface PlayerViewProps {
   player: Player
@@ -35,10 +36,12 @@ const PlayerView = ({player}: PlayerViewProps) => {
   }
 
   const leader = game.players.every(other => other.score <= player.score)
+  const playersArray = game.players
+  const playersNum = playersArray.length as number
 
   return (
-    <div className={`player ${thinking ? "thinking" : ""} ${winner ? "winner" : ""} ${czar ? "is-czar": ""}`}>
-      <div className="name">{player.name}</div>
+    <div className={`player players-${playersNum} ${thinking ? "thinking" : ""} ${winner ? "winner" : ""} ${czar ? "is-czar": ""}`}>
+      <Textfit className="name" min={3} max={10} mode="single">{player.name}</Textfit>
       <div className={`score ${leader ? "leader" : ""}`}>
         {player.score} {player.score === 1 ? "point" : "points"}
       </div>
