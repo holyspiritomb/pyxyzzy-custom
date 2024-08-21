@@ -8,9 +8,22 @@ import ThemeButton from "./ThemeToggle"
 const LoginScreen = () => {
   const config = useContext(ConfigContext)!
   const app = useContext(AppStateContext)!
+  
+  type PreviousName = string;
+
+  function getPreviousName(): PreviousName {
+    const prevName = localStorage.getItem("name");
+    if (prevName) {
+      return prevName as PreviousName
+    } else {
+      return "" as PreviousName
+    }
+  }
+
+  const storedName = getPreviousName()
 
   const [loggingIn, setLoggingIn] = useState(false)
-  const [name, setName] = useState("")
+  const [name, setName] = useState(storedName)
   const [loginError, setLoginError] = useState(null)
 
   const mounted = useMounted()
@@ -19,7 +32,7 @@ const LoginScreen = () => {
   if (name.length < config.users.username.length.min)
     nameProblems.push(`Your name must be at least ${config.users.username.length.min} characters.`)
   if (new RegExp(`[^${config.users.username.characters}]`).test(name))
-    nameProblems.push("Your name can only contain letters, numbers, dashes, underscores and spaces.")
+    nameProblems.push("Your name can only contain letters, numbers, dashes, underscores, spaces and some unicode abuse.")
   if (name.startsWith(" "))
     nameProblems.push("Your name can't start with a space.")
   if (name.endsWith(" "))
@@ -57,16 +70,6 @@ const LoginScreen = () => {
       </ul>
     )
   }
-  type PreviousName = string | undefined;
-
-  function getPreviousName(): PreviousName {
-    const prevName = localStorage.getItem("name");
-    if (!prevName) {
-      return "Name" as PreviousName
-    } else {
-      return prevName as PreviousName
-    }
-  }
 
   const commitUrl = "https://gitlab.com/holyspiritomb/pyxyzzy-custom/-/commit/" + GIT_COMMIT_HASH
 
@@ -80,6 +83,8 @@ const LoginScreen = () => {
           Pretend You&apos;re Xyzzy</ExternalLink> but completely rewritten for a modern experience.
       </p>
       <p className="help-text">Choose a name to start playing.</p>
+      {/* TODO: eslint says handleLogin is a misused promise */}
+      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={handleLogin}>
         <input
               type="text"
@@ -88,6 +93,7 @@ const LoginScreen = () => {
               disabled={loggingIn}
               maxLength={config.users.username.length.max}
               value={name}
+              // defaultValue={storedName}
               onChange={(e) => setName(e.target.value)} />
         <button type="submit" disabled={!canSubmit}>Play</button>
       </form>
