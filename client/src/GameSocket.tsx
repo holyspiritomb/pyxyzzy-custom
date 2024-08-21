@@ -203,7 +203,8 @@ export default class GameSocket {
       this.reconnectDelay = Math.min(MAX_RECONNECT_INTERVAL, INITIAL_RECONNECT_INTERVAL * 2 ** this.connectAttempts)
       this.updateReconnectionTimer()
     })
-
+    // TODO: eslint reports a misused promise
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     ws.addEventListener("message", async (e: MessageEvent) => {
       // if we are closing the connection, ignore messages
       if (this.closeRequested)
