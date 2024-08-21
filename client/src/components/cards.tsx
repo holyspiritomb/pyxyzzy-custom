@@ -1,8 +1,8 @@
-import React, {ComponentType, useEffect, useState} from "react"
-import { createRoot } from "react-dom/client"
+// import React, {ComponentType, useEffect, useState} from "react"
+// import { createRoot } from "react-dom/client"
 import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 import "./cards.scss"
-import {Lock} from "../utils"
+// import {Lock} from "../utils"
 import {AbstractCard, BlackCard, WhiteCard} from "../state"
 import log from "loglevel";
 
@@ -65,106 +65,105 @@ const processCardText = (text: string, blackCard: boolean) => {
   return processedText
 }
 
-const MINIMUM_TEXT_SIZE = 4
-const MAXIMUM_TEXT_SIZE = 18
+// const MINIMUM_TEXT_SIZE = 4
+// const MAXIMUM_TEXT_SIZE = 18
 
 // card text sizes are cached here (as promises, so that if the size is queried before the computation finishes, we can
 // just await the previous calculation and not start another)
-const cardTextSizeCache: { [key: string]: Promise<number> | number } = {}
+// const cardTextSizeCache: { [key: string]: Promise<number> | number } = {}
 
 // since the #card-size-measurement container is shared by the code below, and the rendering process requires an
 // async function, we must lock access to the container
-const fontSizeComputerLock = new Lock()
+// const fontSizeComputerLock = new Lock()
 
 interface CardProps<C extends AbstractCard> {
   card: C
-  givenTextSize?: number
+  // givenTextSize?: number
   scale?: number
 }
 
-const getCachedTextSize = (card: AbstractCard) => {
-  if (!(card.fontSizeCacheKey in cardTextSizeCache))
-    return null
-  const size = cardTextSizeCache[card.fontSizeCacheKey]
-  return typeof size === "number" ? size : null
-}
+// const getCachedTextSize = (card: AbstractCard) => {
+//   if (!(card.fontSizeCacheKey in cardTextSizeCache))
+//     return null
+//   const size = cardTextSizeCache[card.fontSizeCacheKey]
+//   return typeof size === "number" ? size : null
+// }
 
-const computeCardTextSize = async <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C) => {
-  if (card.fontSizeCacheKey in cardTextSizeCache) {
-    const size = cardTextSizeCache[card.fontSizeCacheKey]
-    return typeof size === "number" ? size : await size
-  }
-    const container = document.getElementById("card-size-measurement")!
-    const cardRoot = createRoot(container!)
-    container.style.display = "block"
+// const computeCardTextSize = async <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C) => {
+//   if (card.fontSizeCacheKey in cardTextSizeCache) {
+//     const size = cardTextSizeCache[card.fontSizeCacheKey]
+//     return typeof size === "number" ? size : await size
+//   }
+//     const container = document.getElementById("card-size-measurement")!
+//     const cardRoot = createRoot(container!)
+//     container.style.display = "block"
 
-  const promise = fontSizeComputerLock.acquire(async () => {
+//   const promise = fontSizeComputerLock.acquire(async () => {
 
-    let currentSize = MAXIMUM_TEXT_SIZE
-    let bestFitting = MINIMUM_TEXT_SIZE
-    // binary search to find optimal size
-    let lowerBound = MINIMUM_TEXT_SIZE
-    let upperBound = MAXIMUM_TEXT_SIZE
-    function CardWithCallbackAfterRender() {
-      useEffect(() => {
-        log.info("card rendered", card);
-      });
-      return (
-        <CardComponent card={card} givenTextSize={currentSize}/>
-      )
-    }
-    for (let i = 0; i < 10; i++) {
-      // render the component to compute text height
-      await new Promise<void>(resolve => {
-        // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
-        const theCard = cardRoot.render(<CardWithCallbackAfterRender/>);
-        resolve(theCard);
-      })
-      const targetHeight = 180 - container.querySelector<HTMLElement>(".bottom")!.offsetHeight
-      const textHeight = container.querySelector<HTMLElement>(".text")!.offsetHeight
+//     let currentSize = MAXIMUM_TEXT_SIZE
+//     let bestFitting = MINIMUM_TEXT_SIZE
+//     // binary search to find optimal size
+//     let lowerBound = MINIMUM_TEXT_SIZE
+//     let upperBound = MAXIMUM_TEXT_SIZE
+//     function CardWithCallbackAfterRender() {
+//       useEffect(() => {
+//         log.info("card rendered", card);
+//       });
+//       return (
+//         <CardComponent card={card}/>
+//       )
+//     }
+//     for (let i = 0; i < 10; i++) {
+//       // render the component to compute text height
+//       await new Promise<void>(resolve => {
+//         // ReactDOM.render(<CardComponent card={card} givenTextSize={currentSize}/>, container, () => resolve())
+//         const theCard = cardRoot.render(<CardWithCallbackAfterRender/>);
+//         resolve(theCard);
+//       })
+//       const targetHeight = 180 - container.querySelector<HTMLElement>(".bottom")!.offsetHeight
+//       const textHeight = container.querySelector<HTMLElement>(".text")!.offsetHeight
       
-      // descend into binary search, keeping track of the largest text size that fit on the card
-      if (textHeight > targetHeight) {
-        upperBound = currentSize
-      } else {
-        lowerBound = currentSize
-        bestFitting = Math.max(currentSize, bestFitting)
-        // short-circuit if the maximum size fits
-        if (currentSize === MAXIMUM_TEXT_SIZE)
-          break
-      }
-      currentSize = (lowerBound + upperBound) / 2
-    }
+//       // descend into binary search, keeping track of the largest text size that fit on the card
+//       if (textHeight > targetHeight) {
+//         upperBound = currentSize
+//       } else {
+//         lowerBound = currentSize
+//         bestFitting = Math.max(currentSize, bestFitting)
+//         // short-circuit if the maximum size fits
+//         if (currentSize === MAXIMUM_TEXT_SIZE)
+//           break
+//       }
+//       currentSize = (lowerBound + upperBound) / 2
+//     }
 
-    // ReactDOM.unmountComponentAtNode(container)
-    cardRoot.unmount();
-    container.style.display = "none"
+//     // ReactDOM.unmountComponentAtNode(container)
+//     cardRoot.unmount();
+//     container.style.display = "none"
 
-    return bestFitting
-  })
-  cardTextSizeCache[card.fontSizeCacheKey] = promise
-  const size = await promise
-  cardTextSizeCache[card.fontSizeCacheKey] = size
-  return size
-}
+//     return bestFitting
+//   })
+//   cardTextSizeCache[card.fontSizeCacheKey] = promise
+//   const size = await promise
+//   cardTextSizeCache[card.fontSizeCacheKey] = size
+//   return size
+// }
 
 // shared hook for BlackCard and WhiteCard for text size computation
-const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C, givenTextSize?: number) => {
-  const [computedTextSize, setComputedTextSize] = useState<number | null>(null)
+// const useCardTextSize = <C extends AbstractCard>(CardComponent: ComponentType<React.PropsWithChildren<CardProps<C>>>, card: C, givenTextSize?: number) => {
+//   const [computedTextSize, setComputedTextSize] = useState<number | null>(null)
 
-  useEffect(() => {
-    if (givenTextSize === undefined && getCachedTextSize(card) === null)
-      // idk how to fix this error, so i'm disabling it until i learn more
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      computeCardTextSize(CardComponent, card).then(fontSize => setComputedTextSize(fontSize))
-  }, [CardComponent, card, givenTextSize])
+//   useEffect(() => {
+//     if (givenTextSize === undefined && getCachedTextSize(card) === null)
+//       computeCardTextSize(CardComponent, card).then(fontSize => setComputedTextSize(fontSize))
+//   }, [CardComponent, card, givenTextSize])
 
-  return givenTextSize || getCachedTextSize(card) || computedTextSize || MAXIMUM_TEXT_SIZE
-}
-
+//   return givenTextSize || getCachedTextSize(card) || computedTextSize || MAXIMUM_TEXT_SIZE
+// }
+// TODO: learn how to fix this no-empty-object-type
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface BlackCardViewProps extends CardProps<BlackCard> {}
 
-export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps) => {
+export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
   //const textSize = useCardTextSize(BlackCardView, card, givenTextSize)
 
   if (scale === undefined)
@@ -183,14 +182,18 @@ export const BlackCardView = ({ card, givenTextSize, scale }: BlackCardViewProps
         <div>PICK <span className="number"><span>{card.pickCount}</span></span></div>
       </div>
   }
-    //<div className="black card" style={{fontSize: `${100 * scale}px`}} data-bs-theme="light">
-      //<div className="text" style={{fontSize: `${textSize * scale}px`}}>
+
+  function textfitCallback() {
+      log.debug("black card rendered", card);
+  }
+
   return (
     <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light">
       <Textfit
           className="textfit text"
           max={18}
           min={12}
+          onReady={textfitCallback}
         >
         {processCardText(card.text, true)}
       </Textfit>
@@ -207,7 +210,7 @@ interface WhiteCardViewProps extends CardProps<WhiteCard> {
   onClick?: () => void
 }
 
-export const WhiteCardView = ({ card, disabled, givenTextSize, scale, onClick }: WhiteCardViewProps) => {
+export const WhiteCardView = ({ card, disabled, scale, onClick }: WhiteCardViewProps) => {
   // const textSize = useCardTextSize(WhiteCardView, card, givenTextSize)
 
   if (scale === undefined)
