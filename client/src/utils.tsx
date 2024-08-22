@@ -129,7 +129,7 @@ export const englishList = (items: ReactNode[], verb?: [string, string]) => {
       parts.push(" and ")
   }
   parts.push(verb ? ` ${verb[1]}` : "")
-  // TODO add types to englishList function return
+  // TODO: add types to englishList function return
   return parts
 }
 
