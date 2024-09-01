@@ -6,17 +6,16 @@ pyXyzzy-custom is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][
 
 Client differences:
 - Uses [React 18][react-18]
-- Uses [Vite][vitejs] for building, dev serving and linting
+- Uses [Vite][vitejs]
 - Requires nodejs 20+
-- Uses npm's [dart-sass][sass-npm] implementation
-- Updated all node dependencies (as of 9 March 2024)
+- Uses [dart-sass][sass-npm]
+- Updated node dependencies
 - Cards use the [Inter][inter] font
 - Toggleable dark mode
-- And the UI is now purple with pink accents because I like pink and purple 💜
 
 Backend differences:
 - Requires Python 3.8+
-- Updated python dependencies (as of March 2024)
+- Updated python dependencies
 - Has a `pyxyzzy-server` wrapper script
 
 ## Installation
@@ -47,8 +46,8 @@ Requirements:
 # Build the client
 cd client
 nvm use
-npm install --include=dev
-npm run build
+yarn install
+yarn run build
 ```
 
 ## Running
@@ -60,13 +59,12 @@ pyxyzzy-server config.toml # customize your configuration
 
 From the client/ folder, in a separate terminal, start the frontend:
 ```bash
-npm run start # for locally serving the built client on your network
+yarn run start # for locally serving the built client on your network
 ```
 
 ## Bugs
 
 - ~~Card text overflows card~~ Fixed!
-- Blank cards not working
 
 ## Important Caveat
 
