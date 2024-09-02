@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "mxsdev.typescript-explorer",
+        "pmneo.tsimporter",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "edison1105.vite-theme-night"
+    ]
+}
