@@ -2,7 +2,6 @@ import { resolve } from "node:path";
 import { readFileSync, existsSync } from "node:fs";
 import { defineConfig, loadEnv, Plugin, createFilter, transformWithEsbuild } from "vite";
 import react from "@vitejs/plugin-react";
-// import checker from 'vite-plugin-checker';
 import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
 import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
@@ -20,14 +19,6 @@ export default defineConfig(({ mode }) => {
       tsconfigPaths(),
       importPrefixPlugin(),
       gitCommitHashPlugin({isLongHash: true}),
-      // checker({
-      //   overlay: { initialIsOpen: false },
-      //   typescript: true,
-      //   eslint: {
-      //     lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
-      //   },
-      //   enableBuild: false,
-      // }),
       progress({
         format: 'Building :bar :percent',
       }),

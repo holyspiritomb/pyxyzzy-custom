@@ -19,7 +19,6 @@
     "sass": "^1.71.1",
     "typescript": "^5.5.4",
     "vite": "5.4.2",
-    "vite-plugin-checker": "^0.7.2",
     "vite-plugin-git-commit-hash": "^1.0.7",
     "vite-plugin-progress": "^0.0.7",
     "vite-tsconfig-paths": "^4.3.2"
