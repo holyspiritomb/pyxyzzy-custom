@@ -47,7 +47,8 @@
             &.force .toggler {
                 cursor: default;
 
-                &.bottom, &.top .arrow {
+                &.bottom,
+ &.top .arrow {
                     display: none;
                 }
             }
@@ -71,7 +72,7 @@
             display: flex;
             align-items: baseline;
             margin: 0.5rem 0.5rem 0;
-            
+
             .category-contents {
                 display: flex;
                 align-items: baseline;
@@ -105,17 +106,17 @@
             input {
                 margin: 0 0 0 0.3rem;
 
-                &[type=text] {
+                &[type="text"] {
                     flex: 1 1 auto;
                     min-width: 0;
                     background-color: var(--options-input-bg);
                 }
-                &[type=number] {
+                &[type="number"] {
                     width: 5ch;
                     box-sizing: content-box;
                     background-color: var(--options-input-bg);
                 }
-                &[type=checkbox] {
+                &[type="checkbox"] {
                     position: relative;
                     top: 0.2em;
                     accent-color: var(--checkbox-accent-color);
@@ -124,7 +125,7 @@
         }
         // make card packs' checkboxes appear on the left side of the label to be more readable with lots of them
         // (the checkboxes are on the right side in HTML for consistency in other parts of the settings)
-        .packs .field input[type=checkbox] {
+        .packs .field input[type="checkbox"] {
             order: -1;
             margin: 0 0.3rem 0 0;
             accent-color: var(--checkbox-accent-color);

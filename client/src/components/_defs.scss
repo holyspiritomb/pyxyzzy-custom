@@ -5,7 +5,7 @@ $enable-shadows: true;
 
 // Default variable overrides
 $body-bg: lavender;
-$body-bg-dark: darken(#292368,15);
+$body-bg-dark: darken(#292368, 15);
 
 // Required
 @import "~bootstrap/scss/variables";
@@ -54,12 +54,13 @@ $mediumBg: #ada7e2;
 $themeHandBg: $mediumBg;
 $themeGlobalBg: $mediumBg;
 $lightBg: #d1ceef;
-$lighterBg:#e3e1f5;
+$lighterBg: #e3e1f5;
 $lightestBg: #f4f4fb;
 $thinkblobBg: #666;
 $linkColor: #ff389c;
 
-:root, [data-bs-theme="light"] {
+:root,
+ [data-bs-theme="light"] {
     --navbar-bg: #{$purple-400};
     --hand-bg: #{$purple-200};
     --player-bg: #{$purple-200};

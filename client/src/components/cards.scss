@@ -15,7 +15,7 @@ $whiteCardGroup: var(--white-card-group-bg);
 $hoveredWhiteCardGroup: var(--hovered-white-card-group-bg);
 $activeWhiteCardGroup: var(--active-white-card-group-bg);
 
-@function scale-card($measure, $fontSize: 1.0) {
+@function scale-card($measure, $fontSize: 1) {
     // @return $measure / 1px * 0.01em / $fontSize;
     @return calc($measure / 1px * 0.01em / $fontSize);
     // @return math.div($measure, 1px) * math.div(0.01em, $fontSize);
@@ -39,6 +39,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         background-color: $activeWhiteCardGroup !important;
     }
     &.selected .white.card {
+        background-image: var(--bs-gradient);
         background-color: $activeWhiteCard !important;
     }
     .actions {
@@ -56,7 +57,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
 }
 .card {
     flex: none;
-    font-family: "InterVariable", "Inter","Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: InterVariable, Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100px; // everything scales relative to this
     border: 1px solid $cardBorder;
     border-radius: 4%;
@@ -133,7 +134,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         }
         .pack-name {
             background-image: url("../images/card-logo-black.svg");
-            font-size:0.10em;
+            font-size:0.1em;
         }
     }
     .text {
@@ -196,7 +197,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     }
 }
 @supports (font-variation-settings: normal) {
-  .card :is(.text,.pack-name) { font-family: "InterVariable"; } /* If using the variable font */
+  .card :is(.text,.pack-name) { font-family: InterVariable, sans-serif; } /* If using the variable font */
 }
 .in-game.game-state-playing.should-play .cards {
     .white.card {
@@ -214,14 +215,16 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
 }
 .in-game.game-state-judging.should-judge {
     .table {
-        .white.card, .group.multi {
+        .white.card,
+ .group.multi {
             cursor: pointer;
         }
         .group.multi:hover .group-cards {
             background-color: $hoveredWhiteCardGroup;
             background-image: var(--bs-gradient);
         }
-        .white.card:hover, .group.multi:hover .white.card {
+        .white.card:hover,
+ .group.multi:hover .white.card {
             background-color: $hoveredWhiteCard;
             background-image: var(--bs-gradient);
         }

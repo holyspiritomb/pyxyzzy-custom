@@ -18,7 +18,7 @@
 @import '@infolektuell/noto-color-emoji';
 
 :root {
-    --bs-body-font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Noto Color Emoji' ;
+    --bs-body-font-family: 'Segoe UI', roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Noto Color Emoji';
     --bs-body-font-size: 14px;
     @media screen and (max-width: 800px) {
         --bs-body-font-size: 13px;
@@ -40,7 +40,9 @@ html {
         font-size: 12px;
     }
 }
-html, body, #root {
+html,
+ body,
+ #root {
     height: 100%;
 }
 html.connecting {
@@ -117,10 +119,13 @@ input {
     accent-color: var(--checkbox-accent-color);
 }
 
-a, a:link {
+a,
+ a:link {
     color: $linkColor;
     text-decoration: underline;
-    &:hover, &:focus, &:active {
+    &:hover,
+ &:focus,
+ &:active {
         color: lighten($linkColor, 10);
     }
     &:visited {

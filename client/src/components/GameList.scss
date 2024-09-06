@@ -4,9 +4,9 @@
 .game-list {
     @include default-nav-bar;
     @include nav-bar(".public-header");
-    & {
+    // & {
     padding-bottom: $togglerHeight;
-    }
+    // }
     .nav {
         > div {
             flex-wrap: wrap;
@@ -27,7 +27,8 @@
         .game-code {
             max-width: 8ch;
         }
-        .user-name, .game-code {
+        .user-name,
+ .game-code {
           margin-right: 0.5rem;
         }
     }
@@ -37,7 +38,9 @@
         h2 {
             margin-right: 1rem;
         }
-        h2, .filter, .refresh {
+        h2,
+ .filter,
+ .refresh {
             margin-bottom: 0.5rem;
         }
         .filter {
@@ -52,7 +55,8 @@
         align-items: flex-start;
         padding: 0.2rem;
     }
-    .game, .game-spacer {
+    .game,
+ .game-spacer {
         flex: 1 1 250px;
         padding: 0 0 0 0.3rem;
         margin: 0.2rem;
@@ -64,12 +68,12 @@
     .game {
         display: grid;
         grid-template-columns: 1fr auto;
-        grid-template-areas: 
+        grid-template-areas:
             "title code"
             "players join"
             "password join";
         border-bottom: 1px solid var(--bs-border-color);
-        
+
         // border-radius:3px;
         padding:4px;
 
