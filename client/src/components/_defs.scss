@@ -88,24 +88,26 @@ $linkColor: #ff389c;
   --chat-timestamp: #{$indigo-500};
   --chat-error: #{$pink};
   --chat-warning: #{$orange};
-  --toastify-color-progress-light: linear-gradient(
-    to right,
-    #4cd964,
-    #5ac8fa,
-    #007aff,
-    #34aadc,
-    #5856d6,
-    #ff2d55
-  );
-  --toastify-color-progress-dark: linear-gradient(
-    to right,
-    #4cd964,
-    #5ac8fa,
-    #007aff,
-    #34aadc,
-    #5856d6,
-    #ff2d55
-  );
+  --toastify-color-progress-light:
+    linear-gradient(
+      to right,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
+  --toastify-color-progress-dark:
+    linear-gradient(
+      to right,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
 }
 [data-bs-theme="dark"] {
   --navbar-bg: #{$purple-900};
@@ -135,15 +137,16 @@ $linkColor: #ff389c;
   --chat-error: #{$pink};
   --chat-warning: #{$orange};
   --instructions-bg: var(--bs-body-bg-dark);
-  --toastify-color-progress-dark: linear-gradient(
-    to right,
-    #4cd964,
-    #5ac8fa,
-    #007aff,
-    #34aadc,
-    #5856d6,
-    #ff2d55
-  );
+  --toastify-color-progress-dark:
+    linear-gradient(
+      to right,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
 
 }
 

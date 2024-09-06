@@ -12,7 +12,7 @@ export default defineConfig({
     "@stylistic/number-leading-zero": null,
     "@stylistic/declaration-colon-space-after": null,
     "@stylistic/string-quotes": null,
-    "@stylistic/declaration-colon-newline-after": null,
+    // "@stylistic/declaration-colon-newline-after": null,
     "order/properties-order": null,
     "selector-no-qualifying-type": null,
     "selector-class-pattern": null,
