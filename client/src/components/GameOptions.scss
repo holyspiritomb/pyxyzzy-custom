@@ -2,133 +2,133 @@
 @import "slidebox";
 
 .in-game {
-    .options-container {
-        display: flex;
-        flex-direction: column;
-        height: $togglerHeight;
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    height: $togglerHeight;
 
-        .toggler {
-            padding: 0;
-            outline: none;
-            background: var(--options-toggler-bg);
-            color: var(--bs-emphasis-color);
-            border-width: 1px;
-            border-style: solid;
-            border-bottom-color: var(--bs-border-color);
-            border-left-color: var(--options-toggler-bg);
-            border-right-color: var(--options-toggler-bg);
-            border-radius:0px;
-            height: $togglerHeight;
-            text-transform: uppercase;
+    .toggler {
+      padding: 0;
+      outline: none;
+      background: var(--options-toggler-bg);
+      color: var(--bs-emphasis-color);
+      border-width: 1px;
+      border-style: solid;
+      border-bottom-color: var(--bs-border-color);
+      border-left-color: var(--options-toggler-bg);
+      border-right-color: var(--options-toggler-bg);
+      border-radius:0px;
+      height: $togglerHeight;
+      text-transform: uppercase;
 
-            &.top {
-                border-width: 0 0 1px;
-                position: relative;
-                z-index: $optionsZ + 1;
-
-                .arrow {
-                    display: inline-block;
-                    transition: transform 0.3s ease;
-                    transform: translateY(0) rotate(-0deg);
-                }
-            }
-            &.bottom {
-                border-width: 1px 0;
-            }
-        }
-        &.open {
-            .options {
-                transform: translateY(0);
-                box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
-            }
-            .toggler.top .arrow {
-                transform: translateY(0.2rem) rotate(-60deg);
-            }
-            &.force .toggler {
-                cursor: default;
-
-                &.bottom,
- &.top .arrow {
-                    display: none;
-                }
-            }
-        }
-    }
-    .options {
-        display: flex;
-        flex-direction: column;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: var(--options-bg);
+      &.top {
+        border-width: 0 0 1px;
         position: relative;
-        z-index: $optionsZ;
-        box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+        z-index: $optionsZ + 1;
 
-        > .scroll {
-            max-height: 75vh;
-            overflow-y: auto;
+        .arrow {
+          display: inline-block;
+          transition: transform 0.3s ease;
+          transform: translateY(0) rotate(-0deg);
         }
-        .category {
-            display: flex;
-            align-items: baseline;
-            margin: 0.5rem 0.5rem 0;
-
-            .category-contents {
-                display: flex;
-                align-items: baseline;
-                flex-wrap: wrap;
-                flex: 1 1 auto;
-                min-width: 0;
-
-                @media screen and (max-width: 48ch) {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-            }
-            h4 {
-                white-space: nowrap;
-            }
-        }
-        .field {
-            display: flex;
-            align-items: baseline;
-            padding-left: 0.8rem;
-            white-space: nowrap;
-
-            &.type-text {
-                flex: 0 1 32ch;
-                max-width: 100%;
-
-                @media screen and (max-width: 64ch) {
-                    flex: 1 1 100%;
-                }
-            }
-            input {
-                margin: 0 0 0 0.3rem;
-
-                &[type="text"] {
-                    flex: 1 1 auto;
-                    min-width: 0;
-                    background-color: var(--options-input-bg);
-                }
-                &[type="number"] {
-                    width: 5ch;
-                    box-sizing: content-box;
-                    background-color: var(--options-input-bg);
-                }
-                &[type="checkbox"] {
-                    position: relative;
-                    top: 0.2em;
-                    accent-color: var(--checkbox-accent-color);
-                }
-            }
-        }
-        // make card packs' checkboxes appear on the left side of the label to be more readable with lots of them
-        // (the checkboxes are on the right side in HTML for consistency in other parts of the settings)
-        .packs .field input[type="checkbox"] {
-            order: -1;
-            margin: 0 0.3rem 0 0;
-            accent-color: var(--checkbox-accent-color);
-        }
+      }
+      &.bottom {
+        border-width: 1px 0;
+      }
     }
+    &.open {
+      .options {
+        transform: translateY(0);
+        box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
+      }
+      .toggler.top .arrow {
+        transform: translateY(0.2rem) rotate(-60deg);
+      }
+      &.force .toggler {
+        cursor: default;
+
+        &.bottom,
+        &.top .arrow {
+          display: none;
+        }
+      }
+    }
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--options-bg);
+    position: relative;
+    z-index: $optionsZ;
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+
+    > .scroll {
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+    .category {
+      display: flex;
+      align-items: baseline;
+      margin: 0.5rem 0.5rem 0;
+
+      .category-contents {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+        min-width: 0;
+
+        @media screen and (max-width: 48ch) {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+      h4 {
+        white-space: nowrap;
+      }
+    }
+    .field {
+      display: flex;
+      align-items: baseline;
+      padding-left: 0.8rem;
+      white-space: nowrap;
+
+      &.type-text {
+        flex: 0 1 32ch;
+        max-width: 100%;
+
+        @media screen and (max-width: 64ch) {
+          flex: 1 1 100%;
+        }
+      }
+      input {
+        margin: 0 0 0 0.3rem;
+
+        &[type="text"] {
+          flex: 1 1 auto;
+          min-width: 0;
+          background-color: var(--options-input-bg);
+        }
+        &[type="number"] {
+          width: 5ch;
+          box-sizing: content-box;
+          background-color: var(--options-input-bg);
+        }
+        &[type="checkbox"] {
+          position: relative;
+          top: 0.2em;
+          accent-color: var(--checkbox-accent-color);
+        }
+      }
+    }
+    // make card packs' checkboxes appear on the left side of the label to be more readable with lots of them
+    // (the checkboxes are on the right side in HTML for consistency in other parts of the settings)
+    .packs .field input[type="checkbox"] {
+      order: -1;
+      margin: 0 0.3rem 0 0;
+      accent-color: var(--checkbox-accent-color);
+    }
+  }
 }

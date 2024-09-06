@@ -2,107 +2,107 @@
 @import "slidebox";
 
 .game-list {
-    @include default-nav-bar;
-    @include nav-bar(".public-header");
-    // & {
-    padding-bottom: $togglerHeight;
-    // }
-    .nav {
-        > div {
-            flex-wrap: wrap;
-            padding: 0 0 0.5rem;
+  @include default-nav-bar;
+  @include nav-bar(".public-header");
+  // & {
+  padding-bottom: $togglerHeight;
+  // }
+  .nav {
+    > div {
+      flex-wrap: wrap;
+      padding: 0 0 0.5rem;
 
-            * {
-                white-space: nowrap;
-            }
-        }
-        .create-game,
-        .theme-button {
-            margin-right: 1rem;
-        }
-        .join-private,
-        .user-info {
-            margin-left: auto;
-        }
-        .game-code {
-            max-width: 8ch;
-        }
-        .user-name,
- .game-code {
-          margin-right: 0.5rem;
-        }
+      * {
+        white-space: nowrap;
+      }
     }
-    .public-header {
-        justify-content: space-between;
+    .create-game,
+    .theme-button {
+      margin-right: 1rem;
+    }
+    .join-private,
+    .user-info {
+      margin-left: auto;
+    }
+    .game-code {
+      max-width: 8ch;
+    }
+    .user-name,
+    .game-code {
+      margin-right: 0.5rem;
+    }
+  }
+  .public-header {
+    justify-content: space-between;
 
-        h2 {
-            margin-right: 1rem;
-        }
-        h2,
- .filter,
- .refresh {
-            margin-bottom: 0.5rem;
-        }
-        .filter {
-            max-width: 20ch;
-            margin-right: 0.5rem;
-            background-color: var(--options-input-bg);
-        }
+    h2 {
+      margin-right: 1rem;
     }
-    .games {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        padding: 0.2rem;
+    h2,
+    .filter,
+    .refresh {
+      margin-bottom: 0.5rem;
     }
-    .game,
- .game-spacer {
-        flex: 1 1 250px;
-        padding: 0 0 0 0.3rem;
-        margin: 0.2rem;
+    .filter {
+      max-width: 20ch;
+      margin-right: 0.5rem;
+      background-color: var(--options-input-bg);
     }
-    .game-spacer {
-        border: solid transparent;
-        border-width: 0 1px;
-    }
-    .game {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-            "title code"
-            "players join"
-            "password join";
-        border-bottom: 1px solid var(--bs-border-color);
+  }
+  .games {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0.2rem;
+  }
+  .game,
+  .game-spacer {
+    flex: 1 1 250px;
+    padding: 0 0 0 0.3rem;
+    margin: 0.2rem;
+  }
+  .game-spacer {
+    border: solid transparent;
+    border-width: 0 1px;
+  }
+  .game {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title code"
+      "players join"
+      "password join";
+    border-bottom: 1px solid var(--bs-border-color);
 
-        // border-radius:3px;
-        padding:4px;
+    // border-radius:3px;
+    padding:4px;
 
-        .title {
-            grid-area: title;
-            margin-bottom: 0;
-            font-size: 1.1rem;
-        }
-        .code {
-            grid-area: code;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .players {
-            grid-area: players;
-        }
-        .password {
-            grid-area: password;
-        }
-        .join {
-            grid-area: join;
-            padding-left: 0.8rem;
-            padding-right: 0.8rem;
-        }
+    .title {
+      grid-area: title;
+      margin-bottom: 0;
+      font-size: 1.1rem;
     }
-    .no-games {
-        padding: 0.5rem;
+    .code {
+      grid-area: code;
+      text-align: center;
+      font-size: 1.1rem;
     }
-    .no-games.error {
-        color: deeppink;
+    .players {
+      grid-area: players;
     }
+    .password {
+      grid-area: password;
+    }
+    .join {
+      grid-area: join;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+  }
+  .no-games {
+    padding: 0.5rem;
+  }
+  .no-games.error {
+    color: deeppink;
+  }
 }

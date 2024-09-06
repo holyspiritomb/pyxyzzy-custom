@@ -8,7 +8,7 @@ import { defineConfig } from 'stylelint-define-config';
 export default defineConfig({
   extends: ['stylelint-config-twbs-bootstrap'],
   rules: {
-    "@stylistic/indentation": null,
+    // "@stylistic/indentation": null,
     "@stylistic/number-leading-zero": null,
     "@stylistic/declaration-colon-space-after": null,
     "@stylistic/string-quotes": null,

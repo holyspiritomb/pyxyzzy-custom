@@ -2,90 +2,90 @@
 @import "slidebox";
 
 .in-game {
-    @include default-nav-bar;
-    // & {
-    height: 100%;
-    padding-bottom: $togglerHeight;
+  @include default-nav-bar;
+  // & {
+  height: 100%;
+  padding-bottom: $togglerHeight;
+  display: flex;
+  flex-direction: column;
+  // }
+
+  .nav {
+    > div {
+      padding: 0 0 0.5rem;
+    }
+    .game-info,
+    .user-info {
+      justify-content: flex-end;
+    }
+    .game-info {
+      flex: 1000 0 auto; // grow 1000 times more than .user-info
+    }
+    .user-info {
+      flex: 1 0 auto; // but still allow .user-info to grow
+    }
+    .game-controls {
+      margin-right: 1rem;
+    }
+    .user-info {
+      margin-left: 1rem;
+    }
+    .user-name,
+    .game-code {
+      margin-right: 0.5rem;
+    }
+  }
+  > .scroll {
     display: flex;
     flex-direction: column;
-    // }
+    overflow-y: auto;
+    flex: 1 0 10rem;
+    background-color: var(--table-bg);
+  }
+  .instructions {
+    border-bottom: 1px solid var(--bs-border-color);
+    border-top: 0;
+    background-color: var(--instructions-bg);
+    margin: 0;
+    padding: 0 5px;
+    text-align: center;
+    font-family: var(--bs-body-font-family);
+    font-size: calc(var(--bs-body-font-size) * 1.2);
+    font-weight: 400;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    .group .actions button {
+      margin-top: 7px;
+    }
+  }
+  .table {
+    display: flex;
+    flex-grow: 1;
+    padding-bottom: 5px;
+    background-color: var(--table-bg);
 
-    .nav {
-        > div {
-            padding: 0 0 0.5rem;
-        }
-        .game-info,
- .user-info {
-            justify-content: flex-end;
-        }
-        .game-info {
-            flex: 1000 0 auto; // grow 1000 times more than .user-info
-        }
-        .user-info {
-            flex: 1 0 auto; // but still allow .user-info to grow
-        }
-        .game-controls {
-            margin-right: 1rem;
-        }
-        .user-info {
-            margin-left: 1rem;
-        }
-        .user-name,
- .game-code {
-            margin-right: 0.5rem;
-        }
+    &.wrap-black {
+      flex-direction: column;
     }
-    > .scroll {
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        flex: 1 0 10rem;
-        background-color: var(--table-bg);
-    }
-    .instructions {
-        border-bottom: 1px solid var(--bs-border-color);
-        border-top: 0;
-        background-color: var(--instructions-bg);
-        margin: 0;
-        padding: 0 5px;
-        text-align: center;
-        font-family: var(--bs-body-font-family);
-        font-size: calc(var(--bs-body-font-size) * 1.2);
-        font-weight: 400;
-    }
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        align-content: flex-start;
-        .group .actions button {
-            margin-top: 7px;
-        }
-    }
-    .table {
-        display: flex;
-        flex-grow: 1;
-        padding-bottom: 5px;
-        background-color: var(--table-bg);
+  }
+  .hand {
+    background: var(--hand-bg);
+    padding-bottom: 5px;
 
-        &.wrap-black {
-            flex-direction: column;
-        }
+    h3 {
+      border-top: 1px solid var(--bs-border-color);
+      margin: 0;
+      padding: 0 10px;
+      padding-top:5px;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: var(--bs-body-font-family);
+      font-size: var(--bs-body-font-size);
+      font-weight: 400;
     }
-    .hand {
-        background: var(--hand-bg);
-        padding-bottom: 5px;
-
-        h3 {
-            border-top: 1px solid var(--bs-border-color);
-            margin: 0;
-            padding: 0 10px;
-            padding-top:5px;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: var(--bs-body-font-family);
-            font-size: var(--bs-body-font-size);
-            font-weight: 400;
-        }
-    }
+  }
 }

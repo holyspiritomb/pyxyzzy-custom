@@ -3,82 +3,82 @@
 $togglerHeight: 1.6rem;
 
 .chat-container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: $togglerHeight;
+  z-index: $chatZ;
+  background: var(--options-toggler-bg);
+
+  .toggler {
+    padding: 0;
+    height: $togglerHeight;
+    outline: none;
+    color: var(--bs-emphasis-color);
+    background: var(--options-toggler-bg);
+    border: 1px solid var(--bs-border-color);
+    border-width: 1px 0;
+    text-transform: uppercase;
+    border-radius: 0px;
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      transform: translateY(0) rotate(-0deg);
+    }
+  }
+  .chat {
     display: flex;
     flex-direction: column;
-    height: $togglerHeight;
-    z-index: $chatZ;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    max-height: 30vh;
     background: var(--options-toggler-bg);
-
-    .toggler {
-        padding: 0;
-        height: $togglerHeight;
-        outline: none;
-        color: var(--bs-emphasis-color);
-        background: var(--options-toggler-bg);
-        border: 1px solid var(--bs-border-color);
-        border-width: 1px 0;
-        text-transform: uppercase;
-        border-radius: 0px;
-
-        .arrow {
-            display: inline-block;
-            transition: transform 0.3s ease;
-            transform: translateY(0) rotate(-0deg);
-        }
-    }
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+  }
+  &.open {
     .chat {
-        display: flex;
-        flex-direction: column;
-        transform: translateY(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        max-height: 30vh;
-        background: var(--options-toggler-bg);
-        box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+      transform: translateY(calc(#{$togglerHeight} - 100%));
+      box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
     }
-    &.open {
-        .chat {
-            transform: translateY(calc(#{$togglerHeight} - 100%));
-            box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
-        }
-        .toggler {
-            border-color: var(--bs-border-color);
+    .toggler {
+      border-color: var(--bs-border-color);
 
-            .arrow {
-                transform: translateY(-0.2rem) rotate(-60deg);
-            }
-        }
+      .arrow {
+        transform: translateY(-0.2rem) rotate(-60deg);
+      }
     }
-    .messages {
-        flex: 0 1 500px;
-        overflow: hidden scroll;
-        margin: 0 0.5rem;
-        user-select: text;
-    }
-    .message {
-        word-wrap: break-word;
-        color: var(--bs-body-color);
+  }
+  .messages {
+    flex: 0 1 500px;
+    overflow: hidden scroll;
+    margin: 0 0.5rem;
+    user-select: text;
+  }
+  .message {
+    word-wrap: break-word;
+    color: var(--bs-body-color);
 
-        .timestamp {
-            color: var(--chat-timestamp);
-        }
-        &.type-error {
-            color: var(--chat-error);
-        }
-        &.type-warning {
-            color: var(--chat-warning);
-        }
+    .timestamp {
+      color: var(--chat-timestamp);
     }
-    .field {
-        display: flex;
+    &.type-error {
+      color: var(--chat-error);
+    }
+    &.type-warning {
+      color: var(--chat-warning);
+    }
+  }
+  .field {
+    display: flex;
 
-        #chat-input {
-            min-width: 15ch;
-            flex: 1 1;
-            background-color: var(--bs-body-bg);
-        }
+    #chat-input {
+      min-width: 15ch;
+      flex: 1 1;
+      background-color: var(--bs-body-bg);
     }
+  }
 }

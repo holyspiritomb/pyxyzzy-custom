@@ -60,121 +60,121 @@ $thinkblobBg: #666;
 $linkColor: #ff389c;
 
 :root,
- [data-bs-theme="light"] {
-    --navbar-bg: #{$purple-400};
-    --hand-bg: #{$purple-200};
-    --player-bg: #{$purple-200};
-    --table-bg: #{$purple-400};
-    --winner-player-bg: #{$pink-400};
-    --options-bg-color: #{$purple-100};
-    --options-bg: #{$purple-100};
-    --options-toggler-bg: #{$purple-200};
-    --options-input-bg: #{$white};
-    --checkbox-accent-color: #{$pink-500};
-    --active-white-card-bg: #{$pink-400};
-    --hovered-white-card-bg: #{$pink-300};
-    --white-card-group-bg: #{$purple-300};
-    --hovered-white-card-group-bg: #{$pink-200};
-    --active-white-card-group-bg: #{$pink-300};
-    --button-bg: #{$purple-200};
-    --button-color: #{$purple-900};
-    --button-border: 2px outset #{$gray-800};
-    --button-border-color: #{$gray-800}; //color only
-    --button-color-disabled: #{$gray-500};
-    --button-bg-disabled: #{$gray-400};
-    --button-border-disabled: 2px #{$gray-600} outset;
-    --instructions-bg: var(--bs-body-bg);
-    --login-legal: #{$gray-800};
-    --chat-timestamp: #{$indigo-500};
-    --chat-error: #{$pink};
-    --chat-warning: #{$orange};
-    --toastify-color-progress-light: linear-gradient(
-        to right,
-        #4cd964,
-        #5ac8fa,
-        #007aff,
-        #34aadc,
-        #5856d6,
-        #ff2d55
-    );
-    --toastify-color-progress-dark: linear-gradient(
-        to right,
-        #4cd964,
-        #5ac8fa,
-        #007aff,
-        #34aadc,
-        #5856d6,
-        #ff2d55
-    );
+[data-bs-theme="light"] {
+  --navbar-bg: #{$purple-400};
+  --hand-bg: #{$purple-200};
+  --player-bg: #{$purple-200};
+  --table-bg: #{$purple-400};
+  --winner-player-bg: #{$pink-400};
+  --options-bg-color: #{$purple-100};
+  --options-bg: #{$purple-100};
+  --options-toggler-bg: #{$purple-200};
+  --options-input-bg: #{$white};
+  --checkbox-accent-color: #{$pink-500};
+  --active-white-card-bg: #{$pink-400};
+  --hovered-white-card-bg: #{$pink-300};
+  --white-card-group-bg: #{$purple-300};
+  --hovered-white-card-group-bg: #{$pink-200};
+  --active-white-card-group-bg: #{$pink-300};
+  --button-bg: #{$purple-200};
+  --button-color: #{$purple-900};
+  --button-border: 2px outset #{$gray-800};
+  --button-border-color: #{$gray-800}; //color only
+  --button-color-disabled: #{$gray-500};
+  --button-bg-disabled: #{$gray-400};
+  --button-border-disabled: 2px #{$gray-600} outset;
+  --instructions-bg: var(--bs-body-bg);
+  --login-legal: #{$gray-800};
+  --chat-timestamp: #{$indigo-500};
+  --chat-error: #{$pink};
+  --chat-warning: #{$orange};
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  --toastify-color-progress-dark: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
 }
 [data-bs-theme="dark"] {
-    --navbar-bg: #{$purple-900};
-    --hand-bg: #{$purple-900};
-    --player-bg: #{$purple-900};
-    --table-bg: #{$purple-700};
-    --winner-player-bg: #{$pink-600};
-    --options-bg: #{$purple-900};
-    --options-bg-color: #{$purple-900};
-    --options-input-bg: #{$black};
-    --options-toggler-bg: #{$purple-800};
-    --checkbox-accent-color:hotpink;
-    --active-white-card-bg: #{$pink-300};
-    --hovered-white-card-bg: #{$pink-200};
-    --white-card-group-bg: #{$pink-700};
-    --hovered-white-card-group-bg: #{$pink-500};
-    --active-white-card-group-bg: #{$pink-600};
-    --button-bg: #{$purple-800};
-    --button-color: #{$purple-100};
-    --button-color-disabled: #{$gray-600};
-    --button-bg-disabled: #{$gray-800};
-    --button-border: 2px outset #{$purple-300};
-    --button-border-color: #{$purple-300};
-    --button-border-disabled: 2px #{$gray-600} outset;
-    --login-legal: #{$purple-300};
-    --chat-timestamp: #{$purple-200};
-    --chat-error: #{$pink};
-    --chat-warning: #{$orange};
-    --instructions-bg: var(--bs-body-bg-dark);
-    --toastify-color-progress-dark: linear-gradient(
-        to right,
-        #4cd964,
-        #5ac8fa,
-        #007aff,
-        #34aadc,
-        #5856d6,
-        #ff2d55
-    );
+  --navbar-bg: #{$purple-900};
+  --hand-bg: #{$purple-900};
+  --player-bg: #{$purple-900};
+  --table-bg: #{$purple-700};
+  --winner-player-bg: #{$pink-600};
+  --options-bg: #{$purple-900};
+  --options-bg-color: #{$purple-900};
+  --options-input-bg: #{$black};
+  --options-toggler-bg: #{$purple-800};
+  --checkbox-accent-color:hotpink;
+  --active-white-card-bg: #{$pink-300};
+  --hovered-white-card-bg: #{$pink-200};
+  --white-card-group-bg: #{$pink-700};
+  --hovered-white-card-group-bg: #{$pink-500};
+  --active-white-card-group-bg: #{$pink-600};
+  --button-bg: #{$purple-800};
+  --button-color: #{$purple-100};
+  --button-color-disabled: #{$gray-600};
+  --button-bg-disabled: #{$gray-800};
+  --button-border: 2px outset #{$purple-300};
+  --button-border-color: #{$purple-300};
+  --button-border-disabled: 2px #{$gray-600} outset;
+  --login-legal: #{$purple-300};
+  --chat-timestamp: #{$purple-200};
+  --chat-error: #{$pink};
+  --chat-warning: #{$orange};
+  --instructions-bg: var(--bs-body-bg-dark);
+  --toastify-color-progress-dark: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
 
 }
 
 @mixin nav-bar($class) {
-    #{$class} {
-        font-size: 1.1rem;
-        padding: 0.5rem 0.5rem 0;
-    }
-    #{$class}, #{$class} > div {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+  #{$class} {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.5rem 0;
+  }
+  #{$class}, #{$class} > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 @mixin default-nav-bar {
-    @include nav-bar(".nav");
-    .nav {
-        flex-wrap: wrap-reverse;
-        border-style: solid;
-        border-width: 1px;
-        border-bottom-color: var(--button-border-color);
-        border-top-color: var(--navbar-bg);
-        border-left-color: var(--navbar-bg);
-        border-right-color: var(--navbar-bg);
-        background: var(--navbar-bg);
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: $navbarZ;
-        // z-index: $zindex-sticky;
-    }
+  @include nav-bar(".nav");
+  .nav {
+    flex-wrap: wrap-reverse;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-color: var(--button-border-color);
+    border-top-color: var(--navbar-bg);
+    border-left-color: var(--navbar-bg);
+    border-right-color: var(--navbar-bg);
+    background: var(--navbar-bg);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: $navbarZ;
+    // z-index: $zindex-sticky;
+  }
 }
 

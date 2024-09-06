@@ -2,109 +2,109 @@
 @import "~bootstrap/scss/mixins";
 
 .in-game .players {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: stretch;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-    background-color: var(--table-bg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  background-color: var(--table-bg);
 
-    &:has(.players-3),
-    &:has(.players-4) {
-      width: auto;
-      flex-wrap:nowrap;
+  &:has(.players-3),
+  &:has(.players-4) {
+    width: auto;
+    flex-wrap:nowrap;
+  }
+
+  .player {
+    text-align: center;
+    vertical-align: baseline;
+    margin: 0.25rem;
+    padding: 0.4rem;
+    border: 1px solid var(--bs-border-color);
+    min-width: 9.5ch;
+    background-color: var(--player-bg);
+
+    border-radius: 10px;
+    // max-width: calc(24vw - 0.25rem);
+    overflow-x: hidden;
+
+    .score,
+    .status {
+      font-size: 0.9em;
+      white-space: nowrap;
     }
-
-    .player {
-        text-align: center;
-        vertical-align: baseline;
-        margin: 0.25rem;
-        padding: 0.4rem;
-        border: 1px solid var(--bs-border-color);
-        min-width: 9.5ch;
-        background-color: var(--player-bg);
-
-        border-radius: 10px;
-        // max-width: calc(24vw - 0.25rem);
-        overflow-x: hidden;
-
-        .score,
- .status {
-            font-size: 0.9em;
-            white-space: nowrap;
-        }
-        .score.leader {
-            font-weight: 600;
-        }
-        .think-blob {
-            display: none;
-            width: 1ch;
-            height: 1ch;
-            background: $thinkblobBg;
-            border-radius: 1ch;
-            animation: 1000ms 0ms think-blob infinite ease;
-            margin-left: 0.25ch;
-
-            &.blob-1 {
-                margin-left: 0.7ch;
-            }
-            &.blob-2 {
-                animation-delay: 125ms;
-            }
-            &.blob-3 {
-                animation-delay: 250ms;
-            }
-        }
-        &.thinking .think-blob {
-            display: inline-block;
-        }
-        &.thinking .name div::after {
-            display: inline;
-            content: ' \1f914';
-        }
-        &.is-czar {
-            .name div::after {
-                display: inline;
-                content: ' \2696\fe0f';
-            }
-            &.thinking .name div::after {
-                display: inline;
-                content: ' \1f914';
-            }
-        }
-        &.winner {
-            background: var(--winner-player-bg);
-            .name div::after {
-                display: inline;
-                content: ' \1f451';
-            }
-        }
+    .score.leader {
+      font-weight: 600;
     }
+    .think-blob {
+      display: none;
+      width: 1ch;
+      height: 1ch;
+      background: $thinkblobBg;
+      border-radius: 1ch;
+      animation: 1000ms 0ms think-blob infinite ease;
+      margin-left: 0.25ch;
+
+      &.blob-1 {
+        margin-left: 0.7ch;
+      }
+      &.blob-2 {
+        animation-delay: 125ms;
+      }
+      &.blob-3 {
+        animation-delay: 250ms;
+      }
+    }
+    &.thinking .think-blob {
+      display: inline-block;
+    }
+    &.thinking .name div::after {
+      display: inline;
+      content: ' \1f914';
+    }
+    &.is-czar {
+      .name div::after {
+        display: inline;
+        content: ' \2696\fe0f';
+      }
+      &.thinking .name div::after {
+        display: inline;
+        content: ' \1f914';
+      }
+    }
+    &.winner {
+      background: var(--winner-player-bg);
+      .name div::after {
+        display: inline;
+        content: ' \1f451';
+      }
+    }
+  }
 }
 
 .in-game.game-state-not_started .players .score,
- .in-game .options-container .players .score {
-    display: none;
+.in-game .options-container .players .score {
+  display: none;
 }
 
 .in-game .options-container .players {
-    background-color:transparent;
-    justify-content: flex-start;
-    margin-left: 0.55rem;
+  background-color:transparent;
+  justify-content: flex-start;
+  margin-left: 0.55rem;
 }
 
 @keyframes think-blob {
-    0% {
-        height: 1ch;
-        background: #666;
-    }
-    25% {
-        height: 1.5ch;
-        background: #66c;
-    }
-    50% {
-        height: 1ch;
-        background: #666;
-    }
+  0% {
+    height: 1ch;
+    background: #666;
+  }
+  25% {
+    height: 1.5ch;
+    background: #66c;
+  }
+  50% {
+    height: 1ch;
+    background: #666;
+  }
 }

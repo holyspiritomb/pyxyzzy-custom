@@ -18,117 +18,117 @@
 @import '@infolektuell/noto-color-emoji';
 
 :root {
-    --bs-body-font-family: 'Segoe UI', roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Noto Color Emoji';
-    --bs-body-font-size: 14px;
-    @media screen and (max-width: 800px) {
-        --bs-body-font-size: 13px;
-    }
-    @media screen and (max-width: 600px) {
-        --bs-body-font-size: 12px;
-    }
+  --bs-body-font-family: 'Segoe UI', roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Noto Color Emoji';
+  --bs-body-font-size: 14px;
+  @media screen and (max-width: 800px) {
+    --bs-body-font-size: 13px;
+  }
+  @media screen and (max-width: 600px) {
+    --bs-body-font-size: 12px;
+  }
 }
 
 html {
-    z-index: $gameZ;
-    font-size:14px;
-    // user-select: none;
+  z-index: $gameZ;
+  font-size:14px;
+  // user-select: none;
 
-    @media screen and (max-width: 800px) {
-        font-size: 13px;
-    }
-    @media screen and (max-width: 600px) {
-        font-size: 12px;
-    }
+  @media screen and (max-width: 800px) {
+    font-size: 13px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 }
 html,
- body,
- #root {
-    height: 100%;
+body,
+#root {
+  height: 100%;
 }
 html.connecting {
-    max-width: 100%;
-    max-height: 100%;
-    overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 #card-size-measurement {
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .connecting-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: $connectingZ;
-    // z-index: $zindex-modal;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: $connectingZ;
+  // z-index: $zindex-modal;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .loader-text {
-        width: 70vw;
-    }
+  .loader-text {
+    width: 70vw;
+  }
 }
 @media (max-width: 500px) {
-    .connecting-overlay .loader-text {
-        width: 90vw;
-    }
+  .connecting-overlay .loader-text {
+    width: 90vw;
+  }
 }
 h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 h2 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 h3 {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 h4 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 button {
-    @include gradient-bg(var(--button-bg));
-    background-color: var(--button-bg);
-    color: var(--button-color);
-    // border-width:2px;
-    // border-style: outset;
-    border: var(--button-border);
-    border-radius: 5px;
+  @include gradient-bg(var(--button-bg));
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  // border-width:2px;
+  // border-style: outset;
+  border: var(--button-border);
+  border-radius: 5px;
 }
 button:active {
-    border-style: inset;
+  border-style: inset;
 }
 button:disabled {
-    color: var(--button-color-disabled);
-    background: var(--button-bg-disabled);
-    border: var(--button-border-disabled);
-    cursor: not-allowed;
+  color: var(--button-color-disabled);
+  background: var(--button-bg-disabled);
+  border: var(--button-border-disabled);
+  cursor: not-allowed;
 }
 input {
-    @include gradient-bg;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--button-border-color);
-    // background-color: var(--button-bg);
-    accent-color: var(--checkbox-accent-color);
+  @include gradient-bg;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--button-border-color);
+  // background-color: var(--button-bg);
+  accent-color: var(--checkbox-accent-color);
 }
 
 a,
- a:link {
-    color: $linkColor;
-    text-decoration: underline;
-    &:hover,
- &:focus,
- &:active {
-        color: lighten($linkColor, 10);
-    }
-    &:visited {
-        color: darken($linkColor, 10);
-    }
+a:link {
+  color: $linkColor;
+  text-decoration: underline;
+  &:hover,
+  &:focus,
+  &:active {
+    color: lighten($linkColor, 10);
+  }
+  &:visited {
+    color: darken($linkColor, 10);
+  }
 }
