@@ -10,25 +10,25 @@
     .nav {
         > div {
             flex-wrap: wrap;
-            font-size: 1.15rem;
             padding: 0 0 0.5rem;
 
             * {
                 white-space: nowrap;
             }
         }
-        .create-game, .join-private {
+        .create-game,
+        .theme-button {
             margin-right: 1rem;
         }
+        .join-private,
         .user-info {
             margin-left: auto;
         }
         .game-code {
             max-width: 8ch;
-            background-color: var(--options-input-bg);
         }
         .user-name, .game-code {
-            margin-right: 0.5rem;
+          margin-right: 0.5rem;
         }
     }
     .public-header {
@@ -68,10 +68,9 @@
             "title code"
             "players join"
             "password join";
-        border: 1px solid var(--bs-secondary-bg);
-        background-color: var(--bs-secondary-bg);
-        color: var(--bs-secondary-color);
-        border-radius:3px;
+        border-bottom: 1px solid var(--bs-border-color);
+        
+        // border-radius:3px;
         padding:4px;
 
         .title {

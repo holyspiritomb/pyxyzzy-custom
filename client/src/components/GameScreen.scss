@@ -42,7 +42,8 @@
     }
     .instructions {
         border-bottom: 1px solid var(--bs-border-color);
-        background-color: var(--bs-body-bg);
+        border-top: 0;
+        background-color: var(--instructions-bg);
         margin: 0;
         padding: 0 5px;
         text-align: center;
@@ -70,13 +71,14 @@
         }
     }
     .hand {
-        background-color: var(--hand-bg);
+        background: var(--hand-bg);
         padding-bottom: 5px;
 
         h3 {
             border-top: 1px solid var(--bs-border-color);
             margin: 0;
             padding: 0 10px;
+            padding-top:5px;
             text-align: center;
             text-transform: uppercase;
             font-family: var(--bs-body-font-family);

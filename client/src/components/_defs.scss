@@ -1,6 +1,46 @@
+$enable-gradients: true;
+$enable-shadows: true;
+
 @import "~bootstrap/scss/functions";
 
+// Default variable overrides
+$body-bg: lavender;
+$body-bg-dark: darken(#292368,15);
+
+// Required
 @import "~bootstrap/scss/variables";
+
+//overrides with color swatches
+$body-color: $purple-900;
+$body-color-dark: $purple-100;
+$border-color: $black;
+$border-color-dark: $purple-300;
+$emphasis-color: $black;
+$emphasis-color-dark: $white;
+$primary: $pink-500;
+$primary-dark: $pink-500;
+$secondary-bg: $indigo-200;
+// $secondary-bg: $blue-500;
+$secondary-bg-dark: $purple-800;
+$secondary: $indigo-900;
+$secondary-color: $indigo-900;
+$secondary-color-dark: $purple-200;
+$tertiary-bg: $indigo-300;
+$tertiary-bg-dark: $purple-700;
+$tertiary-color: $indigo-800;
+$tertiary-color-dark: $purple-300;
+
+// required
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/root";
+
+//Optional
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/type";
+
 $gameZ: 0;
 $optionsZ: 1000;
 $chatZ: 2000;
@@ -16,22 +56,16 @@ $themeGlobalBg: $mediumBg;
 $lightBg: #d1ceef;
 $lighterBg:#e3e1f5;
 $lightestBg: #f4f4fb;
+$thinkblobBg: #666;
+$linkColor: #ff389c;
 
 :root, [data-bs-theme="light"] {
-    --bs-body-color: #{$purple-900};
-    --bs-body-bg: #{$purple-100};
-    --bs-secondary-color: #{$indigo-900};
-    --bs-secondary-bg: #{$indigo-200};
-    --bs-tertiary-color: #{$indigo-800};
-    --bs-tertiary-bg: #{$indigo-300};
-    --bs-primary: #{$pink-500};
-    --bs-emphasis-color: #{$black};
-    --bs-border-color: #{$black};
     --navbar-bg: #{$purple-400};
     --hand-bg: #{$purple-200};
     --player-bg: #{$purple-200};
     --table-bg: #{$purple-400};
     --winner-player-bg: #{$pink-400};
+    --options-bg-color: #{$purple-100};
     --options-bg: #{$purple-100};
     --options-toggler-bg: #{$purple-200};
     --options-input-bg: #{$white};
@@ -43,7 +77,12 @@ $lightestBg: #f4f4fb;
     --active-white-card-group-bg: #{$pink-300};
     --button-bg: #{$purple-200};
     --button-color: #{$purple-900};
-    --button-border: #{$gray-800};
+    --button-border: 2px outset #{$gray-800};
+    --button-border-color: #{$gray-800}; //color only
+    --button-color-disabled: #{$gray-500};
+    --button-bg-disabled: #{$gray-400};
+    --button-border-disabled: 2px #{$gray-600} outset;
+    --instructions-bg: var(--bs-body-bg);
     --login-legal: #{$gray-800};
     --chat-timestamp: #{$indigo-500};
     --chat-error: #{$pink};
@@ -68,21 +107,13 @@ $lightestBg: #f4f4fb;
     );
 }
 [data-bs-theme="dark"] {
-    --bs-body-color: #{$purple-100};
-    --bs-body-bg: #{$purple-900};
-    --bs-secondary-color: #{$purple-200};
-    --bs-secondary-bg: #{$purple-800};
-    --bs-tertiary-color: #{$purple-300};
-    --bs-tertiary-bg: #{$purple-700};
-    --bs-primary: #{$pink-500};
-    --bs-emphasis-color: #{$white};
-    --bs-border-color: #{$purple-700};
     --navbar-bg: #{$purple-900};
     --hand-bg: #{$purple-900};
     --player-bg: #{$purple-900};
     --table-bg: #{$purple-700};
     --winner-player-bg: #{$pink-600};
     --options-bg: #{$purple-900};
+    --options-bg-color: #{$purple-900};
     --options-input-bg: #{$black};
     --options-toggler-bg: #{$purple-800};
     --checkbox-accent-color:hotpink;
@@ -93,11 +124,16 @@ $lightestBg: #f4f4fb;
     --active-white-card-group-bg: #{$pink-600};
     --button-bg: #{$purple-800};
     --button-color: #{$purple-100};
-    --button-border: #{$purple-300};
+    --button-color-disabled: #{$gray-600};
+    --button-bg-disabled: #{$gray-800};
+    --button-border: 2px outset #{$purple-300};
+    --button-border-color: #{$purple-300};
+    --button-border-disabled: 2px #{$gray-600} outset;
     --login-legal: #{$purple-300};
     --chat-timestamp: #{$purple-200};
     --chat-error: #{$pink};
     --chat-warning: #{$orange};
+    --instructions-bg: var(--bs-body-bg-dark);
     --toastify-color-progress-dark: linear-gradient(
         to right,
         #4cd964,
@@ -128,7 +164,7 @@ $lightestBg: #f4f4fb;
         flex-wrap: wrap-reverse;
         border-style: solid;
         border-width: 1px;
-        border-bottom-color: var(--bs-border-color);
+        border-bottom-color: var(--button-border-color);
         border-top-color: var(--navbar-bg);
         border-left-color: var(--navbar-bg);
         border-right-color: var(--navbar-bg);
@@ -137,6 +173,7 @@ $lightestBg: #f4f4fb;
         top: 0;
         left: 0;
         z-index: $navbarZ;
+        // z-index: $zindex-sticky;
     }
 }
 

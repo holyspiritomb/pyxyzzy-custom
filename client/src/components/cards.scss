@@ -93,6 +93,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     }
     &.black {
         background-color: $blackCard;
+        background-image: var(--bs-gradient);
         color: $blackCardText;
         margin: scale-card(10px) 0 0 scale-card(10px);
 
@@ -218,9 +219,11 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
         }
         .group.multi:hover .group-cards {
             background-color: $hoveredWhiteCardGroup;
+            background-image: var(--bs-gradient);
         }
         .white.card:hover, .group.multi:hover .white.card {
             background-color: $hoveredWhiteCard;
+            background-image: var(--bs-gradient);
         }
     }
     .hand {
