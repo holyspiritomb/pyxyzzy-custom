@@ -47,10 +47,6 @@ const processCardText = (text: string, blackCard: boolean) => {
         endPart()
         currentItalic = escaped === "I"
         continue
-      } else if (escaped === "n") {
-        endPart()
-        currentWord.push(<br />)
-        continue
       } else {
         char = escaped
       }
