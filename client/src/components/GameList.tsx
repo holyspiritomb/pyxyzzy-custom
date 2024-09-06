@@ -6,6 +6,8 @@ import Loader from "./Loader"
 import {handleAllErrorsAsUnknown, unknownError, useMounted} from "../utils"
 import {ConfigContext, AppStateContext, UserContext, ActingContext} from "./contexts"
 import {GameListGame} from "../api"
+import ThemeButton from "./ThemeToggle"
+import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 
 const CodeJoinForm = ({ onJoin }: { onJoin: (code: string) => void }) => {
   const config = useContext(ConfigContext)!
@@ -164,13 +166,16 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
           {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <button type="button" onClick={handleCreateGame}>Create game</button>
         </div>
+        <div className="theme-button">
+          <ThemeButton />
+        </div>
         <div className="join-private">
           {/* TODO: eslint says that handleJoinGame as an argument is a misused promise */}
           {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <CodeJoinForm onJoin={handleJoinGame} />
         </div>
         <div className="user-info">
-          <div className="user-name">Logged in as <b>{user.name}</b></div>
+          <Textfit className="user-name" min={5} max={9} mode="single">Logged in as <b>{user.name}</b></Textfit>
           {/* TODO: eslint says that handleLogout as an argument is a misused promise */}
           {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <button type="button" onClick={handleLogout}>Log out</button>
