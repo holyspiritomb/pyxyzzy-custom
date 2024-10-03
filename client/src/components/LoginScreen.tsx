@@ -71,7 +71,7 @@ const LoginScreen = () => {
     )
   }
 
-  const commitUrl = "https://gitlab.com/holyspiritomb/pyxyzzy-custom/-/commit/" + GIT_COMMIT_HASH
+  const commitUrl = "https://gitlab.com/holyspiritomb/pyxyzzy-custom/-/commits/" + GIT_COMMIT_HASH
 
 
   return (
@@ -104,8 +104,10 @@ const LoginScreen = () => {
         </ExternalLink> and uses its cards and rules, available under
         the <ExternalLink href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0
         </ExternalLink> license. The source code is available
-        on <ExternalLink href="https://gitlab.com/holyspiritomb/pyxyzzy-custom">GitLab</ExternalLink> (<ExternalLink href={commitUrl}>commit</ExternalLink>) and licensed under
+        on <ExternalLink href="https://gitlab.com/holyspiritomb/pyxyzzy-custom">GitLab</ExternalLink> (built from <ExternalLink href={commitUrl}>commit</ExternalLink>) and licensed under
         the <ExternalLink href="https://opensource.org/licenses/MIT">MIT license</ExternalLink>.
+        <br/>
+        Built: {BUILD_DATE}
       </p>
     </div>
   )

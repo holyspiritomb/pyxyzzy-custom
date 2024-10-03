@@ -8,6 +8,14 @@
   background-color: var(--bs-body-bg);
   background-image: var(--bs-gradient);
 
+  h1 {
+    background-image: url("../images/card-logo-white.svg");
+    background-position:left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 3.5rem;
+  }
+
   form {
     margin-bottom: 0.5rem;
 
