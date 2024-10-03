@@ -180,7 +180,7 @@ export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
   }
 
   function textfitCallback() {
-      log.debug("black card rendered", card);
+      log.warn("black card rendered");
   }
 
   return (
