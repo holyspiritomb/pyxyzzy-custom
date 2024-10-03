@@ -9,6 +9,9 @@ import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
 export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
+    define: {
+      BUILD_DATE: JSON.stringify(new Date().toUTCString())
+    },
     build: {
       minify: false,
       manifest: true,
