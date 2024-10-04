@@ -355,37 +355,33 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
   }
 
   static getDerivedStateFromProps(props: GameScreenProps, state: GameScreenState) {
-    // TODO: props validation
-    // eslint-disable-next-line react/prop-types
+     
     const {game} = props
     let newState = {}
     // clear chosen white cards if not playing any
-    // TODO: props validation
-    // eslint-disable-next-line react/prop-types
+     
     const roundIdIfRunning = game.running ? game.currentRound.id : null
-    // TODO: props validation
-    // eslint-disable-next-line react/prop-types
+     
     if (roundIdIfRunning !== state.currentRoundId || !game.shouldPlayWhiteCards) {
       newState = {
-        ...newState, // eslint-disable-next-line react/prop-types
-        chosenWhites: game.running ? Array(game.currentRound.pickCount).fill(null) : null, // TODO: props validation
+        ...newState,  
+        chosenWhites: game.running ? Array(game.currentRound.pickCount).fill(null) : null,
         currentRoundId: roundIdIfRunning,
       }
     }
     // reset chosen white card as this slot is used for different purposes in different states
-    // TODO: props validation
-    if (game.state !== state.currentGameState) { // eslint-disable-line react/prop-types
+    if (game.state !== state.currentGameState) {  
       newState = {
         ...newState,
-        selectedWhitePos: game.state === "playing" ? 0 : null, // eslint-disable-line react/prop-types
-        currentGameState: game.state, // eslint-disable-line react/prop-types
+        selectedWhitePos: game.state === "playing" ? 0 : null,  
+        currentGameState: game.state,  
       }
     }
     return newState
   }
 
-  render() { // TODO: props validation
-    const {game} = this.props // eslint-disable-line react/prop-types
+  render() {
+    const {game} = this.props  
 
     const unselectCard = (posToClear: number) => {
       // unselect the card at the position
@@ -403,15 +399,14 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
       // can't reselect a card
       if (chosenWhites!.some(chosen => chosen && chosen.id === card.id))
         return
-      // TODO: props validation
       // ensure a valid slot is selected
-      if (!game.running || selectedWhitePos === null || selectedWhitePos >= game.currentRound.pickCount) // eslint-disable-line react/prop-types
+      if (!game.running || selectedWhitePos === null || selectedWhitePos >= game.currentRound.pickCount)  
         return
       // put the card in place
       const newChosenWhites = [...chosenWhites!]
       newChosenWhites[selectedWhitePos] = card
       // find a free slot, if any
-      // eslint-disable-next-line react/prop-types
+       
       const nextFreePos = range(selectedWhitePos + 1, game.currentRound.pickCount)
           .concat(range(0, selectedWhitePos))
           .find(pos => newChosenWhites[pos] === null) ?? null
@@ -422,8 +417,7 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
     }
 
     return (
-      // TODO: props validation
-      // eslint-disable-next-line react/prop-types
+       
       <div className={`in-game game-state-${game.state} ${game.shouldJudge ? "should-judge" : ""} ${game.shouldPlayWhiteCards ? "should-play" : ""}`}>
         <GameControls />
         <GameOptions />
@@ -434,15 +428,13 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
           <TableView
                 chosenWhites={this.state.chosenWhites!}
                 selectedWhitePos={this.state.selectedWhitePos}
-                // TODO: props validation
-                windowWidth={this.props.windowWidth} // eslint-disable-line
+                windowWidth={this.props.windowWidth}  
                 unselectCard={unselectCard}
                 selectPos={pos => this.setState({selectedWhitePos: pos})} />
           <PlayersView />
           <HandView
                 chosenWhites={this.state.chosenWhites!}
-                // TODO: props validation
-                windowWidth={this.props.windowWidth} // eslint-disable-line
+                windowWidth={this.props.windowWidth}  
                 selectCard={selectCard} />
         </div>
       </div>
