@@ -6,20 +6,17 @@ import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactHooks from 'eslint-plugin-react-hooks';
-import storybook from 'eslint-plugin-storybook';
 
 export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
-  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat["recommended"],
   reactPlugin.configs.flat["jsx-runtime"],
-  ...storybook.configs['flat/recommended'],
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react-refresh': reactRefresh,
       'react-hooks': reactHooks,
-      'storybook': storybook,
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -53,7 +50,7 @@ export default tseslint.config(
           "argsIgnorePattern": "^[e|_]"
         },
       ],
-      "no-extra-semi": 1,
+      // "no-extra-semi": 1,
       "no-case-declarations": 0,
       "react/jsx-equals-spacing": 1,
       "react/jsx-indent": [1,2],
