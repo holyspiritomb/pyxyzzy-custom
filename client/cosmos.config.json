@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/cosmos-config",
+  "plugins": ["react-cosmos-plugin-vite"],
+  "vite": {
+    "indexPath": "src/index.tsx",
+    "port": 5173,
+    "configPath": "vite.config.ts"
+  },
+  "port": 5000,
+  "ui": {
+    "responsivePreview": {
+      "devices": [
+        {"label": "OnePlus6T", "width": 412, "height": 892}
+      ]
+    }
+  }
+}
