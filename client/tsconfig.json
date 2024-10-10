@@ -27,7 +27,4 @@
   "include": [
     "src"
   ],
-  "exclude": [
-    "src/components/*.stories.tsx"
-  ]
 }
