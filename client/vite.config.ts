@@ -1,14 +1,23 @@
-import { resolve } from "node:path";
+// import { resolve } from "node:path";
 import { readFileSync, existsSync } from "node:fs";
 import { defineConfig, loadEnv, Plugin, createFilter, transformWithEsbuild } from "vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
 import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
+import Terminal from 'vite-plugin-terminal';
 
 export default defineConfig(({ mode }) => {
   setEnv(mode);
   return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+          quietDeps: true,
+        }
+      }
+    },
     define: {
       BUILD_DATE: JSON.stringify(new Date().toUTCString())
     },
@@ -24,6 +33,10 @@ export default defineConfig(({ mode }) => {
       gitCommitHashPlugin({isLongHash: true}),
       progress({
         format: 'Building :bar :percent',
+      }),
+      Terminal({
+        console: 'terminal',
+        output: ['terminal', 'console'],
       }),
     ],
   };
