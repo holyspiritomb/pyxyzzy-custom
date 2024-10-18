@@ -1,11 +1,12 @@
+@use 'sass:color';
 $enable-gradients: true;
 $enable-shadows: true;
 
 @import "~bootstrap/scss/functions";
 
 // Default variable overrides
-$body-bg: lavender;
-$body-bg-dark: darken(#292368, 15);
+// $body-bg: lavender;
+// $body-bg-dark: color.adjust(#292368, $lightness: -15%);
 
 // Required
 @import "~bootstrap/scss/variables";
@@ -13,6 +14,8 @@ $body-bg-dark: darken(#292368, 15);
 //overrides with color swatches
 $body-color: $purple-900;
 $body-color-dark: $purple-100;
+$body-bg: $purple-100;
+$body-bg-dark: $purple-900;
 $border-color: $black;
 $border-color-dark: $purple-300;
 $emphasis-color: $black;
@@ -110,7 +113,7 @@ $linkColor: #ff389c;
     );
 }
 [data-bs-theme="dark"] {
-  --navbar-bg: #{$purple-900};
+  --navbar-bg: #{$purple-800};
   --hand-bg: #{$purple-900};
   --player-bg: #{$purple-900};
   --table-bg: #{$purple-700};
