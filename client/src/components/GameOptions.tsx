@@ -101,10 +101,11 @@ const OptionsInput = ({ name, type, ...attrs }: OptionsInputProps) => {
     }
   }
 
+  const [allPacksSet, setAllPacks] = useState<boolean>(false)
+
   if (type === "card_packs") {
     const packs = fieldValue as string[]
     const allPacks = config.card_packs.map(pack => pack.id)
-    const [allPacksSet, setAllPacks] = useState<boolean>(false)
 
     const handlePackChange = (packId: string) => (forceSave: boolean) => async (e: ChangeEvent<HTMLInputElement>) => {
       // add or remove the pack
