@@ -1,11 +1,9 @@
-// @ts-check
-
 import globals from 'globals';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import reactHooks from 'eslint-plugin-react-hooks';
+import pluginReactHooks from 'eslint-plugin-react-hooks';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -16,18 +14,19 @@ export default tseslint.config(
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react-refresh': reactRefresh,
-      'react-hooks': reactHooks,
+      'react-hooks': pluginReactHooks,
     },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         project: ['./tsconfig.json', './tsconfig.eslint.json'],
-        ecmaFeatures: {
-          jsx: true,
-        }
+        // ecmaFeatures: {
+          // jsx: true,
+        // }
       },
       globals: {
         ...globals.es2020,
+        ...globals.browser,
       },
     },
     settings: {
@@ -36,6 +35,7 @@ export default tseslint.config(
       }
     },
     rules: {
+      ...pluginReactHooks.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/no-this-alias": 0,
       "@typescript-eslint/no-unnecessary-type-assertion": 0,
