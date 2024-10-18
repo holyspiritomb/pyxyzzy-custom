@@ -64,9 +64,8 @@ html.connecting {
   bottom: 0;
   right: 0;
   z-index: $connectingZ;
-  // z-index: $zindex-modal;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  background: #{$purple-900};
+  color: #{$purple-100};
   display: flex;
   justify-content: center;
   align-items: center;
