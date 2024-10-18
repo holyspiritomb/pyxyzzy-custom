@@ -1,5 +1,3 @@
-// import React, {ComponentType, useEffect, useState} from "react"
-// import { createRoot } from "react-dom/client"
 import {Textfit} from "@ataverascrespo/react18-ts-textfit"
 import "./cards.scss"
 // import {Lock} from "../utils"
@@ -160,7 +158,6 @@ interface CardProps<C extends AbstractCard> {
 interface BlackCardViewProps extends CardProps<BlackCard> {}
 
 export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
-  //const textSize = useCardTextSize(BlackCardView, card, givenTextSize)
 
   if (scale === undefined)
     scale = 1
@@ -178,20 +175,16 @@ export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
         <div>PICK <span className="number"><span>{card.pickCount}</span></span></div>
       </div>
   }
-
-  function textfitCallback() {
-      log.warn("black card rendered");
-  }
+  const processedCardText = processCardText(card.text, true)
 
   return (
-    <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light">
+    <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light" key={card.fontSizeCacheKey}>
       <Textfit
           className="textfit text"
           max={18}
           min={12}
-          onReady={textfitCallback}
         >
-        {processCardText(card.text, true)}
+        {processedCardText}
       </Textfit>
       <div className="bottom">
         <div className="pack-name">{card.packName}</div>
