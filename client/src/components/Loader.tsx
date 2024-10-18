@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap-reboot.css";
+import "./App.scss"
 import "./Loader.scss"
 
 const Loader = ({ children, className }: { children?: any, className?: string }) => {
