@@ -4,24 +4,29 @@ import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
+import stylistic from '@stylistic/eslint-plugin';
+import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
 
 export default tseslint.config(
   eslint.configs.recommended,
+  // stylistic.configs["all-flat"],
   ...tseslint.configs.recommendedTypeChecked,
   reactPlugin.configs.flat["recommended"],
   reactPlugin.configs.flat["jsx-runtime"],
+  comments.recommended,
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react-refresh': reactRefresh,
       'react-hooks': pluginReactHooks,
+      '@stylistic': stylistic,
     },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         project: ['./tsconfig.json', './tsconfig.eslint.json'],
         // ecmaFeatures: {
-          // jsx: true,
+        //   jsx: true,
         // }
       },
       globals: {
@@ -31,8 +36,8 @@ export default tseslint.config(
     },
     settings: {
       react: {
-        version: "detect"
-      }
+        version: "detect",
+      },
     },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
@@ -47,14 +52,17 @@ export default tseslint.config(
         1,
         {
           "caughtErrorsIgnorePattern": "^_",
-          "argsIgnorePattern": "^[e|_]"
+          "argsIgnorePattern": "^[e|_]",
         },
       ],
-      // "no-extra-semi": 1,
+      "@stylistic/no-extra-semi": 1,
       "no-case-declarations": 0,
-      "react/jsx-equals-spacing": 1,
-      "react/jsx-indent": [1,2],
+      "@stylistic/jsx-equals-spacing": 1,
+      "@stylistic/jsx-indent": [1,2],
       "react/no-invalid-html-attribute": 2,
+      "@stylistic/indent": [1,2, {"ignoreComments": true}],
+      "@stylistic/comma-dangle": [1, "always-multiline"],
+      "@stylistic/no-tabs": 2,
     },
   },
 );
