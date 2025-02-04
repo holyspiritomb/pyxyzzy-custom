@@ -14,7 +14,7 @@ export const getPreferredTheme = () => {
 }
 
 export const getCurrentTheme = () => {
-    return document.documentElement.getAttribute('data-bs-theme') as ThemeColor;
+  return document.documentElement.getAttribute('data-bs-theme') as ThemeColor;
 };
 
 export function setStoredTheme(color: ThemeColor) {
@@ -22,7 +22,7 @@ export function setStoredTheme(color: ThemeColor) {
 }
 
 export function setTheme(color: ThemeColor) {
-    document.documentElement.setAttribute('data-bs-theme', color);
+  document.documentElement.setAttribute('data-bs-theme', color);
 }
 
 const ThemeButton = () => {

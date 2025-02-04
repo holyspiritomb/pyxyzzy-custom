@@ -183,7 +183,7 @@ export default class GameSocket {
       this.connectAttempts = 0
       this.connected = true
       this.socket!.send(JSON.stringify({
-        version: UI_VERSION
+        version: UI_VERSION,
       }))
     })
 
@@ -384,7 +384,7 @@ export default class GameSocket {
     try {
       await this.doAuthenticate({
         id: this.session!.id,
-        token: this.session!.token
+        token: this.session!.token,
       })
     } catch (error) {
       if (error.code !== "disconnected") {
@@ -455,7 +455,7 @@ export default class GameSocket {
       const request = {
         action,
         call_id,
-        ...data
+        ...data,
       }
       const call: ApiCall<R> = {
         call_id,
@@ -470,7 +470,7 @@ export default class GameSocket {
         },
         send() {
           thisSocket.socket!.send(JSON.stringify(request))
-        }
+        },
       }
       log.debug(`${call_id} > ${action}`, data)
 

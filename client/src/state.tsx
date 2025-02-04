@@ -307,7 +307,7 @@ export class AppState {
         return {
           id: card.id,
         }
-      })
+      }),
     }, true)
   }
 
@@ -337,112 +337,112 @@ export class AppState {
 
   handleEvent(event: any) {
     switch (event.type) {
-      case "card_czar_idle":
-        this.messageHandler.warning(
-          <>
-            <EventPlayerMention player={event.player} /> (the Card Czar) was idle for too long. The white cards
-            played this round will be returned to hands.
-          </>
-        )
-        break
-      case "players_idle":
+    case "card_czar_idle":
+      this.messageHandler.warning(
+        <>
+          <EventPlayerMention player={event.player} /> (the Card Czar) was idle for too long. The white cards
+          played this round will be returned to hands.
+        </>,
+      )
+      break
+    case "players_idle":
         // TODO: Figure out how to make this call Safe(tm)
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} key={uniqueId()} />), ["was", "were"])
-        this.messageHandler.warning(
-          <>
-            {names} idle for too long and {event.players.length === 1 ? "was" : "were"} skipped this round.
-          </>
-        )
-        break
-      case "too_few_cards_played":
-        this.messageHandler.warning("Too many players were idle this round. The white cards played this " +
+      const names = englishList(event.players.map((player: any) => <EventPlayerMention player={player} key={uniqueId()} />), ["was", "were"])
+      this.messageHandler.warning(
+        <>
+          {names} idle for too long and {event.players.length === 1 ? "was" : "were"} skipped this round.
+        </>,
+      )
+      break
+    case "too_few_cards_played":
+      this.messageHandler.warning("Too many players were idle this round. The white cards played this " +
             "round will be returned to hands.")
-        break
-      case "player_join":
-        this.messageHandler.info(
-          <>
-            <EventPlayerMention player={event.player} /> joined the game.
-          </>
-        )
-        break
-      case "player_leave":
-        const you = event.player.id === this.user.id
-        switch (event.reason) {
-          case "disconnect":
-            if (!you) {
-              this.messageHandler.info(
-                <>
-                  <EventPlayerMention player={event.player} /> disconnected.
-                </>
-              )
-            }
-            break
-          case "host_kick":
-            if (you) {
-              this.messageHandler.error("You were kicked from the game.", false)
-            } else {
-              this.messageHandler.info(
-                <>
-                  <EventPlayerMention player={event.player} /> was kicked from the game.
-                </>
-              )
-            }
-            break
-          case "idle":
-            if (you) {
-              this.messageHandler.error("You were kicked from the game for being idle for too many rounds.", false)
-            } else {
-              this.messageHandler.warning(
-                <>
-                  <EventPlayerMention player={event.player} /> was kicked from the game for being idle for too many
-                  rounds.
-                </>
-              )
-            }
-            break
-          case "leave":
-          default:
-            if (you) {
-              this.messageHandler.log("You left the game.")
-            } else {
-              this.messageHandler.info(
-                <>
-                  <EventPlayerMention player={event.player} /> left the game.
-                </>
-              )
-            }
-            break
+      break
+    case "player_join":
+      this.messageHandler.info(
+        <>
+          <EventPlayerMention player={event.player} /> joined the game.
+        </>,
+      )
+      break
+    case "player_leave":
+      const you = event.player.id === this.user.id
+      switch (event.reason) {
+      case "disconnect":
+        if (!you) {
+          this.messageHandler.info(
+            <>
+              <EventPlayerMention player={event.player} /> disconnected.
+            </>,
+          )
         }
         break
-      case "too_few_players":
-        this.messageHandler.error("The game was stopped because too few players remained.")
+      case "host_kick":
+        if (you) {
+          this.messageHandler.error("You were kicked from the game.", false)
+        } else {
+          this.messageHandler.info(
+            <>
+              <EventPlayerMention player={event.player} /> was kicked from the game.
+            </>,
+          )
+        }
         break
-      case "card_czar_leave":
-        this.messageHandler.error(
-          <>
-            <EventPlayerMention player={event.player} /> (the Card Czar) has left the game. The white cards played
-            this round will be returned to hands.
-          </>
-        )
+      case "idle":
+        if (you) {
+          this.messageHandler.error("You were kicked from the game for being idle for too many rounds.", false)
+        } else {
+          this.messageHandler.warning(
+            <>
+              <EventPlayerMention player={event.player} /> was kicked from the game for being idle for too many
+              rounds.
+            </>,
+          )
+        }
         break
-      case "host_leave":
-        this.messageHandler.info(
-          <>
-            <EventPlayerMention player={event.new_host} /> is now the host.
-          </>
-        )
-        break
-      case "chat_message":
-        this.messageHandler.chat(
-          <>
-            <EventPlayerMention player={event.player} />: {event.text}
-          </>
-        )
-        break
+      case "leave":
       default:
-        log.error("unknown event", event)
+        if (you) {
+          this.messageHandler.log("You left the game.")
+        } else {
+          this.messageHandler.info(
+            <>
+              <EventPlayerMention player={event.player} /> left the game.
+            </>,
+          )
+        }
         break
+      }
+      break
+    case "too_few_players":
+      this.messageHandler.error("The game was stopped because too few players remained.")
+      break
+    case "card_czar_leave":
+      this.messageHandler.error(
+        <>
+          <EventPlayerMention player={event.player} /> (the Card Czar) has left the game. The white cards played
+          this round will be returned to hands.
+        </>,
+      )
+      break
+    case "host_leave":
+      this.messageHandler.info(
+        <>
+          <EventPlayerMention player={event.new_host} /> is now the host.
+        </>,
+      )
+      break
+    case "chat_message":
+      this.messageHandler.chat(
+        <>
+          <EventPlayerMention player={event.player} />: {event.text}
+        </>,
+      )
+      break
+    default:
+      log.error("unknown event", event)
+      break
     }
   }
 }

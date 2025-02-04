@@ -87,14 +87,14 @@ const LoginScreen = () => {
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={handleLogin}>
         <input
-              type="text"
-              id="login-name"
-              placeholder={getPreviousName()}
-              disabled={loggingIn}
-              maxLength={config.users.username.length.max}
-              value={name}
+          type="text"
+          id="login-name"
+          placeholder={getPreviousName()}
+          disabled={loggingIn}
+          maxLength={config.users.username.length.max}
+          value={name}
               // defaultValue={storedName}
-              onChange={(e) => setName(e.target.value)} />
+          onChange={(e) => setName(e.target.value)} />
         <button type="submit" disabled={!canSubmit}>Play</button>
       </form>
       {nameProblemList}

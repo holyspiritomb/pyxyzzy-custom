@@ -23,35 +23,35 @@ const GameControls = () => {
   const game = useContext(GameContext)!
   const acting = useContext(ActingContext)
 
-    const handleLeave = handleAllErrorsAsUnknown(() => app.leaveGame())
+  const handleLeave = handleAllErrorsAsUnknown(() => app.leaveGame())
 
-    const handleLogout = handleAllErrorsAsUnknown(() => app.logout())
+  const handleLogout = handleAllErrorsAsUnknown(() => app.logout())
 
-    const handleStartStop = async () => {
-      try {
-        if (game.running)
-          await app.stopGame()
-        else
-          await app.startGame()
-      } catch (error) {
-        switch (error.code) {
-          case "too_few_players":
-            app.messageHandler.error("The game cannot start because there are too few players.")
-            break
-          case "too_few_black_cards":
-            app.messageHandler.error("The game cannot start because there are no black cards in the selected card " +
+  const handleStartStop = async () => {
+    try {
+      if (game.running)
+        await app.stopGame()
+      else
+        await app.startGame()
+    } catch (error) {
+      switch (error.code) {
+      case "too_few_players":
+        app.messageHandler.error("The game cannot start because there are too few players.")
+        break
+      case "too_few_black_cards":
+        app.messageHandler.error("The game cannot start because there are no black cards in the selected card " +
                 "packs.")
-            break
-          case "too_few_white_cards":
-            app.messageHandler.error("The game cannot start because there are too few white cards in the selected " +
+        break
+      case "too_few_white_cards":
+        app.messageHandler.error("The game cannot start because there are too few white cards in the selected " +
                 "card packs for this many players.")
-            break
-          default:
-            unknownError(error)
-            break
-        }
+        break
+      default:
+        unknownError(error)
+        break
       }
     }
+  }
 
   let controls = null
   if (game.isHost) {
@@ -139,7 +139,7 @@ const InstructionsView = ({ chosenWhites, selectedWhitePos }: InstructionsViewPr
     //   const winningWhiteCardText = findWinningCardText(pickCount, winningCardsId, whiteCards);
     //   action = <>{name} won the game{winningWhiteCardText}</>
     // } else {
-      action = <>{name} won the game.</>
+    action = <>{name} won the game.</>
     // }
   } else if (state.state === "game_ended") {
     action = <>The game ended.</>
@@ -246,12 +246,12 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
       ) : null
       return (
         <WhiteCardGroup
-            key={group[0].id}
-            cards={group.map(card => <WhiteCardView key={card.id} card={card} scale={scale} />)}
-            active={won || selected}
-            actions={actions}
-            scale={scale}
-            onClick={() => game.shouldJudge && !acting && selectPos(pos)} />
+          key={group[0].id}
+          cards={group.map(card => <WhiteCardView key={card.id} card={card} scale={scale} />)}
+          active={won || selected}
+          actions={actions}
+          scale={scale}
+          onClick={() => game.shouldJudge && !acting && selectPos(pos)} />
       )
     })
   } else if (game.state === "playing" && (game.shouldPlayWhiteCards || table !== null)) {
@@ -260,19 +260,19 @@ const TableView = ({ chosenWhites, selectedWhitePos,  windowWidth, unselectCard,
       if (cards[pos] !== null) {
         return (
           <WhiteCardView
-              key={cards[pos]!.id}
-              card={cards[pos]!}
-              scale={scale}
-              onClick={() => game.shouldPlayWhiteCards && !acting && unselectCard(pos)} />
+            key={cards[pos]!.id}
+            card={cards[pos]!}
+            scale={scale}
+            onClick={() => game.shouldPlayWhiteCards && !acting && unselectCard(pos)} />
         )
       } else {
         return (
           <WhiteCardPlaceholder
-              text="(play a card)"
-              key={pos}
-              active={selectedWhitePos === pos}
-              scale={scale}
-              onClick={() => selectPos(pos)} />
+            text="(play a card)"
+            key={pos}
+            active={selectedWhitePos === pos}
+            scale={scale}
+            onClick={() => selectPos(pos)} />
         )
       }
     })
@@ -323,12 +323,12 @@ const HandView = ({ chosenWhites, windowWidth, selectCard }: HandViewProps) => {
       <div className="cards">
         {game.hand.map(card =>
           <WhiteCardView
-                key={card.id}
-                card={card}
-                disabled={!game.shouldPlayWhiteCards || chosenWhites.some(chosen => chosen && chosen.id === card.id)}
-                scale={scale}
-                onClick={() => !acting && selectCard(card)}/>
-          )}
+            key={card.id}
+            card={card}
+            disabled={!game.shouldPlayWhiteCards || chosenWhites.some(chosen => chosen && chosen.id === card.id)}
+            scale={scale}
+            onClick={() => !acting && selectCard(card)}/>,
+        )}
       </div>
     </div>
   )
@@ -408,8 +408,8 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
       // find a free slot, if any
        
       const nextFreePos = range(selectedWhitePos + 1, game.currentRound.pickCount)
-          .concat(range(0, selectedWhitePos))
-          .find(pos => newChosenWhites[pos] === null) ?? null
+        .concat(range(0, selectedWhitePos))
+        .find(pos => newChosenWhites[pos] === null) ?? null
       this.setState({
         chosenWhites: newChosenWhites,
         selectedWhitePos: nextFreePos,
@@ -422,20 +422,20 @@ class GameScreen extends Component<GameScreenProps, GameScreenState> {
         <GameControls />
         <GameOptions />
         <InstructionsView
-              chosenWhites={this.state.chosenWhites!}
-              selectedWhitePos={this.state.selectedWhitePos} />
+          chosenWhites={this.state.chosenWhites!}
+          selectedWhitePos={this.state.selectedWhitePos} />
         <div className="scroll">
           <TableView
-                chosenWhites={this.state.chosenWhites!}
-                selectedWhitePos={this.state.selectedWhitePos}
-                windowWidth={this.props.windowWidth}  
-                unselectCard={unselectCard}
-                selectPos={pos => this.setState({selectedWhitePos: pos})} />
+            chosenWhites={this.state.chosenWhites!}
+            selectedWhitePos={this.state.selectedWhitePos}
+            windowWidth={this.props.windowWidth}  
+            unselectCard={unselectCard}
+            selectPos={pos => this.setState({selectedWhitePos: pos})} />
           <PlayersView />
           <HandView
-                chosenWhites={this.state.chosenWhites!}
-                windowWidth={this.props.windowWidth}  
-                selectCard={selectCard} />
+            chosenWhites={this.state.chosenWhites!}
+            windowWidth={this.props.windowWidth}  
+            selectCard={selectCard} />
         </div>
       </div>
     )
@@ -449,9 +449,9 @@ const GameScreenContextWrapper = () => {
     <GameContext.Consumer>
       {game => (
         <GameScreen
-                game={game!}
-                windowWidth={windowWidth} />
-        )}
+          game={game!}
+          windowWidth={windowWidth} />
+      )}
     </GameContext.Consumer>
   )
 }

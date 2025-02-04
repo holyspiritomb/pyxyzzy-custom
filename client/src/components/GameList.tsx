@@ -93,25 +93,25 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
     } catch (error) {
       if (!mounted.is) return
       switch (error.code) {
-        case "password_required":
-        case "password_incorrect":
-          setJoinModalCode(code)
-          setJoinModalPassword("")
-          setJoinModalIncorrect(error.code === "password_incorrect")
-          break
-        case "game_not_found":
-          toast.error("The game was not found.")
-          setJoinModalCode(null)
-          break
-        case "game_full":
-          toast.error("The game is full.")
-          break
-        case "too_few_white_cards":
-          toast.error("The game has too few white cards in play for you to join.")
-          break
-        default:
-          unknownError(error)
-          break
+      case "password_required":
+      case "password_incorrect":
+        setJoinModalCode(code)
+        setJoinModalPassword("")
+        setJoinModalIncorrect(error.code === "password_incorrect")
+        break
+      case "game_not_found":
+        toast.error("The game was not found.")
+        setJoinModalCode(null)
+        break
+      case "game_full":
+        toast.error("The game is full.")
+        break
+      case "too_few_white_cards":
+        toast.error("The game has too few white cards in play for you to join.")
+        break
+      default:
+        unknownError(error)
+        break
       }
     }
   }
@@ -136,7 +136,7 @@ const GameList = ({ chatMessages }: { chatMessages: any[] }) => {
   } else {
     const trimmed = filter.trim().toUpperCase()
     const filtered = trimmed === "" ? games :
-        games.filter(game => game.title.toUpperCase().includes(trimmed) || game.code.includes(trimmed))
+      games.filter(game => game.title.toUpperCase().includes(trimmed) || game.code.includes(trimmed))
     if (filtered.length === 0) {
       gameList = (
         <div className="no-games">

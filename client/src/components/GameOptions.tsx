@@ -22,12 +22,12 @@ const OptionsInputField = ({ type, name, title, label, handleChange, value, ...a
         title={title}>
         {label}
         <input
-            type={type}
-            id={`game-options-${name}`}
-            title={title}
-            checked={value as boolean}
-            onChange={handleChange(true)}
-            {...attrs} />
+          type={type}
+          id={`game-options-${name}`}
+          title={title}
+          checked={value as boolean}
+          onChange={handleChange(true)}
+          {...attrs} />
       </label>
     )
   } else {

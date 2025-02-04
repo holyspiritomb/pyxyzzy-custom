@@ -102,14 +102,14 @@ class App extends Component<object, AppComponentState> {
               <GameContext.Provider value={gameState}>
                 <ActingContext.Provider value={acting}>
                   <ToastContainer
-                      position="bottom-left"
-                      autoClose={5000}
-                      hideProgressBar={false}
-                      closeOnClick
-                      draggable
-                      pauseOnHover
-                      theme={getToastTheme()}
-                      />
+                    position="bottom-left"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    closeOnClick
+                    draggable
+                    pauseOnHover
+                    theme={getToastTheme()}
+                  />
                   {gameScreen}
                   {chatView}
                   {connectingScreen}

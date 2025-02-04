@@ -23,7 +23,7 @@ const processCardText = (text: string, blackCard: boolean) => {
     if (currentWord.length) {
       if (blackCard) {
         processedText.push(
-          <span className={`word ${currentHasBlank ? "blank" : ""}`} key={processedText.length}>{currentWord}</span>
+          <span className={`word ${currentHasBlank ? "blank" : ""}`} key={processedText.length}>{currentWord}</span>,
         )
       } else {
         processedText.push(...currentWord)
@@ -91,10 +91,10 @@ export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
   return (
     <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light" key={uniqueId()}>
       <Textfit
-          className="textfit text"
-          max={18}
-          min={12}
-        >
+        className="textfit text"
+        max={18}
+        min={12}
+      >
         {processedCardText}
       </Textfit>
       <div className="bottom">
@@ -119,15 +119,15 @@ export const WhiteCardView = ({ card, disabled, scale, onClick }: WhiteCardViewP
   return (
     // everything scales relative to the fontSize on the card
     (<div
-        className={`white card ${disabled ? "disabled" : ""}`}
-        data-bs-theme="light"
-        style={{fontSize: `${100 * scale}px`}}
-        onClick={onClick}>
+      className={`white card ${disabled ? "disabled" : ""}`}
+      data-bs-theme="light"
+      style={{fontSize: `${100 * scale}px`}}
+      onClick={onClick}>
       <Textfit
-          className="textfit text"
-          max={18}
-          min={4}
-          >
+        className="textfit text"
+        max={18}
+        min={4}
+      >
         {processCardText(card.text, false)}</Textfit>
       <div className="bottom">
         <div className="pack-name">{card.packName}</div>
@@ -149,9 +149,9 @@ export const WhiteCardPlaceholder = ({ active, text, scale, onClick }: WhiteCard
 
   return (
     <div
-        className={`placeholder white card ${active ? "selected" : ""}`}
-        style={{fontSize: `${100 * scale}px`}}
-        onClick={onClick}>
+      className={`placeholder white card ${active ? "selected" : ""}`}
+      style={{fontSize: `${100 * scale}px`}}
+      onClick={onClick}>
       <div className="text">{text}</div>
     </div>
   )
@@ -171,8 +171,8 @@ export const WhiteCardGroup = ({ cards, active, actions, scale, onClick }: White
 
   return (
     <div
-        className={`group ${cards.length > 1 ? "multi" : ""} ${active ? "selected" : ""}`}
-        style={{fontSize: `${100 * scale}px`}}>
+      className={`group ${cards.length > 1 ? "multi" : ""} ${active ? "selected" : ""}`}
+      style={{fontSize: `${100 * scale}px`}}>
       <div className="group-cards" onClick={onClick}>
         {cards}
       </div>
