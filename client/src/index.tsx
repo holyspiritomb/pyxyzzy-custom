@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap-reboot.css";
 import { createRoot } from "react-dom/client";
 import Modal from "react-modal";
 import App from "./App";
