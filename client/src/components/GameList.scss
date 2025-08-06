@@ -72,10 +72,12 @@
       "title code"
       "players join"
       "password join";
-    border-bottom: 1px solid var(--bs-border-color);
-
-    // border-radius:3px;
+    border: 1px solid var(--game-list-game-border-color);
+    background-color: var(--game-list-game-bg-color);
+    background: var(--game-list-game-bg);
+    border-radius:3px;
     padding:4px;
+    box-shadow: var(--game-list-game-box-shadow);
 
     .title {
       grid-area: title;

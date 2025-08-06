@@ -36,13 +36,14 @@ $togglerHeight: 1.6rem;
     transform: translateY(0);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     max-height: 30vh;
-    background: var(--options-toggler-bg);
-    box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+    background-color: var(--chat-bg-color);
+    background: var(--chat-bg);
+    box-shadow: var(--chat-box-shadow-closed);
   }
   &.open {
     .chat {
       transform: translateY(calc(#{$togglerHeight} - 100%));
-      box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
+      box-shadow: var(--chat-box-shadow-open);
     }
     .toggler {
       border-color: var(--bs-border-color);

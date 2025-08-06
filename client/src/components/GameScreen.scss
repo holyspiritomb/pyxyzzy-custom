@@ -40,12 +40,13 @@
     flex-direction: column;
     overflow-y: auto;
     flex: 1 0 10rem;
-    background-color: var(--table-bg);
+    background-color: var(--table-bg-color);
   }
   .instructions {
     border-bottom: 1px solid var(--bs-border-color);
     border-top: 0;
-    background-color: var(--instructions-bg);
+    background-color: var(--instructions-bg-color);
+    background: var(--instructions-bg);
     margin: 0;
     padding: 0 5px;
     text-align: center;
@@ -66,13 +67,15 @@
     display: flex;
     flex-grow: 1;
     padding-bottom: 5px;
-    background-color: var(--table-bg);
+    background-color: var(--table-bg-color);
+    background: var(--table-bg);
 
     &.wrap-black {
       flex-direction: column;
     }
   }
   .hand {
+    background-color: var(--hand-bg-color);
     background: var(--hand-bg);
     padding-bottom: 5px;
 

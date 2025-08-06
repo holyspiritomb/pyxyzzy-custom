@@ -1,19 +1,19 @@
 @use "sass:math";
 @import "defs";
-$blackCard: #000;
-$whiteCard: #ffffff;
-$hoveredWhiteCard: var(--hovered-white-card-bg);
-$activeWhiteCard: var(--active-white-card-bg);
-
-$blackCardText: #ffffff;
-$whiteCardText: #000;
-$placeholderCardText: #000;
-
-$cardBorder: #000000;
-
-$whiteCardGroup: var(--white-card-group-bg);
-$hoveredWhiteCardGroup: var(--hovered-white-card-group-bg);
-$activeWhiteCardGroup: var(--active-white-card-group-bg);
+/* $blackCard: var(--black-card-bg); */
+/* $whiteCard: var(--white-card-bg); */
+/* $hoveredWhiteCard: var(--hovered-white-card-bg); */
+/* $activeWhiteCard: var(--active-white-card-bg); */
+/**/
+/* $blackCardText: var(--black-card-text); */
+/* $whiteCardText: var(--white-card-text); */
+/* $placeholderCardText: var(--white-card-text); */
+/**/
+/* $cardBorder: var(--cardborder); */
+/**/
+/* $whiteCardGroup: var(--white-card-group-bg); */
+/* $hoveredWhiteCardGroup: var(--hovered-white-card-group-bg); */
+/* $activeWhiteCardGroup: var(--active-white-card-group-bg); */
 
 @function scale-card($measure, $fontSize: 1) {
   // @return $measure / 1px * 0.01em / $fontSize;
@@ -30,17 +30,17 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     display: flex;
   }
   &.multi .group-cards {
-    background-color: $whiteCardGroup;
+    background-color: var(--white-card-group-bg);
     padding: 0 scale-card(5px) scale-card(5px) 0;
     max-width: 98vw;
     overflow-x: auto;
   }
   &.multi.selected .group-cards {
-    background-color: $activeWhiteCardGroup !important;
+    background-color: var(--active-card-group-bg)!important;
   }
   &.selected .white.card {
     background-image: var(--bs-gradient);
-    background-color: $activeWhiteCard !important;
+    background-color: var(--active-white-card-bg) !important;
   }
   .actions {
     display: flex;
@@ -59,7 +59,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
   flex: none;
   font-family: InterVariable, Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100px; // everything scales relative to this
-  border: 1px solid $cardBorder;
+  border: 1px solid var(--cardborder);
   border-radius: 4%;
   padding: scale-card(9px);
   width: scale-card(200px);
@@ -67,25 +67,26 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
   position: relative;
 
   &.white {
-    background-color: $whiteCard;
-    color: $whiteCardText;
+    background-color: var(--white-card-bg);
+    color: var(--white-card-text);
     margin: scale-card(5px) 0 0 scale-card(5px);
 
     &.disabled {
       opacity: 0.5;
+      background-color: var(--white-card-bg-disabled);
     }
     &.placeholder {
       display: flex;
       justify-content: center;
       align-items: center;
-      color: $placeholderCardText;
+      color: var(--white-card-text);
       cursor: pointer;
 
       &:hover {
-        background-color: $hoveredWhiteCard;
+        background-color: var(--hovered-white-card-bg);
       }
       &.selected {
-        background-color: $activeWhiteCard !important;
+        background-color: var(--active-white-card-bg) !important;
       }
     }
     .pack-name {
@@ -93,9 +94,9 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     }
   }
   &.black {
-    background-color: $blackCard;
+    background-color: var(--black-card-bg);
     background-image: var(--bs-gradient);
-    color: $blackCardText;
+    color: var(--black-card-text);
     margin: scale-card(10px) 0 0 scale-card(10px);
 
     .text {
@@ -124,7 +125,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
           max-width: 90%;
         }
         .blank {
-          border-bottom: 0.11em solid $blackCardText;
+          border-bottom: 0.11em solid var(--black-card-text);
           flex: 1 0 6ch;
           width: 6ch;
           position: relative;
@@ -186,8 +187,8 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      background-color: $whiteCard;
-      color: $whiteCardText;
+      background-color: var(--white-card-bg);
+      color: var(--white-card-text);
       font-size: 1.15em;
       border-radius: 100%;
       width: 1.33em;
@@ -210,7 +211,7 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
     cursor: pointer;
   }
   .white.placeholder.card:hover {
-    background-color: $hoveredWhiteCard;
+    background-color: var(--hovered-white-card-bg)
   }
 }
 .in-game.game-state-judging.should-judge {
@@ -220,12 +221,12 @@ $activeWhiteCardGroup: var(--active-white-card-group-bg);
       cursor: pointer;
     }
     .group.multi:hover .group-cards {
-      background-color: $hoveredWhiteCardGroup;
+      background-color: var(--hovered-white-card-group-bg);
       background-image: var(--bs-gradient);
     }
     .white.card:hover,
     .group.multi:hover .white.card {
-      background-color: $hoveredWhiteCard;
+      background-color: var(--hovered-white-card-bg);
       background-image: var(--bs-gradient);
     }
   }

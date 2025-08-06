@@ -5,8 +5,8 @@
   height: 100%;
   padding: 10px;
   box-sizing: border-box;
-  background-color: var(--bs-body-bg);
-  background-image: var(--bs-gradient);
+  background: var(--login-bg);
+  background-color: var(--login-bg-color);
 
   h1 {
     background-image: url("../images/card-logo-white.svg");
@@ -24,17 +24,18 @@
     }
 
     input {
-      background-color: var(--options-input-bg);
+      background-color: var(--options-input-bg-color);
+      color: var(--button-color);
     }
 
     button {
-      background-color: var(--options-toggler-bg);
+      background-color: var(--options-input-bg-color);
     }
   }
   .errors {
     padding-left: 0;
     list-style-type: none;
-    color: deeppink;
+    color: var(--error-text-color);
     font-size: 0.85rem;
   }
   .legal {

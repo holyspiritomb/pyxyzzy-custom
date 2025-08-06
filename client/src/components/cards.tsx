@@ -89,7 +89,7 @@ export const BlackCardView = ({ card, scale }: BlackCardViewProps) => {
   const processedCardText = processCardText(card.text, true)
 
   return (
-    <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} data-bs-theme="light" key={uniqueId()}>
+    <div className="black card" style={{width: `${200 * scale}px`, height: `${200 * scale}px`}} key={uniqueId()}>
       <Textfit
         className="textfit text"
         max={18}
@@ -120,7 +120,6 @@ export const WhiteCardView = ({ card, disabled, scale, onClick }: WhiteCardViewP
     // everything scales relative to the fontSize on the card
     (<div
       className={`white card ${disabled ? "disabled" : ""}`}
-      data-bs-theme="light"
       style={{fontSize: `${100 * scale}px`}}
       onClick={onClick}>
       <Textfit

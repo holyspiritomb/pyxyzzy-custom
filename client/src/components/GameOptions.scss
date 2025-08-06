@@ -39,7 +39,7 @@
     &.open {
       .options {
         transform: translateY(0);
-        box-shadow: rgba(0, 0, 0, 0.3) 0 0 0.5rem 0.5rem;
+        box-shadow: var(--options-box-shadow-open);
       }
       .toggler.top .arrow {
         transform: translateY(0.2rem) rotate(-60deg);
@@ -62,7 +62,7 @@
     background: var(--options-bg);
     position: relative;
     z-index: $optionsZ;
-    box-shadow: rgba(0, 0, 0, 0) 0 0 0.5rem 0.5rem;
+    box-shadow: var(--options-box-shadow-closed);
 
     > .scroll {
       max-height: 75vh;
@@ -105,16 +105,18 @@
       }
       input {
         margin: 0 0 0 0.3rem;
+        background-color: var(--options-input-bg-color);
+        background: var(--options-input-bg);
+        border: var(--options-input-border);
+        border-radius: var(--options-input-border-radius);
 
         &[type="text"] {
           flex: 1 1 auto;
           min-width: 0;
-          background-color: var(--options-input-bg);
         }
         &[type="number"] {
           width: 5ch;
           box-sizing: content-box;
-          background-color: var(--options-input-bg);
         }
         &[type="checkbox"] {
           position: relative;

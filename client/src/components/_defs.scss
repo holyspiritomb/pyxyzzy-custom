@@ -1,48 +1,5 @@
 @use 'sass:color';
-$enable-gradients: true;
-$enable-shadows: true;
-
-@import "~bootstrap/scss/functions";
-
-// Default variable overrides
-// $body-bg: lavender;
-// $body-bg-dark: color.adjust(#292368, $lightness: -15%);
-
-// Required
-@import "~bootstrap/scss/variables";
-
-//overrides with color swatches
-$body-color: $purple-900;
-$body-color-dark: $purple-100;
-$body-bg: $purple-100;
-$body-bg-dark: $purple-900;
-$border-color: $black;
-$border-color-dark: $purple-300;
-$emphasis-color: $black;
-$emphasis-color-dark: $white;
-$primary: $pink-500;
-$primary-dark: $pink-500;
-$secondary-bg: $indigo-200;
-// $secondary-bg: $blue-500;
-$secondary-bg-dark: $purple-800;
-$secondary: $indigo-900;
-$secondary-color: $indigo-900;
-$secondary-color-dark: $purple-200;
-$tertiary-bg: $indigo-300;
-$tertiary-bg-dark: $purple-700;
-$tertiary-color: $indigo-800;
-$tertiary-color-dark: $purple-300;
-
-// required
-@import "~bootstrap/scss/variables-dark";
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/utilities";
-@import "~bootstrap/scss/root";
-
-//Optional
-// @import "~bootstrap/scss/reboot";
-// @import "~bootstrap/scss/type";
+@use 'sass:meta';
 
 $gameZ: 0;
 $optionsZ: 1000;
@@ -50,107 +7,249 @@ $chatZ: 2000;
 $navbarZ: 3000;
 $dialogZ: 4000;
 $connectingZ: 5000;
+$connectingBg: oklch(0 0 0);
+$connectingTxt: oklch(1 0 0);
 
-$darkPurple: #292368;
-$mediumPurple: #8981d5;
-$mediumBg: #ada7e2;
-$themeHandBg: $mediumBg;
-$themeGlobalBg: $mediumBg;
-$lightBg: #d1ceef;
-$lighterBg: #e3e1f5;
-$lightestBg: #f4f4fb;
-$thinkblobBg: #666;
-$linkColor: #ff389c;
+@mixin my-color-mode($mode: light){
+  // adapted from bootstrap's color-mode mixin
+  @media (prefers-color-scheme: $mode) {
+    :root {
+      @content;
+    }
+  }
+  [data-bs-theme="#{$mode}"] {
+    @content;
+  }
+}
 
-:root,
-[data-bs-theme="light"] {
-  --navbar-bg: #{$purple-400};
-  --hand-bg: #{$purple-200};
-  --player-bg: #{$purple-200};
-  --table-bg: #{$purple-400};
-  --winner-player-bg: #{$pink-400};
-  --options-bg-color: #{$purple-100};
-  --options-bg: #{$purple-100};
-  --options-toggler-bg: #{$purple-200};
-  --options-input-bg: #{$white};
-  --checkbox-accent-color: #{$pink-500};
-  --active-white-card-bg: #{$pink-400};
-  --hovered-white-card-bg: #{$pink-300};
-  --white-card-group-bg: #{$purple-300};
-  --hovered-white-card-group-bg: #{$pink-200};
-  --active-white-card-group-bg: #{$pink-300};
-  --button-bg: #{$purple-200};
-  --button-color: #{$purple-900};
-  --button-border: 2px outset #{$gray-800};
-  --button-border-color: #{$gray-800}; //color only
-  --button-color-disabled: #{$gray-500};
-  --button-bg-disabled: #{$gray-400};
-  --button-border-disabled: 2px #{$gray-600} outset;
-  --instructions-bg: var(--bs-body-bg);
-  --login-legal: #{$gray-800};
-  --chat-timestamp: #{$indigo-500};
-  --chat-error: #{$pink};
-  --chat-warning: #{$orange};
+:root {
+  --button-border-radius: 4px;
+  --toastify-color-dark: var(--rp-base);
+  --toastify-color-light: oklch(1 0 0);
+  --rainbow-gradient:
+      linear-gradient(
+        180deg,
+        #4cd964,
+        #5ac8fa,
+        #007aff,
+        #34aadc,
+        #5856d6,
+        #ff2d55
+      );
   --toastify-color-progress-light:
     linear-gradient(
       to right,
-      #4cd964,
-      #5ac8fa,
-      #007aff,
-      #34aadc,
-      #5856d6,
-      #ff2d55
+      oklch(78% 0.20 146.33),
+      oklch(79% 0.12 230.83),
+      oklch(60% 0.22 257.42),
+      oklch(70% 0.12 231.17),
+      oklch(53% 0.19 278.34),
+      oklch(65% 0.24 17.90)
     );
   --toastify-color-progress-dark:
     linear-gradient(
       to right,
-      #4cd964,
-      #5ac8fa,
-      #007aff,
-      #34aadc,
-      #5856d6,
-      #ff2d55
+      oklch(78% 0.20 146.33),
+      oklch(79% 0.12 230.83),
+      oklch(60% 0.22 257.42),
+      oklch(70% 0.12 231.17),
+      oklch(53% 0.19 278.34),
+      oklch(65% 0.24 17.90)
     );
+	--rp-base: oklch(21.7% 0.026 290.9);
+	--rp-surface: oklch(24.4% 0.033 289);
+	--rp-overlay: oklch(26.8% 0.042 289.3);
+	--rp-muted: oklch(53.7% 0.045 291.7);
+	--rp-subtle: oklch(65.6% 0.044 291.2);
+	--rp-text: oklch(90.5% 0.031 289.6);
+	--rp-love: oklch(69.9% 0.156 4.1);
+	--rp-gold: oklch(84.6% 0.109 74.7);
+	--rp-rose: oklch(84% 0.053 20.6);
+	--rp-pine: oklch(53.2% 0.08 227.3);
+	--rp-foam: oklch(82.2% 0.054 209.6);
+	--rp-iris: oklch(77.6% 0.094 304.9);
+	--rp-highlight-low: oklch(24.8% 0.026 287.4);
+	--rp-highlight-med: oklch(37.1% 0.037 291.4);
+	--rp-highlight-high: oklch(44.3% 0.039 290.8);
+
+	--rp-moon-base: oklch(26% 0.039 288);
+	--rp-moon-surface: oklch(28.7% 0.044 289.4);
+	--rp-moon-overlay: oklch(34.3% 0.048 289.7);
+	--rp-moon-muted: oklch(53.7% 0.045 291.7);
+	--rp-moon-subtle: oklch(65.6% 0.044 291.2);
+	--rp-moon-text: oklch(90.5% 0.031 289.6);
+	--rp-moon-love: oklch(69.9% 0.156 4.1);
+	--rp-moon-gold: oklch(84.6% 0.109 74.7);
+	--rp-moon-rose: oklch(76% 0.098 21.8);
+	--rp-moon-pine: oklch(61.9% 0.093 227.3);
+	--rp-moon-foam: oklch(82.2% 0.054 209.6);
+	--rp-moon-iris: oklch(77.6% 0.094 304.9);
+	--rp-moon-highlight-low: oklch(28.9% 0.041 287.4);
+	--rp-moon-highlight-med: oklch(38.6% 0.041 289.7);
+	--rp-moon-highlight-high: oklch(45.6% 0.047 291.3);
+
+	--rp-dawn-base: oklch(96.6% 0.013 71.3);
+	--rp-dawn-surface: oklch(98.9% 0.009 76.6);
+	--rp-dawn-overlay: oklch(93.8% 0.017 73.1);
+	--rp-dawn-muted: oklch(67.2% 0.027 298.6);
+	--rp-dawn-subtle: oklch(58% 0.045 291);
+	--rp-dawn-text: oklch(46.2% 0.062 289.8);
+	--rp-dawn-love: oklch(60.1% 0.106 2.6);
+	--rp-dawn-gold: oklch(75.7% 0.146 70.5);
+	--rp-dawn-rose: oklch(69.8% 0.105 23.4);
+	--rp-dawn-pine: oklch(49.6% 0.078 227.7);
+	--rp-dawn-foam: oklch(62.9% 0.066 210.1);
+	--rp-dawn-iris: oklch(61.7% 0.072 305.7);
+	--rp-dawn-highlight-low: oklch(94.8% 0.011 58.2);
+	--rp-dawn-highlight-med: oklch(89% 0.006 31.1);
+	--rp-dawn-highlight-high: oklch(84.3% 0.006 334);
+}
+
+/* @include my-color-mode() { */
+:root, [data-bs-theme="light"] {
+  --accent: oklch(0.69 0.1294 234.9);
+  --accent-darker: oklch(from var(--accent) calc(l - 0.2) c h);
+  --accent-lighter: oklch(from var(--accent) calc(l + 0.1) c h);
+  --accent-lightest: oklch(from var(--accent) calc(l + 0.2) calc(c - 0.05) h);
+  --active-white-card-bg: var(--accent-lightest);
+  --active-white-card-group-bg: var(--accent-lighter);
+  --black-card-bg: oklch(0 0 0);
+  --black-card-text: oklch(1 0 0);
+  --bs-body-bg: oklch(1 0 0);
+  --bs-body-color: oklch(0 0 0);
+  --bs-border-color: var(--accent-darker);
+  --button-bg-color: var(--accent-lightest);
+  --button-bg-disabled: oklch(from var(--button-bg-color) l 0 h);
+  --button-bg: var(--accent-lightest);
+  --button-border-color: var(--accent); //color only
+  --button-border-disabled: 2px oklch(from var(--button-border-color) l 0 h) outset;
+  --button-border: 2px outset var(--button-border-color);
+  --button-color-disabled: oklch(from var(--button-color) calc(l + 0.7) 0 h);
+  --button-color: oklch(0 0 0);
+  --cardborder: oklch(0 0 0);
+  --chat-bg-color: oklch(1 0 0);
+  --chat-bg: var(--chat-bg-color);
+  --chat-box-shadow-closed:oklch(0% 0.00 0.00 / 0) 0 0 0.5rem 0.5rem;
+  --chat-box-shadow-open: oklch(0% 0.00 0.00 / 0.30) 0 0 0.5rem 0.5rem;
+  --chat-error: oklch(0.6 0.2 25);
+  --chat-timestamp: var(--accent-darker);
+  --chat-warning: oklch(0.6044 0.1294 71.99);
+  --checkbox-accent-color: var(--accent);
+  --error-text-color: oklch(0.6 0.2 25);
+  --game-list-game-bg-color: var(--accent-lighter);
+  --game-list-game-border-color: var(--accent-darker);
+  --game-list-game-box-shadow: 3px 3px 0px var(--accent);
+  --hand-bg-color: var(--accent-darker);
+  --hand-bg: var(--hand-bg-color);
+  --hovered-white-card-bg: var(--accent-lighter);
+  --hovered-white-card-group-bg: var(--accent-lighter);
+  --instructions-bg-color: oklch(1 0 0);
+  --link-color-active: var(--link-color);
+  --link-color-visited: var(--link-color);
+  --link-color: var(--accent);
+  --login-bg-color: oklch(1 0 0);
+  --login-bg: var(--login-bg-color);
+  --login-legal: oklch(0.3 0 0);
+  --navbar-bg-color: var(--accent-lighter);
+  --navbar-bg: var(--navbar-bg-color);
+  --options-bg-color: var(--accent-lighter);
+  --options-bg: oklch(1 0 0);
+  --options-box-shadow-closed:oklch(0% 0.00 0.00 / 0) 0 0 0.5rem 0.5rem;
+  --options-box-shadow-open: oklch(0% 0.00 0.00 / 0.30) 0 0 0.5rem 0.5rem;
+  --options-input-bg-color: oklch(1 0 0);
+  --options-input-border: 1px solid oklch(0 0 0);
+  --options-input-border-radius: 0px;
+  --options-input-bg: oklch(1 0 0);
+  --options-toggler-bg: var(--accent);
+  --player-bg: var(--accent-lightest);
+  --player-border-color: var(--bs-border-color);
+  --player-border: 1px solid var(--player-border-color);
+  --table-bg-color: var(--accent);
+  --table-bg: var(--table-bg-color);
+  --thinkblob-0: var(--accent-darker);
+  --thinkblob-25: var(--accent);
+  --thinkblob-50: var(--accent-darker);
+  --thinkblob-bg: oklch(1 0 0);
+  --white-card-bg: oklch(1 0 0);
+  --white-card-bg-disabled: oklch(1 0 0 / 0.8);
+  --white-card-group-bg: var(--accent-darker);
+  --white-card-text: oklch(0 0 0);
+  --winner-player-bg: var(--rainbow-gradient);
+  /* --button-bg: linear-gradient(180deg, var(--button-bg-color), oklch(1 0 0)); */
+  /* --game-list-game-bg: linear-gradient(to bottom, var(--game-list-game-bg-color), oklch(1 0 0)); */
+  /* --link-color: var(--accent-darker); */
+  /* --login-bg: linear-gradient(180deg, var(--login-bg-color), oklch(1 0 0)); */
 }
 [data-bs-theme="dark"] {
-  --navbar-bg: #{$purple-800};
-  --hand-bg: #{$purple-900};
-  --player-bg: #{$purple-900};
-  --table-bg: #{$purple-700};
-  --winner-player-bg: #{$pink-600};
-  --options-bg: #{$purple-900};
-  --options-bg-color: #{$purple-900};
-  --options-input-bg: #{$black};
-  --options-toggler-bg: #{$purple-800};
-  --checkbox-accent-color:hotpink;
-  --active-white-card-bg: #{$pink-300};
-  --hovered-white-card-bg: #{$pink-200};
-  --white-card-group-bg: #{$pink-700};
-  --hovered-white-card-group-bg: #{$pink-500};
-  --active-white-card-group-bg: #{$pink-600};
-  --button-bg: #{$purple-800};
-  --button-color: #{$purple-100};
-  --button-color-disabled: #{$gray-600};
-  --button-bg-disabled: #{$gray-800};
-  --button-border: 2px outset #{$purple-300};
-  --button-border-color: #{$purple-300};
-  --button-border-disabled: 2px #{$gray-600} outset;
-  --login-legal: #{$purple-300};
-  --chat-timestamp: #{$purple-200};
-  --chat-error: #{$pink};
-  --chat-warning: #{$orange};
-  --instructions-bg: var(--bs-body-bg-dark);
-  --toastify-color-progress-dark:
-    linear-gradient(
-      to right,
-      #4cd964,
-      #5ac8fa,
-      #007aff,
-      #34aadc,
-      #5856d6,
-      #ff2d55
-    );
-
+  color-scheme:dark;
+  --accent:oklch(0.699 0.156 4.1);
+  --accent-darker: oklch(from var(--accent) l c h / 20%);
+  --active-white-card-bg: var(--accent);
+  --active-white-card-group-bg: var(--rp-iris);
+  --black-card-bg: var(--rp-base);
+  --black-card-text: var(--rp-text);
+  --bs-body-bg: var(--rp-base);
+  --bs-body-color: var(--rp-text);
+  --bs-border-color: var(--rp-highlight-high);
+  --button-bg-color: var(--rp-base);
+  --button-bg-disabled: var(--rp-muted);
+  --button-bg: var(--bs-gradient);
+  --button-border-color: var(--accent); //color only
+  --button-border-disabled: 2px var(--button-border-color) outset;
+  --button-border: 1px outset var(--button-border-color);
+  --button-color-disabled: var(--rp-subtle);
+  --button-color: var(--rp-text);
+  --cardborder: var(--rp-highlight-high);
+  --chat-bg-color: var(--rp-overlay);
+  --chat-bg: var(--chat-bg-color);
+  --chat-box-shadow-closed:oklch(0% 0.00 0.00 / 0) 0 0 0.5rem 0.5rem;
+  --chat-box-shadow-open: var(--rp-highlight-low) 0 0 0.5rem 0.5rem;
+  --chat-error: var(--ctp-mocha-red);
+  --chat-timestamp: var(--rp-foam);
+  --chat-warning: var(--rp-gold);
+  --checkbox-accent-color: var(--accent);
+  --error-text-color: var(--ctp-mocha-red);
+  --game-list-game-bg-color: var(--rp-overlay);
+  --game-list-game-bg: var(--game-list-game-bg-color);
+  --game-list-game-border-color: var(--rp-highlight-high);
+  --game-list-game-box-shadow: 3px 3px 0px oklch(0 0 0);
+  --hand-bg-color: var(--rp-surface);
+  --hand-bg: var(--hand-bg-color);
+  --hovered-white-card-bg: var(--rp-foam);
+  --hovered-white-card-group-bg: var(--rp-pine);
+  --instructions-bg-color: var(--rp-base);
+  --link-color-active: oklch(from var(--accent) calc(l + 0.1) c h);
+  --link-color-visited: var(--link-color);
+  --link-color: var(--accent);
+  --login-bg-color: var(--rp-base);
+  --login-bg: var(--login-bg-color);
+  --login-legal: oklch(from var(--rp-text) calc(l - 0.1) c h);
+  --navbar-bg-color: var(--rp-surface);
+  --navbar-bg: var(--navbar-bg-color);
+  --options-bg-color: var(--rp-overlay);
+  --options-bg: var(--options-bg-color);
+  --options-box-shadow-closed:oklch(0% 0.00 0.00 / 0) 0 0 0.5rem 0.5rem;
+  --options-box-shadow-open: var(--rp-highlight-med) 0 0 0.5rem 0.5rem;
+  --options-input-bg-color: var(--rp-highlight-low);
+  --options-input-bg: var(--options-input-bg-color);
+  --options-input-border: 1px solid var(--rp-subtle);
+  --options-input-border-radius: 0px;
+  --options-toggler-bg: var(--rp-overlay);
+  --player-bg: var(--rp-overlay);
+  --player-border-color: var(--rp-moon-overlay);
+  --player-border: 1px solid var(--player-border-color);
+  --table-bg-color: var(--rp-base);
+  --table-bg: var(--table-bg-color);
+  --thinkblob-0: var(--accent-darker);
+  --thinkblob-25: var(--accent);
+  --thinkblob-50: var(--accent-darker);
+  --thinkblob-bg: var(--rp-highlight-med);
+  --white-card-bg: var(--rp-text);
+  --white-card-bg-disabled: var(--rp-subtle);
+  --white-card-group-bg: var(--rp-pine);
+  --white-card-text: var(--rp-base);
+  --winner-player-bg: var(--accent);
+  /* --login-bg: linear-gradient(180deg, var(--login-bg-color), oklch(1 0 0)); */
 }
 
 @mixin nav-bar($class) {
@@ -171,7 +270,7 @@ $linkColor: #ff389c;
     flex-wrap: wrap-reverse;
     border-style: solid;
     border-width: 1px;
-    border-bottom-color: var(--button-border-color);
+    border-bottom-color: var(--bs-border-color);
     border-top-color: var(--navbar-bg);
     border-left-color: var(--navbar-bg);
     border-right-color: var(--navbar-bg);
@@ -184,3 +283,4 @@ $linkColor: #ff389c;
   }
 }
 
+@include meta.load-css('pkg:7.css/dist/gui/balloon.css');

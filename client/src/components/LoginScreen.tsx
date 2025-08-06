@@ -89,6 +89,7 @@ const LoginScreen = () => {
         <input
           type="text"
           id="login-name"
+          aria-describedby="error-tooltip"
           placeholder={getPreviousName()}
           disabled={loggingIn}
           maxLength={config.users.username.length.max}
@@ -97,10 +98,18 @@ const LoginScreen = () => {
           onChange={(e) => setName(e.target.value)} />
         <button type="submit" disabled={!canSubmit}>Play</button>
       </form>
-      {nameProblemList}
-      <ThemeButton />
-      <p className="legal">
-        pyXyzzy is a clone of <ExternalLink href="https://www.cardsagainsthumanity.com/">Cards Against Humanity
+      <div
+        role="tooltip"
+        id="error-tooltip"
+        className="is-bottom"
+        hidden={name.length == 0 || nameProblems.length == 0} >
+        {nameProblemList}
+      </div>
+      {/*{nameProblemList}*/}
+      <div className="legal">
+        <ThemeButton />
+        <br />
+        <p>pyXyzzy is a clone of <ExternalLink href="https://www.cardsagainsthumanity.com/">Cards Against Humanity
         </ExternalLink> and uses its cards and rules, available under
         the <ExternalLink href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0
         </ExternalLink> license. The source code is available
@@ -108,7 +117,8 @@ const LoginScreen = () => {
         the <ExternalLink href="https://opensource.org/licenses/MIT">MIT license</ExternalLink>.
         <br/>
         Built: {BUILD_DATE}
-      </p>
+        </p>
+      </div>
     </div>
   )
 }

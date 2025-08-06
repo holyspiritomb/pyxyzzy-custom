@@ -8,13 +8,11 @@
   $inter-font-path: '~inter-ui/variable'
 );
 
+@use "sass:color";
 @include default.all;
 @include variable.all;
 
 @import "defs";
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
 @import '@infolektuell/noto-color-emoji';
 
 :root {
@@ -64,8 +62,8 @@ html.connecting {
   bottom: 0;
   right: 0;
   z-index: $connectingZ;
-  background: #{$purple-900};
-  color: #{$purple-100};
+  background: $connectingBg;
+  color: $connectingTxt;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,42 +90,49 @@ h4 {
   font-size: 1rem;
 }
 button {
-  @include gradient-bg(var(--button-bg));
-  background-color: var(--button-bg);
+  background-color: var(--button-bg-color);
+  background-image: var(--button-bg);
   color: var(--button-color);
-  // border-width:2px;
-  // border-style: outset;
   border: var(--button-border);
-  border-radius: 5px;
+  border-radius: var(--button-border-radius);
+
+  &:active {
+    border-style: inset;
+  }
+
+  &:disabled {
+    color: var(--button-color-disabled);
+    background: var(--button-bg-disabled);
+    border: var(--button-border-disabled);
+    cursor: not-allowed;
+  }
 }
-button:active {
-  border-style: inset;
-}
-button:disabled {
-  color: var(--button-color-disabled);
-  background: var(--button-bg-disabled);
-  border: var(--button-border-disabled);
-  cursor: not-allowed;
-}
-input {
-  @include gradient-bg;
-  border-width: 1px;
-  border-style: solid;
+input{
+  border: var(--button-border);
   border-color: var(--button-border-color);
-  // background-color: var(--button-bg);
-  accent-color: var(--checkbox-accent-color);
+  background-color: var(--button-bg-color);
+  background: var(--button-bg);
+  accent-color: var(--accent);
+  border-radius: var(--button-border-radius);
 }
 
 a,
 a:link {
-  color: $linkColor;
+  color: var(--link-color);
   text-decoration: underline;
   &:hover,
   &:focus,
   &:active {
-    color: lighten($linkColor, 10);
+    color: var(--link-color-active);
   }
   &:visited {
-    color: darken($linkColor, 10);
+    color: var(--link-color-visited);
   }
+}
+
+#error-tooltip {
+  position: relative;
+  top: 0.5rem;
+  z-index:1;
+  max-width:60vw;
 }
