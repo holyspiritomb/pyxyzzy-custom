@@ -6,6 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
 import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
 import Terminal from 'vite-plugin-terminal';
+import { NodePackageImporter } from "sass-embedded";
 
 export default defineConfig(({ mode }) => {
   setEnv(mode);
@@ -13,9 +14,10 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern",
+          api: "modern-compiler",
           quietDeps: true,
-        }
+          importers: [new NodePackageImporter()],
+        },
       }
     },
     define: {
@@ -43,8 +45,8 @@ export default defineConfig(({ mode }) => {
 });
 
 function setEnv(mode: string) {
-	Object.assign(
-		process.env,
+  Object.assign(
+    process.env,
 		loadEnv(mode, ".", ["REACT_APP_", "NODE_ENV", "PUBLIC_URL"]),
 	);
 	process.env.NODE_ENV ||= mode;
