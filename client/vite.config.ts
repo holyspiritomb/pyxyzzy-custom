@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import progress from 'vite-plugin-progress';
 import { gitCommitHashPlugin } from "vite-plugin-git-commit-hash";
-import Terminal from 'vite-plugin-terminal';
+// import Terminal from 'vite-plugin-terminal';
 import { NodePackageImporter } from "sass-embedded";
 
 export default defineConfig(({ mode }) => {
@@ -36,10 +36,10 @@ export default defineConfig(({ mode }) => {
       progress({
         format: 'Building :bar :percent',
       }),
-      Terminal({
-        console: 'terminal',
-        output: ['terminal', 'console'],
-      }),
+      // Terminal({
+      //   console: 'terminal',
+      //   output: ['terminal', 'console'],
+      // }),
     ],
   };
 });
