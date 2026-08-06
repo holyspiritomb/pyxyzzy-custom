@@ -7,4 +7,4 @@ include = "config.toml"
 # Add any custom configuration below.
 [debug]
 enabled = true
-bots.count = 20
+bots.count = 10
