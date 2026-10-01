@@ -1,7 +1,7 @@
 {
   "name": "pyxyzzy-client",
   "version": "0.1.0",
-  "homepage": "https://gitlab.com/holyspiritomb/pyxyzzy",
+  "homepage": "https://codeberg.org/holyspiritomb/pyxyzzy",
   "private": true,
   "type": "module",
   "dependencies": {
