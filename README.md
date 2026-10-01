@@ -1,8 +1,8 @@
-# pyXyzzy-custom
+# pyXyzzy
 
-pyXyzzy-custom is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][cah-official] modeled after [Pretend You're Xyzzy][pyx-github]. It is deeply indebted to PurkkaKoodari's [pyXyzzy][pyx-upstream] project in which they created the entire Python backend and the React frontend from scratch.
+pyXyzzy is a fork of [a clone][pyx-upstream] of [Cards Against Humanity][cah-official] modeled after [Pretend You're Xyzzy][pyx-github]. It is deeply indebted to PurkkaKoodari's [pyXyzzy][pyx-upstream] project in which they created the entire Python backend and the React frontend from scratch.
 
-### Differences from PurkkaKoodari's project:
+### Differences from PurkkaKoodari's original project:
 
 Client differences:
 - Uses [React 18][react-18]
